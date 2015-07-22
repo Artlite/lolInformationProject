@@ -4,8 +4,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.artlite.collapsinglayouttest.model.ListItem;
-import com.artlite.collapsinglayouttest.ui.views.MainRecycleItem;
+import com.artlite.collapsinglayouttest.model.Champion;
+import com.artlite.collapsinglayouttest.ui.views.recycler.ChampionRecycleItem;
 
 import java.util.List;
 
@@ -14,20 +14,20 @@ import java.util.List;
  */
 public class ChampionsRecyclerAdapter extends RecyclerView.Adapter<ChampionsRecyclerAdapter.ViewHolder> {
 
-    private List<ListItem> listItems;
+    private List<Champion> listItems;
 
-    public ChampionsRecyclerAdapter(List<ListItem> listItems) {
+    public ChampionsRecyclerAdapter(List<Champion> listItems) {
         this.listItems = listItems;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(new MainRecycleItem(parent.getContext()));
+        return new ViewHolder(new ChampionRecycleItem(parent.getContext()));
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.recycleItem.mainTextView.setText(listItems.get(position).getMessage());
+        holder.recycleItem.setChampion(listItems.get(position));
     }
 
     @Override
@@ -36,11 +36,11 @@ public class ChampionsRecyclerAdapter extends RecyclerView.Adapter<ChampionsRecy
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public MainRecycleItem recycleItem;
+        public ChampionRecycleItem recycleItem;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            recycleItem = (MainRecycleItem) itemView;
+            recycleItem = (ChampionRecycleItem) itemView;
         }
     }
 }

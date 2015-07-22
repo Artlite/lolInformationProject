@@ -35,11 +35,11 @@
                 android:layout_gravity="center"
                 app:layout_scrollFlags="scroll|enterAlways"
                 app:tabGravity="center"
-                app:tabIndicatorColor="#e9cd4a"
+                app:tabIndicatorColor="@color/yellow"
                 app:tabMode="scrollable"
-                app:tabSelectedTextColor="#e9cd4a"
+                app:tabSelectedTextColor="@color/yellow"
                 app:tabTextAppearance="@style/TextAppearance.Art.Code"
-                app:tabTextColor="#ffa08933" />
+                app:tabTextColor="@color/yellow_dusk" />
         </LinearLayout>
 
 

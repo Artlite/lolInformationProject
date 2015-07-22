@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.artlite.collapsinglayouttest.R;
+import com.artlite.collapsinglayouttest.providers.ChampionProvider;
 import com.artlite.collapsinglayouttest.providers.ListItemProvider;
 import com.artlite.collapsinglayouttest.ui.adapters.recycler.ChampionsRecyclerAdapter;
 import com.artlite.collapsinglayouttest.ui.fragments.abs.BaseFragment;
@@ -28,7 +29,7 @@ public class ChampionListFragment extends BaseFragment {
 
     @Override
     protected void onCreateFragment(View containerView) {
-        recyclerAdapter = new ChampionsRecyclerAdapter(new ListItemProvider().get());
+        recyclerAdapter = new ChampionsRecyclerAdapter(new ChampionProvider().get());
         currenRecyclerView.setHasFixedSize(true);
         currenRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         currenRecyclerView.setAdapter(recyclerAdapter);
