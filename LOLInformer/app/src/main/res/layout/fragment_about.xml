@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_5"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="@dimen/dimen_0"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1" />
+
+            <ImageView
+                style="@style/styleCropImageCenter"
+                android:layout_width="@dimen/dimen_0"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:cropToPadding="true"
+                android:padding="@dimen/dimen_5"
+                android:src="@drawable/img_darius_vs_garen" />
+
+            <View
+                android:layout_width="@dimen/dimen_0"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1" />
+
+            <LinearLayout
+                android:layout_width="@dimen/dimen_0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.5"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textview_about_information"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text=""
+                    android:textSize="@dimen/text_15" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+</LinearLayout>

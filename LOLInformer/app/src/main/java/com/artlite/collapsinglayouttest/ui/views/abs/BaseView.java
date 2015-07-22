@@ -1,4 +1,4 @@
-package com.artlite.collapsinglayouttest.ui.views;
+package com.artlite.collapsinglayouttest.ui.views.abs;
 
 import android.content.Context;
 import android.util.AttributeSet;

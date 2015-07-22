@@ -1,4 +1,4 @@
-package com.artlite.collapsinglayouttest.ui.adapters;
+package com.artlite.collapsinglayouttest.ui.adapters.recycler;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -12,11 +12,11 @@ import java.util.List;
 /**
  * Created by dlernatovich on 7/22/15.
  */
-public class MainRecyclerAdapter extends RecyclerView.Adapter<MainRecyclerAdapter.ViewHolder> {
+public class ChampionsRecyclerAdapter extends RecyclerView.Adapter<ChampionsRecyclerAdapter.ViewHolder> {
 
     private List<ListItem> listItems;
 
-    public MainRecyclerAdapter(List<ListItem> listItems) {
+    public ChampionsRecyclerAdapter(List<ListItem> listItems) {
         this.listItems = listItems;
     }
 

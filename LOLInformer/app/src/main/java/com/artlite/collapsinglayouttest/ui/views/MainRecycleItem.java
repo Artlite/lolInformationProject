@@ -4,6 +4,7 @@ import android.content.Context;
 import android.widget.TextView;
 
 import com.artlite.collapsinglayouttest.R;
+import com.artlite.collapsinglayouttest.ui.views.abs.BaseView;
 
 import butterknife.InjectView;
 

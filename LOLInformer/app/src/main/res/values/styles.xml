@@ -15,10 +15,10 @@
     </style>
 
     <style name="TextAppearance.Art.Code" parent="@android:style/TextAppearance.Small">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">17sp</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:typeface">monospace</item>
+        <!--<item name="android:typeface">monospace</item>-->
     </style>
 
 

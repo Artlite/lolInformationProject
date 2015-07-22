@@ -32,6 +32,7 @@
                 android:id="@+id/main_tab_bar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 app:layout_scrollFlags="scroll|enterAlways"
                 app:tabGravity="center"
                 app:tabIndicatorColor="#e9cd4a"
@@ -56,11 +57,14 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/main_recycler_view"
+
+    <com.artlite.collapsinglayouttest.ui.views.ViewPagerWithoutScroll
+        android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    </com.artlite.collapsinglayouttest.ui.views.ViewPagerWithoutScroll>
 
 
 </android.support.design.widget.CoordinatorLayout>

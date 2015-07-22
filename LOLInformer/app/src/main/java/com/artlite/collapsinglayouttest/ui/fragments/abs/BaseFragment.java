@@ -1,8 +1,8 @@
-package com.artlite.collapsinglayouttest.ui.fragments;
+package com.artlite.collapsinglayouttest.ui.fragments.abs;
 
 
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,12 +45,6 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
      */
     protected abstract void onCreateFragment(View containerView);
 
-    /**
-     * Method which provide the getting of the current fragment title
-     *
-     * @return current fragment title
-     */
-    public abstract String getFragmentTitle();
 
     /**
      * Method which provide the setting of the OnClickListener
