@@ -12,12 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/dimen_5"
-        app:cardCornerRadius="@dimen/dimen_10">
+        app:cardCornerRadius="@dimen/dimen_7">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/yellow_dusk"
+            android:background="@color/blue_glyph"
             android:gravity="center"
             android:orientation="vertical">
 

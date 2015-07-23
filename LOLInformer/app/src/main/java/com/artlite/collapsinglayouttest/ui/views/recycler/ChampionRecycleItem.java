@@ -53,7 +53,7 @@ public class ChampionRecycleItem extends BaseView {
     private void updateUI() {
         if (champion != null) {
             mainTextView.setText(champion.getName());
-            Picasso.with(getContext()).load(champion.getIconURL()).placeholder(R.anim.progress_animation).error(R.mipmap.ic_image_download_error).fit().centerInside().into(championImageView);
+            Picasso.with(getContext()).load(champion.getIconURL()).placeholder(R.anim.progress_animation).error(R.drawable.icon_no_image).fit().centerInside().into(championImageView);
         }
     }
 
