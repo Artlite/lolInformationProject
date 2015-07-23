@@ -1,6 +1,7 @@
 package com.artlite.collapsinglayouttest.ui.views.abs;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,7 @@ import butterknife.ButterKnife;
 /**
  * Created by dlernatovich on 7/22/15.
  */
-public abstract class BaseView extends LinearLayout {
+public abstract class BaseView extends LinearLayout implements View.OnClickListener {
 
     protected View baseView;
 
@@ -54,4 +55,28 @@ public abstract class BaseView extends LinearLayout {
 
     protected abstract void onCreateView();
 
+    /**
+     * Method which provide starting the Activity
+     *
+     * @param activtyClass activity which should be starting
+     */
+    protected void startActivity(Class activtyClass) {
+        getContext().startActivity(new Intent(getContext(), activtyClass));
+    }
+
+    /**
+     * Method which provide the setting of the OnClickListener
+     *
+     * @param views current list of Views
+     */
+    protected void setOnClickListeners(View... views) {
+        for (View view : views) {
+            view.setOnClickListener(this);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+
+    }
 }

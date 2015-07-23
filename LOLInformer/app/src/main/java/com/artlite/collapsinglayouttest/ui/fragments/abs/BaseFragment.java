@@ -1,6 +1,7 @@
 package com.artlite.collapsinglayouttest.ui.fragments.abs;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -65,5 +66,14 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
+    }
+
+    /**
+     * Method which provide starting the Activity
+     *
+     * @param activtyClass activity which should be starting
+     */
+    protected void startActivity(Class activtyClass) {
+        getActivity().startActivity(new Intent(getActivity(), activtyClass));
     }
 }

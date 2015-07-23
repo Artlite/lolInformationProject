@@ -1,11 +1,14 @@
 package com.artlite.collapsinglayouttest.ui.views.recycler;
 
 import android.content.Context;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.artlite.collapsinglayouttest.R;
+import com.artlite.collapsinglayouttest.core.CurrentApplication;
 import com.artlite.collapsinglayouttest.model.Champion;
+import com.artlite.collapsinglayouttest.ui.activities.ChampionDetailActivity;
 import com.artlite.collapsinglayouttest.ui.views.abs.BaseView;
 import com.squareup.picasso.Picasso;
 
@@ -34,6 +37,7 @@ public class ChampionRecycleItem extends BaseView {
 
     @Override
     protected void onCreateView() {
+        setOnClickListeners(baseView);
         updateUI();
     }
 
@@ -57,5 +61,9 @@ public class ChampionRecycleItem extends BaseView {
         }
     }
 
-
+    @Override
+    public void onClick(View v) {
+        CurrentApplication.getInstance().setCurrentChampion(champion);
+        startActivity(ChampionDetailActivity.class);
+    }
 }

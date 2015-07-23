@@ -1,5 +1,8 @@
 package com.artlite.collapsinglayouttest.ui.activities.abs;
 
+import android.app.ActivityManager;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -71,5 +74,42 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View v) {
 
+    }
+
+
+    /**
+     * Method which provide starting the Activity
+     *
+     * @param activtyClass activity which should be starting
+     */
+    protected void startActivity(Class activtyClass) {
+        startActivity(new Intent(this, activtyClass));
+    }
+
+    /**
+     * Method which provide starting the Service
+     *
+     * @param serviceClass service which should be starting
+     */
+    protected void startService(Class serviceClass) {
+        if (!isMyServiceRunning(serviceClass)) {
+            startService(new Intent(this, serviceClass));
+        }
+    }
+
+    /**
+     * Method which provide the service running checking
+     *
+     * @param serviceClass current service
+     * @return checking results
+     */
+    private boolean isMyServiceRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                return true;
+            }
+        }
+        return false;
     }
 }
