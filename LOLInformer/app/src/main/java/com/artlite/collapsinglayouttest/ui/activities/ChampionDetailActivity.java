@@ -1,6 +1,7 @@
 package com.artlite.collapsinglayouttest.ui.activities;
 
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.artlite.collapsinglayouttest.R;
 import com.artlite.collapsinglayouttest.core.CurrentApplication;
@@ -17,6 +18,8 @@ public class ChampionDetailActivity extends BaseActivity {
 
     @InjectView(R.id.championImageView)
     ImageView championImageView;
+    @InjectView(R.id.textview_name)
+    TextView nameTextView;
 
     private Champion currentChampion;
 
@@ -38,7 +41,8 @@ public class ChampionDetailActivity extends BaseActivity {
 
     private void updateUI() {
         if (currentChampion != null) {
-            Picasso.with(getBaseContext()).load(currentChampion.getDefaultSkin()).placeholder(R.anim.progress_animation).error(R.drawable.icon_no_image).fit().centerInside().into(championImageView);
+            Picasso.with(getBaseContext()).load(currentChampion.getDefaultSkin()).placeholder(R.anim.progress_animation_large).error(R.drawable.icon_no_image_large).into(championImageView);
+            nameTextView.setText(currentChampion.getName());
         }
     }
 }

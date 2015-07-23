@@ -4,6 +4,9 @@ package com.artlite.collapsinglayouttest.model;
  * Created by dlernatovich on 7/22/15.
  */
 public class Champion {
+
+    private static final String DEFAULT_SKIN_URL = "http://ru.leagueoflegends.com/sites/default/files/upload/art/teambuilder-wallpaper.jpg";
+
     private String iconURL;
     private String name;
     private String title;
@@ -14,6 +17,7 @@ public class Champion {
 
     public Champion() {
         isFinished = false;
+        defaultSkin = DEFAULT_SKIN_URL;
     }
 
     public static class Builder {
@@ -25,6 +29,11 @@ public class Champion {
 
         //TODO Temporary variable (remove this after the implementation)
         private boolean isFinished;
+
+        public Builder() {
+            isFinished = false;
+            defaultSkin = DEFAULT_SKIN_URL;
+        }
 
         public Builder addIcon(String url) {
             this.iconURL = url;

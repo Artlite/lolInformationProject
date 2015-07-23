@@ -5,6 +5,7 @@
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black_background_lighter"
     android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
@@ -14,13 +15,56 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/championImageView"
-            style="@style/styleCropImageCenter"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src="@drawable/main_logo_alt"
-            app:layout_scrollFlags="scroll|enterAlways" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_scrollFlags="scroll|enterAlways">
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen_10"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardCornerRadius="@dimen/dimen_7">
+
+                <ImageView
+                    android:id="@+id/championImageView"
+                    style="@style/styleCropImageCenter"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:src="@drawable/main_logo_alt" />
+            </android.support.v7.widget.CardView>
+
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_50"
+            app:layout_collapseMode="pin">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_2"
+                android:layout_gravity="top"
+                android:background="@color/yellow" />
+
+            <TextView
+                android:id="@+id/textview_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.Art.Code"
+                android:textColor="@color/yellow" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_2"
+                android:layout_gravity="bottom"
+                android:background="@color/yellow" />
+        </FrameLayout>
 
     </android.support.design.widget.AppBarLayout>
 
@@ -28,6 +72,21 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="800dp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="800dp" />
+        </LinearLayout>
+
 
     </android.support.v4.widget.NestedScrollView>
 

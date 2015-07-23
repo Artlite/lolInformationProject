@@ -3,4 +3,6 @@
     <color name="yellow">#e9cd4a</color>
     <color name="yellow_dusk">#ffa08933</color>
     <color name="blue_glyph">#435e67</color>
+    <color name="black_background">#ff181818</color>
+    <color name="black_background_lighter">#2b2b2b</color>
 </resources>
