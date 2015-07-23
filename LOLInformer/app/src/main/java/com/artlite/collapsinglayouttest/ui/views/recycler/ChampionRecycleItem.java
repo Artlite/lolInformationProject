@@ -37,15 +37,25 @@ public class ChampionRecycleItem extends BaseView {
         updateUI();
     }
 
+    /**
+     * Method which provide the set champion to the current ChampionRecycleItem
+     *
+     * @param champion current champion object
+     */
     public void setChampion(Champion champion) {
         this.champion = champion;
         updateUI();
     }
 
+    /**
+     * Method which provide the updating of the UI
+     */
     private void updateUI() {
         if (champion != null) {
             mainTextView.setText(champion.getName());
             Picasso.with(getContext()).load(champion.getIconURL()).placeholder(R.anim.progress_animation).error(R.mipmap.ic_image_download_error).fit().centerInside().into(championImageView);
         }
     }
+
+
 }

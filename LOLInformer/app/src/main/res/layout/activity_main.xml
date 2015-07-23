@@ -42,19 +42,6 @@
                 app:tabTextColor="@color/yellow_dusk" />
         </LinearLayout>
 
-
-        <!--app:layout_collapseMode="pin"-->
-
-        <!--<android.support.v7.widget.Toolbar-->
-        <!--android:id="@+id/toolbar"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="?attr/actionBarSize"-->
-        <!--android:background="@android:color/transparent"-->
-        <!--android:elevation="0dp"-->
-        <!--android:title=""-->
-        <!--app:layout_scrollFlags="scroll|enterAlways"-->
-        <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Dark" />-->
-
     </android.support.design.widget.AppBarLayout>
 
 
