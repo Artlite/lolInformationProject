@@ -10,7 +10,6 @@ import com.artlite.collapsinglayouttest.core.CurrentApplication;
 import com.artlite.collapsinglayouttest.model.Champion;
 import com.artlite.collapsinglayouttest.ui.activities.ChampionDetailActivity;
 import com.artlite.collapsinglayouttest.ui.views.abs.BaseRecyclerItem;
-import com.squareup.picasso.Picasso;
 
 import butterknife.InjectView;
 
@@ -47,7 +46,7 @@ public class ChampionRecycleItem extends BaseRecyclerItem<Champion> {
     private void updateUI() {
         if (champion != null) {
             mainTextView.setText(champion.getName());
-            Picasso.with(getContext()).load(champion.getIconURL()).placeholder(R.anim.progress_animation).error(R.drawable.icon_no_image).fit().centerInside().into(championImageView);
+            championImageView.setImageResource(champion.getIconID());
         }
     }
 

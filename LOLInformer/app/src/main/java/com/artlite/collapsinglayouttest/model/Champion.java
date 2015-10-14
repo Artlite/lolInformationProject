@@ -13,7 +13,7 @@ public class Champion extends BaseObject {
 
     private static final String DEFAULT_SKIN_URL = "http://ru.leagueoflegends.com/sites/default/files/upload/art/teambuilder-wallpaper.jpg";
 
-    private String iconURL;
+    private int iconID;
     private String name;
     private String title;
     private String defaultSkin;
@@ -32,7 +32,7 @@ public class Champion extends BaseObject {
     }
 
     public static class Builder {
-        private String iconURL;
+        private int iconID;
         private String name;
         private String title;
         private String defaultSkin;
@@ -46,8 +46,8 @@ public class Champion extends BaseObject {
             defaultSkin = DEFAULT_SKIN_URL;
         }
 
-        public Builder addIcon(String url) {
-            this.iconURL = url;
+        public Builder addIcon(int iconID) {
+            this.iconID = iconID;
             return this;
         }
 
@@ -73,7 +73,7 @@ public class Champion extends BaseObject {
 
         public Champion build() {
             Champion champion = new Champion();
-            champion.iconURL = this.iconURL;
+            champion.iconID = this.iconID;
             champion.name = this.name;
             champion.isFinished = this.isFinished;
             champion.defaultSkin = this.defaultSkin;
@@ -81,12 +81,12 @@ public class Champion extends BaseObject {
         }
     }
 
-    public String getIconURL() {
-        return iconURL;
+    public int getIconID() {
+        return iconID;
     }
 
-    public void setIconURL(String iconURL) {
-        this.iconURL = iconURL;
+    public void setIconID(int iconID) {
+        this.iconID = iconID;
     }
 
     public String getName() {
