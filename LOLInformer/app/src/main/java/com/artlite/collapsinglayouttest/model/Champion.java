@@ -1,9 +1,15 @@
 package com.artlite.collapsinglayouttest.model;
 
+import android.content.Context;
+
+import com.artlite.collapsinglayouttest.model.abs.BaseObject;
+import com.artlite.collapsinglayouttest.ui.views.abs.BaseRecyclerItem;
+import com.artlite.collapsinglayouttest.ui.views.recycler.ChampionRecycleItem;
+
 /**
  * Created by dlernatovich on 7/22/15.
  */
-public class Champion {
+public class Champion extends BaseObject {
 
     private static final String DEFAULT_SKIN_URL = "http://ru.leagueoflegends.com/sites/default/files/upload/art/teambuilder-wallpaper.jpg";
 
@@ -18,6 +24,11 @@ public class Champion {
     public Champion() {
         isFinished = false;
         defaultSkin = DEFAULT_SKIN_URL;
+    }
+
+    @Override
+    public BaseRecyclerItem getRecyclerItem(Context context) {
+        return new ChampionRecycleItem(context);
     }
 
     public static class Builder {

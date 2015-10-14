@@ -9,7 +9,7 @@ import com.artlite.collapsinglayouttest.R;
 import com.artlite.collapsinglayouttest.core.CurrentApplication;
 import com.artlite.collapsinglayouttest.model.Champion;
 import com.artlite.collapsinglayouttest.ui.activities.ChampionDetailActivity;
-import com.artlite.collapsinglayouttest.ui.views.abs.BaseView;
+import com.artlite.collapsinglayouttest.ui.views.abs.BaseRecyclerItem;
 import com.squareup.picasso.Picasso;
 
 import butterknife.InjectView;
@@ -17,7 +17,7 @@ import butterknife.InjectView;
 /**
  * Created by dlernatovich on 7/22/15.
  */
-public class ChampionRecycleItem extends BaseView {
+public class ChampionRecycleItem extends BaseRecyclerItem<Champion> {
 
     @InjectView(R.id.textview_main)
     public TextView mainTextView;
@@ -42,16 +42,6 @@ public class ChampionRecycleItem extends BaseView {
     }
 
     /**
-     * Method which provide the set champion to the current ChampionRecycleItem
-     *
-     * @param champion current champion object
-     */
-    public void setChampion(Champion champion) {
-        this.champion = champion;
-        updateUI();
-    }
-
-    /**
      * Method which provide the updating of the UI
      */
     private void updateUI() {
@@ -65,5 +55,11 @@ public class ChampionRecycleItem extends BaseView {
     public void onClick(View v) {
         CurrentApplication.getInstance().setCurrentChampion(champion);
         startActivity(ChampionDetailActivity.class);
+    }
+
+    @Override
+    public void setUp(Champion baseObject) {
+        this.champion = baseObject;
+        updateUI();
     }
 }

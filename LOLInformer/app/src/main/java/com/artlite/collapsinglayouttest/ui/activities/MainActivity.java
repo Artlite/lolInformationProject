@@ -2,15 +2,9 @@ package com.artlite.collapsinglayouttest.ui.activities;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 
 import com.artlite.collapsinglayouttest.R;
-import com.artlite.collapsinglayouttest.providers.ListItemProvider;
 import com.artlite.collapsinglayouttest.ui.activities.abs.BaseActivity;
-import com.artlite.collapsinglayouttest.ui.adapters.recycler.ChampionsRecyclerAdapter;
 import com.artlite.collapsinglayouttest.ui.adapters.viewpager.MainPagerAdapter;
 
 import butterknife.InjectView;

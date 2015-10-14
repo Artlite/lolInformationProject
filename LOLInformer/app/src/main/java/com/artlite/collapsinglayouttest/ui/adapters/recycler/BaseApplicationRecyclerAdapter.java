@@ -4,30 +4,35 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.artlite.collapsinglayouttest.model.Champion;
-import com.artlite.collapsinglayouttest.ui.views.recycler.ChampionRecycleItem;
+import com.artlite.collapsinglayouttest.model.abs.BaseObject;
+import com.artlite.collapsinglayouttest.ui.views.abs.BaseRecyclerItem;
 
 import java.util.List;
 
 /**
  * Created by dlernatovich on 7/22/15.
  */
-public class ChampionsRecyclerAdapter extends RecyclerView.Adapter<ChampionsRecyclerAdapter.ViewHolder> {
+public class BaseApplicationRecyclerAdapter<T extends BaseObject> extends RecyclerView.Adapter<BaseApplicationRecyclerAdapter.ViewHolder> {
 
-    private List<Champion> listItems;
+    private List<T> listItems;
 
-    public ChampionsRecyclerAdapter(List<Champion> listItems) {
+    public BaseApplicationRecyclerAdapter(List<T> listItems) {
         this.listItems = listItems;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(new ChampionRecycleItem(parent.getContext()));
+        return new ViewHolder(listItems.get(viewType).getRecyclerItem(parent.getContext()));
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.recycleItem.setChampion(listItems.get(position));
+        holder.recycleItem.setUp(listItems.get(position));
     }
 
     @Override
@@ -36,11 +41,11 @@ public class ChampionsRecyclerAdapter extends RecyclerView.Adapter<ChampionsRecy
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public ChampionRecycleItem recycleItem;
+        public BaseRecyclerItem recycleItem;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            recycleItem = (ChampionRecycleItem) itemView;
+            recycleItem = (BaseRecyclerItem) itemView;
         }
     }
 }
