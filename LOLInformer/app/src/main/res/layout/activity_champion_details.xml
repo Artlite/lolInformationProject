@@ -37,10 +37,10 @@
             app:layout_collapseMode="pin">
 
             <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_2"
-            android:layout_gravity="top"
-            android:background="@color/yellow" />
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_2"
+                android:layout_gravity="top"
+                android:background="@color/yellow" />
 
             <TextView
                 android:id="@+id/textview_name"
@@ -70,13 +70,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <Button
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="800dp" />
+                android:layout_height="wrap_content"
+                android:text="Champion abilities"
+                android:textAppearance="@style/TextAppearance.Art.Code"
+                android:textColor="@color/yellow" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="800dp" />
         </LinearLayout>
 
 

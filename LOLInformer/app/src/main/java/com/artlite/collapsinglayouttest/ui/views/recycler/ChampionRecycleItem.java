@@ -9,14 +9,14 @@ import com.artlite.collapsinglayouttest.R;
 import com.artlite.collapsinglayouttest.core.CurrentApplication;
 import com.artlite.collapsinglayouttest.model.Champion;
 import com.artlite.collapsinglayouttest.ui.activities.ChampionDetailActivity;
-import com.artlite.collapsinglayouttest.ui.views.abs.BaseRecyclerItem;
+import com.artlite.collapsinglayouttest.ui.custom.AdapteredRecyclerView;
 
 import butterknife.InjectView;
 
 /**
  * Created by dlernatovich on 7/22/15.
  */
-public class ChampionRecycleItem extends BaseRecyclerItem<Champion> {
+public class ChampionRecycleItem extends AdapteredRecyclerView.BaseRecyclerItem<Champion> {
 
     @InjectView(R.id.textview_main)
     public TextView mainTextView;
