@@ -1,7 +1,8 @@
-package com.artlite.collapsinglayouttest.core;
+package com.artlite.collapsinglayouttest.core.application;
 
 import android.app.Application;
 
+import com.artlite.collapsinglayouttest.core.managers.TypeFaceManager;
 import com.artlite.collapsinglayouttest.model.Champion;
 import com.artlite.collapsinglayouttest.utils.AppLogger;
 
@@ -18,6 +19,7 @@ public class CurrentApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        TypeFaceManager.getInstance(this);
     }
 
     /**

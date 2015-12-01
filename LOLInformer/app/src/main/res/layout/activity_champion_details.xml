@@ -42,7 +42,7 @@
                 android:layout_gravity="top"
                 android:background="@color/yellow" />
 
-            <TextView
+            <com.artlite.collapsinglayouttest.ui.views.fonted.FTextView
                 android:id="@+id/textview_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
+            <com.artlite.collapsinglayouttest.ui.views.fonted.FTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Champion abilities"

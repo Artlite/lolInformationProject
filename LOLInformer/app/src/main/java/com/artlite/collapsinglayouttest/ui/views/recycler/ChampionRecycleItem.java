@@ -3,13 +3,13 @@ package com.artlite.collapsinglayouttest.ui.views.recycler;
 import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.artlite.collapsinglayouttest.R;
-import com.artlite.collapsinglayouttest.core.CurrentApplication;
+import com.artlite.collapsinglayouttest.core.application.CurrentApplication;
 import com.artlite.collapsinglayouttest.model.Champion;
 import com.artlite.collapsinglayouttest.ui.activities.ChampionDetailActivity;
 import com.artlite.collapsinglayouttest.ui.custom.AdapteredRecyclerView;
+import com.artlite.collapsinglayouttest.ui.views.fonted.FTextView;
 
 import butterknife.InjectView;
 
@@ -19,7 +19,7 @@ import butterknife.InjectView;
 public class ChampionRecycleItem extends AdapteredRecyclerView.BaseRecyclerItem<Champion> {
 
     @InjectView(R.id.textview_main)
-    public TextView mainTextView;
+    FTextView mainTextView;
     @InjectView(R.id.imageview_champion)
     ImageView championImageView;
 

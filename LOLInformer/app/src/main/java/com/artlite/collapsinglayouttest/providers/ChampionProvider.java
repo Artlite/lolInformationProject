@@ -1,7 +1,7 @@
 package com.artlite.collapsinglayouttest.providers;
 
 import com.artlite.collapsinglayouttest.R;
-import com.artlite.collapsinglayouttest.core.CurrentApplication;
+import com.artlite.collapsinglayouttest.core.application.CurrentApplication;
 import com.artlite.collapsinglayouttest.model.Champion;
 import com.artlite.collapsinglayouttest.providers.abs.BaseProvider;
 

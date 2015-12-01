@@ -1,4 +1,4 @@
-package com.artlite.collapsinglayouttest.ui.views;
+package com.artlite.collapsinglayouttest.ui.views.viewpager;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;

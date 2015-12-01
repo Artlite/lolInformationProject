@@ -65,14 +65,14 @@
     </android.support.design.widget.AppBarLayout>
 
 
-    <com.artlite.collapsinglayouttest.ui.views.ViewPagerWithoutScroll
+    <com.artlite.collapsinglayouttest.ui.views.viewpager.ViewPagerWithoutScroll
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/dimen_5"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    </com.artlite.collapsinglayouttest.ui.views.ViewPagerWithoutScroll>
+    </com.artlite.collapsinglayouttest.ui.views.viewpager.ViewPagerWithoutScroll>
 
 
 </android.support.design.widget.CoordinatorLayout>

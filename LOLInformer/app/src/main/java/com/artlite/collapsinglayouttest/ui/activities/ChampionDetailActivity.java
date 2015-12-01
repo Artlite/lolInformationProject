@@ -1,12 +1,12 @@
 package com.artlite.collapsinglayouttest.ui.activities;
 
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.artlite.collapsinglayouttest.R;
-import com.artlite.collapsinglayouttest.core.CurrentApplication;
+import com.artlite.collapsinglayouttest.core.application.CurrentApplication;
 import com.artlite.collapsinglayouttest.model.Champion;
 import com.artlite.collapsinglayouttest.ui.activities.abs.BaseActivity;
+import com.artlite.collapsinglayouttest.ui.views.fonted.FTextView;
 import com.squareup.picasso.Picasso;
 
 import butterknife.InjectView;
@@ -19,7 +19,7 @@ public class ChampionDetailActivity extends BaseActivity {
     @InjectView(R.id.championImageView)
     ImageView championImageView;
     @InjectView(R.id.textview_name)
-    TextView nameTextView;
+    FTextView nameTextView;
 
     private Champion currentChampion;
 
