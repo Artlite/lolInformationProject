@@ -1,11 +1,11 @@
 package com.artlite.collapsinglayouttest.ui.activities;
 
-import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 
 import com.artlite.collapsinglayouttest.R;
 import com.artlite.collapsinglayouttest.ui.activities.abs.BaseActivity;
 import com.artlite.collapsinglayouttest.ui.adapters.viewpager.MainPagerAdapter;
+import com.artlite.collapsinglayouttest.ui.views.fonted.FTabLayout;
 
 import butterknife.InjectView;
 
@@ -13,7 +13,7 @@ import butterknife.InjectView;
 public class MainActivity extends BaseActivity {
 
     @InjectView(R.id.main_tab_bar)
-    TabLayout mainTabLayout;
+    FTabLayout mainTabLayout;
     @InjectView(R.id.pager)
     ViewPager mainViewPager;
 

@@ -48,10 +48,20 @@ public class TypeFaceManager {
         return instance;
     }
 
-    public Typeface geBarriolFont() {
+    /**
+     * Method which provide the getting of the FONT_BARRIOL font normal
+     *
+     * @return
+     */
+    public Typeface getBarriolFont() {
         return FONT_BARRIOL;
     }
 
+    /**
+     * Method which provide to getting of the FONT_BARRIOL_BOLD
+     *
+     * @return
+     */
     public Typeface getBarriolBoldFont() {
         return FONT_BARRIOL_BOLD;
     }

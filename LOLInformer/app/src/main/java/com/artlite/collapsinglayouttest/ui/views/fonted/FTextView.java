@@ -42,7 +42,7 @@ public class FTextView extends TextView {
     }
 
     protected Typeface getDefaultTypeface() {
-        return TypeFaceManager.getInstance().geBarriolFont();
+        return TypeFaceManager.getInstance().getBarriolFont();
     }
 
 
