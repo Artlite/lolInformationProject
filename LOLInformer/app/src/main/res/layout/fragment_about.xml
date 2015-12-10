@@ -41,7 +41,7 @@
                 android:layout_weight="1.5"
                 android:orientation="vertical">
 
-                <TextView
+                <com.artlite.collapsinglayouttest.ui.views.fonted.FTextView
                     android:id="@+id/textview_about_information"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

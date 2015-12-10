@@ -4,7 +4,7 @@
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black_background"
+    android:background="@color/color_primary"
     android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
@@ -13,7 +13,7 @@
         android:id="@+id/appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent">
+        android:background="@color/color_primary_dark">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,7 +30,7 @@
             <ImageView
                 style="@style/styleCropImageCenter"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="@dimen/dimen_230"
                 android:src="@drawable/main_logo_alt_kindred" />
             <!--</android.support.v7.widget.CardView>-->
         </LinearLayout>
@@ -46,7 +46,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_2"
-                android:background="@color/yellow" />
+                android:background="@color/color_divider_black" />
 
             <com.artlite.collapsinglayouttest.ui.views.fonted.FTabLayout
                 android:id="@+id/main_tab_bar"
@@ -55,11 +55,11 @@
                 android:layout_gravity="center"
                 app:layout_scrollFlags="scroll|enterAlways"
                 app:tabGravity="center"
-                app:tabIndicatorColor="@color/yellow"
+                app:tabIndicatorColor="@color/color_divider_black"
                 app:tabMode="scrollable"
-                app:tabSelectedTextColor="@color/yellow"
+                app:tabSelectedTextColor="@color/color_text_selected"
                 app:tabTextAppearance="@style/TextAppearance.Art.Code"
-                app:tabTextColor="@color/yellow_dusk" />
+                app:tabTextColor="@color/color_text" />
         </LinearLayout>
 
     </android.support.design.widget.AppBarLayout>

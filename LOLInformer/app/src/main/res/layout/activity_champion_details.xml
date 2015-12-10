@@ -40,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_2"
                 android:layout_gravity="top"
-                android:background="@color/yellow" />
+                android:background="@color/color_divider_black" />
 
             <com.artlite.collapsinglayouttest.ui.views.fonted.FTextView
                 android:id="@+id/textview_name"
@@ -49,13 +49,13 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.Art.Code"
-                android:textColor="@color/yellow" />
+                android:textColor="@color/color_divider_black" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_2"
                 android:layout_gravity="bottom"
-                android:background="@color/yellow" />
+                android:background="@color/color_divider_black" />
         </FrameLayout>
 
     </android.support.design.widget.AppBarLayout>
@@ -75,7 +75,7 @@
                 android:layout_height="wrap_content"
                 android:text="Champion abilities"
                 android:textAppearance="@style/TextAppearance.Art.Code"
-                android:textColor="@color/yellow" />
+                android:textColor="@color/color_divider_black" />
 
         </LinearLayout>
 
