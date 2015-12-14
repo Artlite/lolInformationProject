@@ -15,7 +15,7 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <com.artlite.collapsinglayouttest.ui.custom.RoundedImageView
+        <ImageView
             android:id="@+id/imageview_champion"
             android:layout_width="@dimen/dimen_100"
             android:layout_height="@dimen/dimen_100" />
