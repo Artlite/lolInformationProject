@@ -1,6 +1,6 @@
 package com.artlite.collapsinglayouttest.ui.fragments;
 
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 import com.artlite.collapsinglayouttest.R;
@@ -25,7 +25,7 @@ public class ChampionListFragment extends BaseFragment {
 
     @Override
     protected void onCreateFragment(View containerView) {
-        currenRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+        currenRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         currenRecyclerView.updateList(new ChampionProvider().get());
     }
 

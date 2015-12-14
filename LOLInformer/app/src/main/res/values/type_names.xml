@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="text_type_assassin">Assassin</string>
+    <string name="text_type_fighter">Fighter</string>
+    <string name="text_type_mage">Mage</string>
+    <string name="text_type_marksman">Marksman</string>
+    <string name="text_type_support">Support</string>
+    <string name="text_type_tank">Tank</string>
+</resources>

@@ -2,6 +2,7 @@ package com.artlite.collapsinglayouttest.model;
 
 import android.content.Context;
 
+import com.artlite.collapsinglayouttest.constants.ChampionType;
 import com.artlite.collapsinglayouttest.ui.custom.AdapteredRecyclerView;
 import com.artlite.collapsinglayouttest.ui.views.recycler.ChampionRecycleItem;
 
@@ -16,6 +17,9 @@ public class Champion extends AdapteredRecyclerView.BaseObject {
     private String name;
     private String title;
     private String defaultSkin;
+    private String history;
+    private String shortHistory;
+    private ChampionType championType;
 
     //TODO Temporary variable (remove this after the implementation)
     private boolean isFinished;
@@ -35,6 +39,8 @@ public class Champion extends AdapteredRecyclerView.BaseObject {
         private String name;
         private String title;
         private String defaultSkin;
+        private String history;
+        private ChampionType championType;
 
 
         //TODO Temporary variable (remove this after the implementation)
@@ -43,6 +49,8 @@ public class Champion extends AdapteredRecyclerView.BaseObject {
         public Builder() {
             isFinished = false;
             defaultSkin = DEFAULT_SKIN_URL;
+            championType = ChampionType.FIGHTER;
+            history = "";
         }
 
         public Builder addIcon(int iconID) {
@@ -70,12 +78,24 @@ public class Champion extends AdapteredRecyclerView.BaseObject {
             return this;
         }
 
+        public Builder addChampionType(ChampionType championType) {
+            this.championType = championType;
+            return this;
+        }
+
+        public Builder addHistory(String history) {
+            this.history = history;
+            return this;
+        }
+
         public Champion build() {
             Champion champion = new Champion();
             champion.iconID = this.iconID;
             champion.name = this.name;
             champion.isFinished = this.isFinished;
             champion.defaultSkin = this.defaultSkin;
+            champion.championType = this.championType;
+            champion.history = this.history;
             return champion;
         }
     }
@@ -118,5 +138,32 @@ public class Champion extends AdapteredRecyclerView.BaseObject {
 
     public void setIsFinished(boolean isFinished) {
         this.isFinished = isFinished;
+    }
+
+    public ChampionType getChampionType() {
+        return championType;
+    }
+
+    public void setChampionType(ChampionType championType) {
+        this.championType = championType;
+    }
+
+    public String getHistory() {
+        return history;
+    }
+
+    public void setHistory(String history) {
+        this.history = history;
+    }
+
+    public String getShortHistory() {
+        if (shortHistory == null) {
+            shortHistory = history.split("\n")[0];
+        }
+        return shortHistory;
+    }
+
+    public void setShortHistory(String shortHistory) {
+        this.shortHistory = shortHistory;
     }
 }

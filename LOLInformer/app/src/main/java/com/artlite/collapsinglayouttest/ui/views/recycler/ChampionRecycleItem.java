@@ -22,6 +22,10 @@ public class ChampionRecycleItem extends AdapteredRecyclerView.BaseRecyclerItem<
     FTextView mainTextView;
     @InjectView(R.id.imageview_champion)
     ImageView championImageView;
+    @InjectView(R.id.imageview_type)
+    ImageView typeImageView;
+    @InjectView(R.id.textview_history)
+    FTextView hidtoryTextView;
 
     private Champion champion;
 
@@ -46,7 +50,9 @@ public class ChampionRecycleItem extends AdapteredRecyclerView.BaseRecyclerItem<
     private void updateUI() {
         if (champion != null) {
             mainTextView.setText(champion.getName());
+            hidtoryTextView.setText(champion.getShortHistory());
             championImageView.setImageResource(champion.getIconID());
+            typeImageView.setImageResource(champion.getChampionType().getImageID());
         }
     }
 
