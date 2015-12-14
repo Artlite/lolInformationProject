@@ -24,6 +24,6 @@
     <dimen name="dimen_230">230dp</dimen>
     <dimen name="dimen_1">1dp</dimen>
     <dimen name="dimen_3">3dp</dimen>
-    <dimen name="text14">14sp</dimen>
+    <dimen name="text_14">14sp</dimen>
     <dimen name="text_13">13sp</dimen>
 </resources>

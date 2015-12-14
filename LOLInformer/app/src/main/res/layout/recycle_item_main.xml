@@ -48,7 +48,7 @@
                     android:text="Item 1"
                     android:textAllCaps="true"
                     android:textColor="@color/color_text_selected"
-                    android:textSize="@dimen/text14"
+                    android:textSize="@dimen/text_14"
                     android:textStyle="bold" />
 
                 <View
@@ -87,7 +87,7 @@
                     android:text="Item 1"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
-                    android:textSize="@dimen/text_13" />
+                    android:textSize="@dimen/text_14" />
             </LinearLayout>
         </LinearLayout>
     </FrameLayout>

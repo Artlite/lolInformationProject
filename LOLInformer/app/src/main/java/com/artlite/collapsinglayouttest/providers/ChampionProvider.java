@@ -254,7 +254,7 @@ public class ChampionProvider implements BaseProvider<Champion> {
 
                 new Champion.Builder().addIcon(R.drawable.ic_katarina)
                         .addName(getString(R.string.katarina_name))
-                        .addChampionType(ChampionType.ASSASIN)
+                        .addChampionType(ChampionType.ASSASSIN)
                         .build(),
 
                 new Champion.Builder().addIcon(R.drawable.ic_keil)
@@ -269,7 +269,7 @@ public class ChampionProvider implements BaseProvider<Champion> {
 
                 new Champion.Builder().addIcon(R.drawable.ic_khazics)
                         .addName(getString(R.string.khazix_name))
-                        .addChampionType(ChampionType.ASSASIN)
+                        .addChampionType(ChampionType.ASSASSIN)
                         .build(),
 
                 new Champion.Builder().addIcon(R.drawable.ic_kogmaw)
@@ -329,7 +329,7 @@ public class ChampionProvider implements BaseProvider<Champion> {
 
                 new Champion.Builder().addIcon(R.drawable.ic_master_yi)
                         .addName(getString(R.string.masteryi_name))
-                        .addChampionType(ChampionType.ASSASIN)
+                        .addChampionType(ChampionType.ASSASSIN)
                         .build(),
 
                 new Champion.Builder().addIcon(R.drawable.ic_miss_fortuna)
@@ -364,7 +364,7 @@ public class ChampionProvider implements BaseProvider<Champion> {
 
                 new Champion.Builder().addIcon(R.drawable.ic_nedalee)
                         .addName(getString(R.string.nidalee_name))
-                        .addChampionType(ChampionType.ASSASIN)
+                        .addChampionType(ChampionType.ASSASSIN)
                         .build(),
 
                 new Champion.Builder().addIcon(R.drawable.ic_nocturn)
@@ -419,7 +419,7 @@ public class ChampionProvider implements BaseProvider<Champion> {
 
                 new Champion.Builder().addIcon(R.drawable.ic_rengar)
                         .addName(getString(R.string.rengar_name))
-                        .addChampionType(ChampionType.ASSASIN)
+                        .addChampionType(ChampionType.ASSASSIN)
                         .build(),
 
                 new Champion.Builder().addIcon(R.drawable.ic_riven)
@@ -444,7 +444,7 @@ public class ChampionProvider implements BaseProvider<Champion> {
 
                 new Champion.Builder().addIcon(R.drawable.ic_shaco)
                         .addName(getString(R.string.shaco_name))
-                        .addChampionType(ChampionType.ASSASIN)
+                        .addChampionType(ChampionType.ASSASSIN)
                         .build(),
 
                 new Champion.Builder().addIcon(R.drawable.ic_shen)
@@ -504,7 +504,7 @@ public class ChampionProvider implements BaseProvider<Champion> {
 
                 new Champion.Builder().addIcon(R.drawable.ic_thalon)
                         .addName(getString(R.string.talon_name))
-                        .addChampionType(ChampionType.ASSASIN)
+                        .addChampionType(ChampionType.ASSASSIN)
                         .build(),
 
                 new Champion.Builder().addIcon(R.drawable.ic_tharic)
@@ -629,7 +629,7 @@ public class ChampionProvider implements BaseProvider<Champion> {
 
                 new Champion.Builder().addIcon(R.drawable.ic_zed)
                         .addName(getString(R.string.zed_name))
-                        .addChampionType(ChampionType.ASSASIN)
+                        .addChampionType(ChampionType.ASSASSIN)
                         .build(),
 
                 new Champion.Builder().addIcon(R.drawable.ic_zigs)
