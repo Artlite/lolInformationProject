@@ -28,4 +28,5 @@
     <dimen name="text_13">13sp</dimen>
     <dimen name="dimen_80">80dp</dimen>
     <dimen name="dimen_95">95dp</dimen>
+    <dimen name="dimen_38">38dp</dimen>
 </resources>

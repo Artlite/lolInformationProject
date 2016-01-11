@@ -54,7 +54,7 @@
                             android:id="@+id/imageview_type"
                             style="@style/styleImageCenter"
                             android:layout_width="@dimen/dimen_50"
-                            android:layout_height="@dimen/dimen_30"
+                            android:layout_height="@dimen/dimen_38"
                             android:layout_gravity="center"
                             android:layout_marginLeft="20dp"
                             android:src="@mipmap/ic_type_fighter" />
