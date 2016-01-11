@@ -5,7 +5,7 @@
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black_background"
+    android:background="@color/color_primary"
     android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
@@ -16,46 +16,100 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent">
 
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/color_primary_dark"
             android:orientation="vertical"
             app:layout_scrollFlags="scroll|enterAlways">
 
-            <ImageView
-                android:id="@+id/championImageView"
-                style="@style/styleCropImageCenter"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:src="@drawable/main_logo_alt" />
-
-        </LinearLayout>
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/dimen_50"
-            app:layout_collapseMode="pin">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_2"
-                android:layout_gravity="top"
-                android:background="@color/color_divider_black" />
-
-            <com.artlite.collapsinglayouttest.ui.views.fonted.FTextView
-                android:id="@+id/textview_name"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:textAppearance="@style/TextAppearance.Art.Code"
-                android:textColor="@color/color_divider_black" />
+                android:orientation="vertical">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_2"
-                android:layout_gravity="bottom"
-                android:background="@color/color_divider_black" />
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dimen_230"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        style="@style/styleCropImageCenter"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_230"
+                        android:src="@drawable/kindred_logo_blured" />
+
+                    <FrameLayout
+                        android:layout_width="@dimen/dimen_100"
+                        android:layout_height="@dimen/dimen_100"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/dimen_50">
+
+                        <com.artlite.collapsinglayouttest.ui.custom.RoundedImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/background_item_main_circled" />
+
+                        <ImageView
+                            android:id="@+id/imageview_type"
+                            style="@style/styleImageCenter"
+                            android:layout_width="@dimen/dimen_50"
+                            android:layout_height="@dimen/dimen_30"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="20dp"
+                            android:src="@mipmap/ic_type_fighter" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="@dimen/dimen_100"
+                        android:layout_height="@dimen/dimen_100"
+                        android:layout_gravity="center">
+
+                        <com.artlite.collapsinglayouttest.ui.custom.RoundedImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/background_item_main_circled" />
+
+                    </FrameLayout>
+
+                    <com.artlite.collapsinglayouttest.ui.custom.RoundedImageView
+                        android:id="@+id/championImageView"
+                        style="@style/styleCropImageCenter"
+                        android:layout_width="@dimen/dimen_95"
+                        android:layout_height="@dimen/dimen_95"
+                        android:layout_gravity="center" />
+
+
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/abc_action_bar_stacked_max_height"
+                    android:layout_gravity="bottom"
+                    android:orientation="vertical">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_2"
+                        android:background="@color/color_divider_black" />
+
+                    <com.artlite.collapsinglayouttest.ui.views.fonted.FTextView
+                        android:id="@+id/textview_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_0"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textAppearance="@style/TextAppearance.Art.Code"
+                        android:textColor="@color/color_divider_black"
+                        android:textSize="@dimen/text_18" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_2"
+                        android:background="@color/color_divider_black" />
+                </LinearLayout>
+            </LinearLayout>
         </FrameLayout>
 
     </android.support.design.widget.AppBarLayout>
@@ -70,15 +124,31 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.artlite.collapsinglayouttest.ui.views.fonted.FTextView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Champion abilities"
-                android:textAppearance="@style/TextAppearance.Art.Code"
-                android:textColor="@color/color_divider_black" />
+                android:layout_margin="@dimen/dimen_4"
+                android:background="@drawable/background_item_main"
+                android:orientation="vertical">
 
+                <com.artlite.collapsinglayouttest.ui.views.fonted.FTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dimen_10"
+                    android:text="@string/text_champion_history"
+                    android:textAppearance="@style/TextAppearance.Art.Code"
+                    android:textColor="@color/color_divider_black" />
+
+                <com.artlite.collapsinglayouttest.ui.views.fonted.FTextView
+                    android:id="@+id/textview_history"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1200dp" />
         </LinearLayout>
-
 
     </android.support.v4.widget.NestedScrollView>
 

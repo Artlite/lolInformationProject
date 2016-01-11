@@ -40,5 +40,10 @@
 </body>
 ]]></string>
     <string name="text_champion_details">Champion details</string>
+    <string name="text_header_champion_list">Champion list</string>
+    <string name="text_header_about">About</string>
+    <string name="text_header_none">None</string>
+    <string name="text_champion_abilities">Champion abilities</string>
+    <string name="text_champion_history">Champion history</string>
 
 </resources>

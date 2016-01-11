@@ -1,5 +1,7 @@
 package com.artlite.collapsinglayouttest.factories;
 
+import com.artlite.collapsinglayouttest.R;
+import com.artlite.collapsinglayouttest.core.application.CurrentApplication;
 import com.artlite.collapsinglayouttest.ui.fragments.AboutFragment;
 import com.artlite.collapsinglayouttest.ui.fragments.abs.BaseFragment;
 import com.artlite.collapsinglayouttest.ui.fragments.ChampionListFragment;
@@ -24,11 +26,11 @@ public class FragmentFactory {
     public static String getTitleByIndex(int index) {
         switch (index) {
             case 0:
-                return "Champion list";
+                return CurrentApplication.getInstance().getStringValue(R.string.text_header_champion_list);
             case 1:
-                return "About";
+                return CurrentApplication.getInstance().getStringValue(R.string.text_header_about);
             default:
-                return "None";
+                return CurrentApplication.getInstance().getStringValue(R.string.text_header_none);
         }
     }
 }
