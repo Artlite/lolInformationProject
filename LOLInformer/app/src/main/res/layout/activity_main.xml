@@ -20,19 +20,11 @@
             android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll|enterAlways">
 
-            <!--<android.support.v7.widget.CardView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_margin="@dimen/dimen_10"-->
-            <!--app:cardBackgroundColor="@android:color/transparent"-->
-            <!--app:cardCornerRadius="@dimen/dimen_7">-->
-
             <ImageView
                 style="@style/styleCropImageCenter"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dimen_230"
                 android:src="@drawable/kindred_logo" />
-            <!--</android.support.v7.widget.CardView>-->
         </LinearLayout>
 
 
