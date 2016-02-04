@@ -39,6 +39,15 @@
                         android:layout_height="@dimen/dimen_230"
                         android:src="@drawable/kindred_logo_blured" />
 
+                    <ImageView
+                        android:id="@+id/button_back"
+                        style="@style/styleCropImageCenter"
+                        android:layout_width="@dimen/dimen_50"
+                        android:layout_height="@dimen/dimen_50"
+                        android:paddingLeft="@dimen/dimen_15"
+                        android:paddingTop="@dimen/dimen_15"
+                        android:src="@drawable/ic_arrow_back" />
+
                     <FrameLayout
                         android:layout_width="@dimen/dimen_100"
                         android:layout_height="@dimen/dimen_100"
@@ -143,12 +152,11 @@
                 <com.artlite.collapsinglayouttest.ui.views.fonted.FTextView
                     android:id="@+id/textview_history"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/text_15" />
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1200dp" />
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>

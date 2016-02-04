@@ -1,5 +1,6 @@
 package com.artlite.collapsinglayouttest.ui.activities;
 
+import android.view.View;
 import android.widget.ImageView;
 
 import com.artlite.collapsinglayouttest.R;
@@ -24,6 +25,8 @@ public class ChampionDetailActivity extends BaseActivity {
     FTextView historyTextView;
     @InjectView(R.id.imageview_type)
     ImageView typeImageView;
+    @InjectView(R.id.button_back)
+    View buttonBack;
 
     private Champion currentChampion;
 
@@ -40,6 +43,7 @@ public class ChampionDetailActivity extends BaseActivity {
     @Override
     protected void onCreateActivity() {
         currentChampion = CurrentApplication.getInstance().getCurrentChampion();
+        setOnClickListeners(buttonBack);
         updateUI();
     }
 
@@ -49,6 +53,18 @@ public class ChampionDetailActivity extends BaseActivity {
             nameTextView.setText(currentChampion.getName());
             historyTextView.setText(currentChampion.getHistory());
             typeImageView.setImageResource(currentChampion.getChampionType().getImageID());
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.button_back:
+                onBackPressed();
+                break;
+            default:
+                break;
+
         }
     }
 }

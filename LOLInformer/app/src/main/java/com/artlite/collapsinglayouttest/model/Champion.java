@@ -2,7 +2,9 @@ package com.artlite.collapsinglayouttest.model;
 
 import android.content.Context;
 
+import com.artlite.collapsinglayouttest.R;
 import com.artlite.collapsinglayouttest.constants.ChampionType;
+import com.artlite.collapsinglayouttest.core.application.CurrentApplication;
 import com.artlite.collapsinglayouttest.ui.custom.AdapteredRecyclerView;
 import com.artlite.collapsinglayouttest.ui.views.recycler.ChampionRecycleItem;
 
@@ -14,11 +16,9 @@ public class Champion extends AdapteredRecyclerView.BaseObject {
     private static final String DEFAULT_SKIN_URL = "http://ru.leagueoflegends.com/sites/default/files/upload/art/teambuilder-wallpaper.jpg";
 
     private int iconID;
-    private String name;
-    private String title;
-    private String defaultSkin;
-    private String history;
-    private String shortHistory;
+    private int name;
+    private int title;
+    private int history;
     private ChampionType championType;
 
     //TODO Temporary variable (remove this after the implementation)
@@ -26,7 +26,6 @@ public class Champion extends AdapteredRecyclerView.BaseObject {
 
     public Champion() {
         isFinished = false;
-        defaultSkin = DEFAULT_SKIN_URL;
     }
 
     @Override
@@ -36,10 +35,9 @@ public class Champion extends AdapteredRecyclerView.BaseObject {
 
     public static class Builder {
         private int iconID;
-        private String name;
-        private String title;
-        private String defaultSkin;
-        private String history;
+        private int name;
+        private int title;
+        private int history;
         private ChampionType championType;
 
 
@@ -48,9 +46,10 @@ public class Champion extends AdapteredRecyclerView.BaseObject {
 
         public Builder() {
             isFinished = false;
-            defaultSkin = DEFAULT_SKIN_URL;
             championType = ChampionType.FIGHTER;
-            history = "";
+            history = R.string.text_empty;
+            name = R.string.text_empty;
+            title = R.string.text_empty;
         }
 
         public Builder addIcon(int iconID) {
@@ -58,7 +57,7 @@ public class Champion extends AdapteredRecyclerView.BaseObject {
             return this;
         }
 
-        public Builder addName(String name) {
+        public Builder addName(int name) {
             this.name = name;
             return this;
         }
@@ -68,13 +67,8 @@ public class Champion extends AdapteredRecyclerView.BaseObject {
             return this;
         }
 
-        public Builder addTitle(String title) {
+        public Builder addTitle(int title) {
             this.title = title;
-            return this;
-        }
-
-        public Builder addDefaultSkin(String defaultSkin) {
-            this.defaultSkin = defaultSkin;
             return this;
         }
 
@@ -83,7 +77,7 @@ public class Champion extends AdapteredRecyclerView.BaseObject {
             return this;
         }
 
-        public Builder addHistory(String history) {
+        public Builder addHistory(int history) {
             this.history = history;
             return this;
         }
@@ -93,11 +87,14 @@ public class Champion extends AdapteredRecyclerView.BaseObject {
             champion.iconID = this.iconID;
             champion.name = this.name;
             champion.isFinished = this.isFinished;
-            champion.defaultSkin = this.defaultSkin;
             champion.championType = this.championType;
             champion.history = this.history;
             return champion;
         }
+    }
+
+    public static String getDefaultSkinUrl() {
+        return DEFAULT_SKIN_URL;
     }
 
     public int getIconID() {
@@ -108,36 +105,28 @@ public class Champion extends AdapteredRecyclerView.BaseObject {
         this.iconID = iconID;
     }
 
-    public String getName() {
+    public int getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(int name) {
         this.name = name;
     }
 
-    public String getTitle() {
+    public int getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(int title) {
         this.title = title;
     }
 
-    public String getDefaultSkin() {
-        return defaultSkin;
+    public int getHistory() {
+        return history;
     }
 
-    public void setDefaultSkin(String defaultSkin) {
-        this.defaultSkin = defaultSkin;
-    }
-
-    public boolean isFinished() {
-        return isFinished;
-    }
-
-    public void setIsFinished(boolean isFinished) {
-        this.isFinished = isFinished;
+    public void setHistory(int history) {
+        this.history = history;
     }
 
     public ChampionType getChampionType() {
@@ -148,22 +137,20 @@ public class Champion extends AdapteredRecyclerView.BaseObject {
         this.championType = championType;
     }
 
-    public String getHistory() {
-        return history;
+    public boolean isFinished() {
+        return isFinished;
     }
 
-    public void setHistory(String history) {
-        this.history = history;
+    public void setIsFinished(boolean isFinished) {
+        this.isFinished = isFinished;
     }
 
     public String getShortHistory() {
-        if (shortHistory == null) {
-            shortHistory = history.split("\n")[0];
+        String historyValue = CurrentApplication.getInstance().getStringValue(history);
+        if (historyValue.isEmpty() == false) {
+            return historyValue.split("\n")[0];
         }
-        return shortHistory;
+        return "";
     }
 
-    public void setShortHistory(String shortHistory) {
-        this.shortHistory = shortHistory;
-    }
 }

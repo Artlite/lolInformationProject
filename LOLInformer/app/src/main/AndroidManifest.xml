@@ -2,17 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.artlite.collapsinglayouttest">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <!-- The following permissions are OPTIONAL. -->
-
-    <!-- Used to adjust the work load depending on the type of network the device is using. -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!-- Used to load images from the gallery content provider. -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <!-- Used to load images for contact photos. -->
-    <uses-permission android:name="android.permission.READ_CONTACTS" />
-
     <application
         android:name=".core.application.CurrentApplication"
         android:allowBackup="true"

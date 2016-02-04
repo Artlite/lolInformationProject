@@ -45,5 +45,6 @@
     <string name="text_header_none">None</string>
     <string name="text_champion_abilities">Champion abilities</string>
     <string name="text_champion_history">Champion history</string>
+    <string name="text_empty"></string>
 
 </resources>
