@@ -114,7 +114,7 @@
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.Art.Code"
                 android:textColor="@color/color_divider_black"
-                android:textSize="@dimen/text_18" />
+                android:textSize="@dimen/text_16" />
 
             <View
                 android:layout_width="match_parent"
@@ -147,14 +147,15 @@
                     android:layout_marginBottom="@dimen/dimen_10"
                     android:text="@string/text_champion_history"
                     android:textAppearance="@style/TextAppearance.Art.Code"
-                    android:textColor="@color/color_divider_black" />
+                    android:textColor="@color/color_divider_black"
+                    android:textSize="@dimen/text_14" />
 
                 <com.artlite.collapsinglayouttest.ui.views.fonted.FTextView
                     android:id="@+id/textview_history"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/white"
-                    android:textSize="@dimen/text_15" />
+                    android:textSize="@dimen/text_14" />
             </LinearLayout>
 
         </LinearLayout>

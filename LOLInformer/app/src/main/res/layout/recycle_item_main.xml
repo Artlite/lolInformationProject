@@ -46,9 +46,10 @@
                     android:layout_weight="4"
                     android:gravity="left|center_vertical"
                     android:text="Item 1"
+                    android:singleLine="true"
                     android:textAllCaps="true"
                     android:textColor="@color/color_text_selected"
-                    android:textSize="@dimen/text_14"
+                    android:textSize="@dimen/text_13"
                     android:textStyle="bold" />
 
                 <View

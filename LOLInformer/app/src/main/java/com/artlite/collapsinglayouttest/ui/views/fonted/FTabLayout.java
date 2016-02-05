@@ -59,7 +59,7 @@ public class FTabLayout extends android.support.design.widget.TabLayout {
             if (tabViewChild instanceof TextView) {
                 TextView textView = (TextView) tabViewChild;
                 textView.setTypeface(currentTypeface, Typeface.NORMAL);
-                textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_18));
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_16));
             }
         }
     }
