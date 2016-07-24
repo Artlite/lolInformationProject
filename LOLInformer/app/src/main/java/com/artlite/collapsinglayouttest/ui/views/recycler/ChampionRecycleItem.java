@@ -1,14 +1,11 @@
 package com.artlite.collapsinglayouttest.ui.views.recycler;
 
 import android.content.Context;
-import android.view.View;
 import android.widget.ImageView;
 
+import com.adapteredrecyclerview.models.BaseRecyclerItem;
 import com.artlite.collapsinglayouttest.R;
-import com.artlite.collapsinglayouttest.core.application.CurrentApplication;
 import com.artlite.collapsinglayouttest.model.Champion;
-import com.artlite.collapsinglayouttest.ui.activities.ChampionDetailActivity;
-import com.artlite.collapsinglayouttest.ui.custom.AdapteredRecyclerView;
 import com.artlite.collapsinglayouttest.ui.views.fonted.FTextView;
 
 import butterknife.InjectView;
@@ -16,7 +13,7 @@ import butterknife.InjectView;
 /**
  * Created by dlernatovich on 7/22/15.
  */
-public class ChampionRecycleItem extends AdapteredRecyclerView.BaseRecyclerItem<Champion> {
+public class ChampionRecycleItem extends BaseRecyclerItem<Champion> {
 
     @InjectView(R.id.textview_main)
     FTextView mainTextView;
@@ -39,8 +36,12 @@ public class ChampionRecycleItem extends AdapteredRecyclerView.BaseRecyclerItem<
     }
 
     @Override
+    protected int getClickedID() {
+        return R.id.conten;
+    }
+
+    @Override
     protected void onCreateView() {
-        setOnClickListeners(baseView);
         updateUI();
     }
 
@@ -54,12 +55,6 @@ public class ChampionRecycleItem extends AdapteredRecyclerView.BaseRecyclerItem<
             championImageView.setImageResource(champion.getIconID());
             typeImageView.setImageResource(champion.getChampionType().getImageID());
         }
-    }
-
-    @Override
-    public void onClick(View v) {
-        CurrentApplication.getInstance().setCurrentChampion(champion);
-        startActivity(ChampionDetailActivity.class);
     }
 
     @Override

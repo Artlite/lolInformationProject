@@ -1,0 +1,112 @@
+package com.adapteredrecyclerview.ui.adapter;
+
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.adapteredrecyclerview.callbacks.BaseRecyclerCallback;
+import com.adapteredrecyclerview.callbacks.OnPagingCallback;
+import com.adapteredrecyclerview.models.BaseObject;
+import com.adapteredrecyclerview.models.BaseRecyclerItem;
+
+import java.util.List;
+
+/**
+ * Created by Artli_000 on 24.07.2016.
+ */
+public class BaseRecyclerViewAdapter<T extends BaseObject> extends RecyclerView.Adapter<BaseRecyclerViewAdapter.ViewHolder> {
+
+    private List<T> listItems;
+    private BaseRecyclerCallback actionCallback;
+    private OnPagingCallback pagingCallback;
+    private int oldSizeList;
+
+    public BaseRecyclerViewAdapter(List<T> listItems) {
+        this.listItems = listItems;
+        this.oldSizeList = 0;
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new ViewHolder(listItems.get(viewType).getRecyclerItem(parent.getContext()));
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        //Get object
+        T recyclerItem = listItems.get(position);
+        //Set index
+        recyclerItem.setIndex(position);
+        //Set up the view
+        holder.recycleItem.setUp(recyclerItem);
+        //Set object inside the view as WeakReference
+        holder.recycleItem.setObject(recyclerItem);
+        //Set item listener
+        holder.recycleItem.setItemActionListener(actionCallback);
+        //Lazy load
+        int listItemSize = listItems.size();
+        if ((position == listItemSize - 1)
+                && (listItemSize > oldSizeList)) {
+            if (pagingCallback != null) {
+                pagingCallback.onNextPage(listItemSize);
+                oldSizeList = listItemSize;
+            }
+        }
+    }
+
+    /**
+     * Method which provide the getting of the item counts
+     *
+     * @return
+     */
+    @Override
+    public int getItemCount() {
+        return listItems.size();
+    }
+
+    /**
+     * Method which provide the setting of the item action listener
+     *
+     * @param itemActionListener
+     */
+    public void setActionCallback(BaseRecyclerCallback itemActionListener) {
+        this.actionCallback = itemActionListener;
+        notifyDataSetChanged();
+    }
+
+    /**
+     * Method which provide the setting of the lazy load callback
+     *
+     * @param lazyLoadCallback lazy load callback
+     */
+    public void setPagingCallback(@NonNull OnPagingCallback lazyLoadCallback) {
+        this.pagingCallback = lazyLoadCallback;
+    }
+
+    /**
+     * Method which provide the setting of the old list size
+     *
+     * @param oldSizeList size list (old value)
+     */
+    public void setOldSizeList(int oldSizeList) {
+        this.oldSizeList = oldSizeList;
+    }
+
+    /**
+     * View holder class
+     */
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        public BaseRecyclerItem recycleItem;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            recycleItem = (BaseRecyclerItem) itemView;
+        }
+    }
+}
