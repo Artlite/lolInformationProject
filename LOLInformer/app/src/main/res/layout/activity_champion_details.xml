@@ -148,14 +148,14 @@
                     android:text="@string/text_champion_history"
                     android:textAppearance="@style/TextAppearance.Art.Code"
                     android:textColor="@color/color_divider_black"
-                    android:textSize="@dimen/text_14" />
+                    android:textSize="@dimen/text_16" />
 
                 <com.artlite.collapsinglayouttest.ui.views.fonted.FTextView
                     android:id="@+id/textview_history"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/white"
-                    android:textSize="@dimen/text_14" />
+                    android:textSize="@dimen/text_16" />
             </LinearLayout>
 
         </LinearLayout>
