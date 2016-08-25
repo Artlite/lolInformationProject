@@ -1,13 +1,13 @@
-package com.adapteredrecyclerview.models;
+package com.artlite.adapteredrecyclerview.models;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.adapteredrecyclerview.callbacks.BaseRecyclerCallback;
-import com.adapteredrecyclerview.events.RecycleEvent;
-import com.adapteredrecyclerview.ui.views.BaseRecyclerView;
+import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredBaseCallback;
+import com.artlite.adapteredrecyclerview.events.RecycleEvent;
+import com.artlite.adapteredrecyclerview.ui.views.BaseRecyclerView;
 
 import java.lang.ref.WeakReference;
 
@@ -16,7 +16,7 @@ import java.lang.ref.WeakReference;
  */
 public abstract class BaseRecyclerItem<T extends BaseObject> extends BaseRecyclerView {
 
-    protected WeakReference<BaseRecyclerCallback> callbackReference;
+    protected WeakReference<OnAdapteredBaseCallback> callbackReference;
     protected WeakReference<T> objectReference;
     protected int index;
 
@@ -68,8 +68,8 @@ public abstract class BaseRecyclerItem<T extends BaseObject> extends BaseRecycle
      *
      * @param itemActionListener
      */
-    public void setItemActionListener(BaseRecyclerCallback itemActionListener) {
-        this.callbackReference = new WeakReference<BaseRecyclerCallback>(itemActionListener);
+    public void setItemActionListener(OnAdapteredBaseCallback itemActionListener) {
+        this.callbackReference = new WeakReference<OnAdapteredBaseCallback>(itemActionListener);
     }
 
     /**

@@ -1,15 +1,15 @@
-package com.adapteredrecyclerview.callbacks;
+package com.artlite.adapteredrecyclerview.callbacks;
 
 import android.support.annotation.NonNull;
 
-import com.adapteredrecyclerview.events.RecycleEvent;
-import com.adapteredrecyclerview.models.BaseObject;
+import com.artlite.adapteredrecyclerview.events.RecycleEvent;
+import com.artlite.adapteredrecyclerview.models.BaseObject;
 
 
 /**
  * Created by Artli_000 on 24.07.2016.
  */
-public interface BaseRecyclerCallback<T extends BaseObject> {
+public interface OnAdapteredBaseCallback<T extends BaseObject> {
 
     /**
      * Method which provide the action when user press on the channel object

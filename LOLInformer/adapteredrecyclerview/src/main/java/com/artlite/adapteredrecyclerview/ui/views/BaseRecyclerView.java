@@ -1,4 +1,4 @@
-package com.adapteredrecyclerview.ui.views;
+package com.artlite.adapteredrecyclerview.ui.views;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,8 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
-
-import butterknife.ButterKnife;
 
 /**
  * Created by Artli_000 on 24.07.2016.
@@ -58,7 +56,6 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
             }
         }
         //TODO: If user use ButterKnife
-        ButterKnife.inject(baseView);
         onCallbacksInitialize();
         onCreateView();
     }
@@ -105,8 +102,7 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
     /**
      * Method which provide the interface linking
      */
-    protected void onLinkInterface() {
-    }
+    protected abstract void onLinkInterface();
 
     /**
      * Method which provide the getting of the clicked view ID

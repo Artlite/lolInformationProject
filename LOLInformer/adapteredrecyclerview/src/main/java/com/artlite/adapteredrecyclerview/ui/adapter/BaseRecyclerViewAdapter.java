@@ -1,14 +1,14 @@
-package com.adapteredrecyclerview.ui.adapter;
+package com.artlite.adapteredrecyclerview.ui.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.adapteredrecyclerview.callbacks.BaseRecyclerCallback;
-import com.adapteredrecyclerview.callbacks.OnPagingCallback;
-import com.adapteredrecyclerview.models.BaseObject;
-import com.adapteredrecyclerview.models.BaseRecyclerItem;
+import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredBaseCallback;
+import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredPagingCallback;
+import com.artlite.adapteredrecyclerview.models.BaseObject;
+import com.artlite.adapteredrecyclerview.models.BaseRecyclerItem;
 
 import java.util.List;
 
@@ -18,8 +18,8 @@ import java.util.List;
 public class BaseRecyclerViewAdapter<T extends BaseObject> extends RecyclerView.Adapter<BaseRecyclerViewAdapter.ViewHolder> {
 
     private List<T> listItems;
-    private BaseRecyclerCallback actionCallback;
-    private OnPagingCallback pagingCallback;
+    private OnAdapteredBaseCallback actionCallback;
+    private OnAdapteredPagingCallback pagingCallback;
     private int oldSizeList;
 
     public BaseRecyclerViewAdapter(List<T> listItems) {
@@ -75,7 +75,7 @@ public class BaseRecyclerViewAdapter<T extends BaseObject> extends RecyclerView.
      *
      * @param itemActionListener
      */
-    public void setActionCallback(BaseRecyclerCallback itemActionListener) {
+    public void setActionCallback(OnAdapteredBaseCallback itemActionListener) {
         this.actionCallback = itemActionListener;
         notifyDataSetChanged();
     }
@@ -85,7 +85,7 @@ public class BaseRecyclerViewAdapter<T extends BaseObject> extends RecyclerView.
      *
      * @param lazyLoadCallback lazy load callback
      */
-    public void setPagingCallback(@NonNull OnPagingCallback lazyLoadCallback) {
+    public void setPagingCallback(@NonNull OnAdapteredPagingCallback lazyLoadCallback) {
         this.pagingCallback = lazyLoadCallback;
     }
 

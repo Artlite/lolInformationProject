@@ -1,4 +1,4 @@
-package com.adapteredrecyclerview.events;
+package com.artlite.adapteredrecyclerview.events;
 
 /**
  * Created by Artli_000 on 24.07.2016.

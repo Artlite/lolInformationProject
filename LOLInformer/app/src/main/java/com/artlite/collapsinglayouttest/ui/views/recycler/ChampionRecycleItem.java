@@ -3,11 +3,12 @@ package com.artlite.collapsinglayouttest.ui.views.recycler;
 import android.content.Context;
 import android.widget.ImageView;
 
-import com.adapteredrecyclerview.models.BaseRecyclerItem;
+import com.artlite.adapteredrecyclerview.models.BaseRecyclerItem;
 import com.artlite.collapsinglayouttest.R;
 import com.artlite.collapsinglayouttest.model.Champion;
 import com.artlite.collapsinglayouttest.ui.views.fonted.FTextView;
 
+import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 /**
@@ -33,6 +34,11 @@ public class ChampionRecycleItem extends BaseRecyclerItem<Champion> {
     @Override
     protected int getLayoutId() {
         return R.layout.recycle_item_main;
+    }
+
+    @Override
+    protected void onLinkInterface() {
+        ButterKnife.inject(this);
     }
 
     @Override

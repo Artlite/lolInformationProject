@@ -1,4 +1,4 @@
-package com.adapteredrecyclerview.ui.views;
+package com.artlite.adapteredrecyclerview.ui.views;
 
 import android.content.Context;
 import android.os.Handler;
@@ -8,10 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
 
-import com.adapteredrecyclerview.callbacks.BaseRecyclerCallback;
-import com.adapteredrecyclerview.callbacks.OnPagingCallback;
-import com.adapteredrecyclerview.models.BaseObject;
-import com.adapteredrecyclerview.ui.adapter.BaseRecyclerViewAdapter;
+import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredBaseCallback;
+import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredPagingCallback;
+import com.artlite.adapteredrecyclerview.models.BaseObject;
+import com.artlite.adapteredrecyclerview.ui.adapter.BaseRecyclerViewAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -253,7 +253,7 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
      *
      * @param itemActionListener
      */
-    public void setActionCallback(BaseRecyclerCallback itemActionListener) {
+    public void setActionCallback(OnAdapteredBaseCallback itemActionListener) {
         if (adapter != null) {
             adapter.setActionCallback(itemActionListener);
         }
@@ -264,7 +264,7 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
      *
      * @param pagingCallback lazy load callback
      */
-    public void setPagingCallback(@NonNull OnPagingCallback pagingCallback) {
+    public void setPagingCallback(@NonNull OnAdapteredPagingCallback pagingCallback) {
         if (adapter != null) {
             adapter.setPagingCallback(pagingCallback);
         }

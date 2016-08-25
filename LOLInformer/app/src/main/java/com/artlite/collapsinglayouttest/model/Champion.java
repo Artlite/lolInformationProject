@@ -2,8 +2,8 @@ package com.artlite.collapsinglayouttest.model;
 
 import android.content.Context;
 
-import com.adapteredrecyclerview.models.BaseObject;
-import com.adapteredrecyclerview.models.BaseRecyclerItem;
+import com.artlite.adapteredrecyclerview.models.BaseObject;
+import com.artlite.adapteredrecyclerview.models.BaseRecyclerItem;
 import com.artlite.collapsinglayouttest.R;
 import com.artlite.collapsinglayouttest.constants.ChampionType;
 import com.artlite.collapsinglayouttest.core.application.CurrentApplication;

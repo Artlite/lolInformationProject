@@ -1,12 +1,13 @@
 package com.artlite.collapsinglayouttest.ui.fragments;
 
 import android.support.annotation.NonNull;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.view.View;
 
-import com.adapteredrecyclerview.callbacks.BaseRecyclerCallback;
-import com.adapteredrecyclerview.events.RecycleEvent;
-import com.adapteredrecyclerview.ui.views.AdapteredRecyclerView;
+import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredBaseCallback;
+import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredRefreshCallback;
+import com.artlite.adapteredrecyclerview.core.AdapteredView;
+import com.artlite.adapteredrecyclerview.events.RecycleEvent;
 import com.artlite.collapsinglayouttest.R;
 import com.artlite.collapsinglayouttest.core.application.CurrentApplication;
 import com.artlite.collapsinglayouttest.model.Champion;
@@ -22,7 +23,7 @@ import butterknife.InjectView;
 public class ChampionListFragment extends BaseFragment {
 
     @InjectView(R.id.main_recycler_view)
-    AdapteredRecyclerView currenRecyclerView;
+    AdapteredView recyclerView;
 
     @Override
     protected int getLayoutId() {
@@ -31,15 +32,14 @@ public class ChampionListFragment extends BaseFragment {
 
     @Override
     protected void onCreateFragment(View containerView) {
-        currenRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL));
-        currenRecyclerView.setActionCallback(recyclerCallback);
-        currenRecyclerView.set(new ChampionProvider().get());
+        recyclerView.init(new GridLayoutManager(getContext(), 1), recyclerCallback, refreshCallback);
+        recyclerView.set(new ChampionProvider().get());
     }
 
     /**
      * Callback which provide the action performing
      */
-    private final BaseRecyclerCallback<Champion> recyclerCallback = new BaseRecyclerCallback<Champion>() {
+    private final OnAdapteredBaseCallback<Champion> recyclerCallback = new OnAdapteredBaseCallback<Champion>() {
         @Override
         public void onItemClick(int index, @NonNull Champion object) {
             CurrentApplication.getInstance().setCurrentChampion(object);
@@ -49,6 +49,16 @@ public class ChampionListFragment extends BaseFragment {
         @Override
         public void onActionReceived(@NonNull RecycleEvent recycleEvent, int index, @NonNull Champion object) {
 
+        }
+    };
+
+    /**
+     * Callback which provide the listening of the refresh callback
+     */
+    private final OnAdapteredRefreshCallback refreshCallback = new OnAdapteredRefreshCallback() {
+        @Override
+        public void onRefreshData() {
+            recyclerView.hideRefresh();
         }
     };
 
