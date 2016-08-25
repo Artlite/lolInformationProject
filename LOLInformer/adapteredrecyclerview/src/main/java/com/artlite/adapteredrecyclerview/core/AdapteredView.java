@@ -347,3 +347,21 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
         return this.recyclerView.getListItems();
     }
 }
+
+/*HOW TO USE
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.artlite.adapteredrecyclerview.core.AdapteredView
+        android:id="@+id/main_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:need_refresh="false"
+        app:refresh_background="@color/color_primary_dark"
+        app:refresh_color="@color/color_divider_black" />
+
+</LinearLayout>
+*/
