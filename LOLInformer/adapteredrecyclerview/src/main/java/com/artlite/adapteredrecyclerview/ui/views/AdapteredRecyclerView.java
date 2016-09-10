@@ -38,7 +38,7 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
 
     private final Handler MAIN_THREAD_HANDLER = new Handler();
 
-    private BaseRecyclerViewAdapter adapter;
+    private BaseRecyclerViewAdapter innerAdapter;
     private List<T> innerObjects;
 
     public AdapteredRecyclerView(Context context) {
@@ -66,9 +66,9 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
             return;
         }
         innerObjects = new ArrayList<>();
-        adapter = new BaseRecyclerViewAdapter(innerObjects);
-        adapter.setOldSizeList(0);
-        setAdapter(adapter);
+        innerAdapter = new BaseRecyclerViewAdapter(innerObjects);
+        innerAdapter.setOldSizeList(0);
+        setAdapter(innerAdapter);
         setHasFixedSize(true);
     }
 
@@ -87,7 +87,7 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
                 } else {
                     Collections.sort(innerObjects, Collections.reverseOrder(comparator));
                 }
-                notifyDataSetChanged();
+                notifyDataSetChanged(true);
             }
         });
     }
@@ -113,7 +113,7 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
     public void set(@Nullable final List<T> objects) {
         if (objects != null) {
             innerObjects.clear();
-            adapter.setOldSizeList(0);
+            innerAdapter.setOldSizeList(0);
             innerObjects.addAll(objects);
             sortByPriority(innerObjects);
             notifyDataSetChanged();
@@ -129,7 +129,7 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
         if (object != null) {
             innerObjects.add(object);
             sortByPriority(innerObjects);
-            adapter.notifyItemInserted(innerObjects.size() - 1);
+            notifyDataSetChanged();
         }
     }
 
@@ -157,7 +157,7 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
             if (innerObjects.contains(object)) {
                 int objectIndex = innerObjects.indexOf(object);
                 innerObjects.remove(object);
-                adapter.notifyItemRemoved(objectIndex);
+                notifyDataSetChanged();
                 return true;
             }
         }
@@ -187,8 +187,8 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
      */
     public void clear() {
         innerObjects.clear();
-        adapter.setOldSizeList(0);
-        adapter.notifyDataSetChanged();
+        innerAdapter.setOldSizeList(0);
+        notifyDataSetChanged();
     }
 
     /**
@@ -224,15 +224,22 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
         return 0;
     }
 
+    public void notifyDataSetChanged(){
+        this.notifyDataSetChanged(true);
+    }
+
     /**
      * Method which provide the notifying of the data set changed
      */
-    public void notifyDataSetChanged() {
+    public void notifyDataSetChanged(final boolean needViewsReload) {
         runOnMainThread(0, new OnActionPerformer() {
             @Override
             public void onActionPerform() {
-                if (adapter != null) {
-                    adapter.notifyDataSetChanged();
+                if(needViewsReload == true){
+                    setAdapter(innerAdapter);
+                }
+                if (innerAdapter != null) {
+                    innerAdapter.notifyDataSetChanged();
                 }
             }
         });
@@ -254,8 +261,8 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
      * @param itemActionListener
      */
     public void setActionCallback(OnAdapteredBaseCallback itemActionListener) {
-        if (adapter != null) {
-            adapter.setActionCallback(itemActionListener);
+        if (innerAdapter != null) {
+            innerAdapter.setActionCallback(itemActionListener);
         }
     }
 
@@ -265,8 +272,8 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
      * @param pagingCallback lazy load callback
      */
     public void setPagingCallback(@NonNull OnAdapteredPagingCallback pagingCallback) {
-        if (adapter != null) {
-            adapter.setPagingCallback(pagingCallback);
+        if (innerAdapter != null) {
+            innerAdapter.setPagingCallback(pagingCallback);
         }
     }
 
