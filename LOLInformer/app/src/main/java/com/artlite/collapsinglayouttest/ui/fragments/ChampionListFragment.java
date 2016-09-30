@@ -1,7 +1,8 @@
 package com.artlite.collapsinglayouttest.ui.fragments;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredBaseCallback;
@@ -11,9 +12,13 @@ import com.artlite.adapteredrecyclerview.events.RecycleEvent;
 import com.artlite.collapsinglayouttest.R;
 import com.artlite.collapsinglayouttest.core.application.CurrentApplication;
 import com.artlite.collapsinglayouttest.model.Champion;
+import com.artlite.collapsinglayouttest.mvp.contracts.ChampionContract;
+import com.artlite.collapsinglayouttest.mvp.impl.ChampionPresenter;
 import com.artlite.collapsinglayouttest.providers.ChampionProvider;
 import com.artlite.collapsinglayouttest.ui.activities.ChampionDetailActivity;
 import com.artlite.collapsinglayouttest.ui.fragments.abs.BaseFragment;
+
+import java.util.List;
 
 import butterknife.InjectView;
 
@@ -32,8 +37,9 @@ public class ChampionListFragment extends BaseFragment {
 
     @Override
     protected void onCreateFragment(View containerView) {
-        recyclerView.init(new GridLayoutManager(getContext(), 1), recyclerCallback, refreshCallback);
-        recyclerView.set(new ChampionProvider().get());
+        recyclerView.init(new StaggeredGridLayoutManager(championPresenter.getColumnCount(),
+                StaggeredGridLayoutManager.VERTICAL), recyclerCallback, refreshCallback);
+        championView.onCreateView();
     }
 
     /**
@@ -42,8 +48,7 @@ public class ChampionListFragment extends BaseFragment {
     private final OnAdapteredBaseCallback<Champion> recyclerCallback = new OnAdapteredBaseCallback<Champion>() {
         @Override
         public void onItemClick(int index, @NonNull Champion object) {
-            CurrentApplication.getInstance().setCurrentChampion(object);
-            startActivity(ChampionDetailActivity.class);
+            championView.onChampionClick(object);
         }
 
         @Override
@@ -61,5 +66,56 @@ public class ChampionListFragment extends BaseFragment {
             recyclerView.hideRefresh();
         }
     };
+
+    //MVP
+
+    /**
+     * View which provide the champion displaying
+     */
+    private final ChampionContract.ViewClass championView = new ChampionContract.ViewClass() {
+
+        /**
+         * Method which provide the actions when view created
+         */
+        @Override
+        public void onCreateView() {
+            setChampions(new ChampionProvider().get());
+        }
+
+        /**
+         * Method which provide the champions setting
+         *
+         * @param champions list of champions
+         */
+        @Override
+        public void setChampions(@NonNull List<Champion> champions) {
+            recyclerView.set(champions);
+        }
+
+        /**
+         * Method which provide the action when champion click
+         *
+         * @param champion champion
+         */
+        @Override
+        public void onChampionClick(@NonNull Champion champion) {
+            CurrentApplication.getInstance().setCurrentChampion(champion);
+            startActivity(ChampionDetailActivity.class);
+        }
+
+        /**
+         * Method which provide the getting of the current context
+         *
+         * @return context
+         */
+        @NonNull
+        @Override
+        public Context getCurrentContext() {
+            return getContext();
+        }
+    };
+
+    //PRESENTERS
+    private final ChampionPresenter championPresenter = new ChampionPresenter(championView);
 
 }
