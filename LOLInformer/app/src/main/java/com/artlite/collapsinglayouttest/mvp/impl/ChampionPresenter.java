@@ -1,6 +1,11 @@
 package com.artlite.collapsinglayouttest.mvp.impl;
 
+import android.content.Context;
 import android.content.res.Configuration;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.artlite.collapsinglayouttest.mvp.contracts.ChampionContract;
 
@@ -35,4 +40,16 @@ public final class ChampionPresenter implements ChampionContract.Presenter {
         }
         return 1;
     }
+
+    /**
+     * Method which provide the getting of the layout manager
+     * @return layout manager
+     */
+    @NonNull
+    @Override
+    public RecyclerView.LayoutManager getLayoutManager(@NonNull final Context context) {
+        return new StaggeredGridLayoutManager(getColumnCount(), StaggeredGridLayoutManager.VERTICAL);
+    }
+
+
 }

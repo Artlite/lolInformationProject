@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
 import android.util.Log;
 
@@ -224,7 +225,7 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
         return 0;
     }
 
-    public void notifyDataSetChanged(){
+    public void notifyDataSetChanged() {
         this.notifyDataSetChanged(true);
     }
 
@@ -235,14 +236,22 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
         runOnMainThread(0, new OnActionPerformer() {
             @Override
             public void onActionPerform() {
-                if(needViewsReload == true){
-                    setAdapter(innerAdapter);
+                if (needViewsReload == true) {
+                    forceReloadViewHolder();
                 }
                 if (innerAdapter != null) {
                     innerAdapter.notifyDataSetChanged();
                 }
             }
         });
+    }
+
+    /**
+     * Method that provide the invalidate {@link StaggeredGridLayoutManager}
+     */
+    private final void forceReloadViewHolder() {
+        // TODO: 02.10.2016 Add functional for force reload of the view holder
+        setRecycledViewPool(new RecyclerView.RecycledViewPool());
     }
 
     /**

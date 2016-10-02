@@ -1,6 +1,8 @@
 package com.artlite.collapsinglayouttest.mvp.contracts;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
 
 import com.artlite.collapsinglayouttest.model.Champion;
 import com.artlite.collapsinglayouttest.mvp.abs.BaseContract;
@@ -49,6 +51,14 @@ public interface ChampionContract {
          * @return column count
          */
         int getColumnCount();
+
+        /**
+         * Method which provide the getting of the layout manager
+         * @param context context
+         * @return layout manager
+         */
+        @NonNull
+        RecyclerView.LayoutManager getLayoutManager(@NonNull final Context context);
     }
 
 }

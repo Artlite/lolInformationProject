@@ -37,8 +37,7 @@ public class ChampionListFragment extends BaseFragment {
 
     @Override
     protected void onCreateFragment(View containerView) {
-        recyclerView.init(new StaggeredGridLayoutManager(championPresenter.getColumnCount(),
-                StaggeredGridLayoutManager.VERTICAL), recyclerCallback, refreshCallback);
+        recyclerView.init(championPresenter.getLayoutManager(getContext()), recyclerCallback, refreshCallback);
         championView.onCreateView();
     }
 
