@@ -130,7 +130,9 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
         if (object != null) {
             innerObjects.add(object);
             sortByPriority(innerObjects);
-            notifyDataSetChanged();
+            if (getAdapter() != null) {
+                getAdapter().notifyItemInserted(innerObjects.size() - 1);
+            }
         }
     }
 
@@ -158,7 +160,7 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
             if (innerObjects.contains(object)) {
                 int objectIndex = innerObjects.indexOf(object);
                 innerObjects.remove(object);
-                notifyDataSetChanged();
+                getAdapter().notifyItemRemoved(objectIndex);
                 return true;
             }
         }
@@ -190,6 +192,30 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
         innerObjects.clear();
         innerAdapter.setOldSizeList(0);
         notifyDataSetChanged();
+    }
+
+    /**
+     * Method which provide the update object view by object
+     *
+     * @param object object
+     */
+    public void update(@Nullable final T object) {
+        if (object != null) {
+            if (innerObjects.contains(object) == true) {
+                update(innerObjects.indexOf(object));
+            }
+        }
+    }
+
+    /**
+     * Method which provide the update object view by index
+     *
+     * @param index index for update
+     */
+    public void update(int index) {
+        if (getAdapter() != null) {
+            getAdapter().notifyItemChanged(index);
+        }
     }
 
     /**
@@ -225,6 +251,9 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
         return 0;
     }
 
+    /**
+     * Method which provide the notifying of the data set changed
+     */
     public void notifyDataSetChanged() {
         this.notifyDataSetChanged(true);
     }
@@ -239,8 +268,8 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
                 if (needViewsReload == true) {
                     forceReloadViewHolder();
                 }
-                if (innerAdapter != null) {
-                    innerAdapter.notifyDataSetChanged();
+                if (getAdapter() != null) {
+                    getAdapter().notifyDataSetChanged();
                 }
             }
         });
@@ -250,8 +279,6 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
      * Method that provide the invalidate {@link StaggeredGridLayoutManager}
      */
     private final void forceReloadViewHolder() {
-        // TODO: 02.10.2016 Add functional for force reload of the view holder
-        setRecycledViewPool(new RecyclerView.RecycledViewPool());
     }
 
     /**
@@ -330,6 +357,9 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
 
     //COMPARATORS
 
+    /**
+     * Priority comparator class
+     */
     private static class PriorityComparator implements Comparator<BaseObject> {
         @Override
         public int compare(BaseObject lhs, BaseObject rhs) {

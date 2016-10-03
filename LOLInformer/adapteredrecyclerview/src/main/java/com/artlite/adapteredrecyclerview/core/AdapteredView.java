@@ -3,8 +3,6 @@ package com.artlite.adapteredrecyclerview.core;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
-import android.graphics.Color;
-import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -314,6 +312,24 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
      */
     public final void clear() {
         this.recyclerView.clear();
+    }
+
+    /**
+     * Method which provide the update object view by object
+     *
+     * @param object object
+     */
+    public void update(@Nullable final T object) {
+        this.recyclerView.update(object);
+    }
+
+    /**
+     * Method which provide the update object view by index
+     *
+     * @param index index for update
+     */
+    public void update(int index) {
+        this.recyclerView.update(index);
     }
 
     /**

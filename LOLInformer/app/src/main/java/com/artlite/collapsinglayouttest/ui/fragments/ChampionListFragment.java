@@ -2,7 +2,6 @@ package com.artlite.collapsinglayouttest.ui.fragments;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredBaseCallback;

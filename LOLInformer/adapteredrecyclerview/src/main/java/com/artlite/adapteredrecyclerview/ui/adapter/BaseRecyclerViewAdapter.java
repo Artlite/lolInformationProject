@@ -2,7 +2,6 @@ package com.artlite.adapteredrecyclerview.ui.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -11,6 +10,7 @@ import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredPagingCallback;
 import com.artlite.adapteredrecyclerview.models.BaseObject;
 import com.artlite.adapteredrecyclerview.models.BaseRecyclerItem;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,6 +22,10 @@ public class BaseRecyclerViewAdapter<T extends BaseObject> extends RecyclerView.
     private OnAdapteredBaseCallback actionCallback;
     private OnAdapteredPagingCallback pagingCallback;
     private int oldSizeList;
+    //ViewHolder management
+    private int index = 0;
+    private List<Class> classes = new ArrayList<>();
+    private List<ViewHolder> viewHolders = new ArrayList<>();
 
     public BaseRecyclerViewAdapter(List<T> listItems) {
         this.listItems = listItems;
@@ -30,12 +34,23 @@ public class BaseRecyclerViewAdapter<T extends BaseObject> extends RecyclerView.
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(listItems.get(viewType).getRecyclerItem(parent.getContext()));
+        ViewHolder viewHolder = null;
+        if (viewType < viewHolders.size()) {
+            viewHolder = viewHolders.get(viewType);
+        } else {
+            viewHolder = new ViewHolder(listItems.get(index).getRecyclerItem(parent.getContext()));
+        }
+        return viewHolder;
     }
 
     @Override
     public int getItemViewType(int position) {
-        return position;
+        index = position;
+        final Class aClass = listItems.get(position).getClass();
+        if (classes.contains(aClass) == false) {
+            classes.add(aClass);
+        }
+        return classes.indexOf(aClass);
     }
 
     @Override
