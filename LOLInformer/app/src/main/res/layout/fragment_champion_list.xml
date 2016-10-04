@@ -9,8 +9,11 @@
         android:id="@+id/main_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:need_refresh="false"
+        app:need_refresh="true"
         app:refresh_background="@color/color_primary_dark"
         app:refresh_color="@color/color_divider_black" />
+    <!--app:need_refresh="false"-->
+    <!--app:refresh_background="@color/color_primary_dark"-->
+    <!--app:refresh_color="@color/color_divider_black"-->
 
 </LinearLayout>

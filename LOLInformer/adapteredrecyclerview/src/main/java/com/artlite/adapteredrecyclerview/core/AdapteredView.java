@@ -17,6 +17,7 @@ import com.artlite.adapteredrecyclerview.R;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredBaseCallback;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredPagingCallback;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredRefreshCallback;
+import com.artlite.adapteredrecyclerview.constants.ColorStateConstants;
 import com.artlite.adapteredrecyclerview.models.BaseObject;
 import com.artlite.adapteredrecyclerview.ui.views.AdapteredRecyclerView;
 
@@ -46,6 +47,19 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
                 instance = new Attributes();
             }
             return instance;
+        }
+
+        /**
+         * Method which provide the attribute validation
+         */
+        protected void validate() {
+            if (refreshColor == null) {
+                refreshColor = ColorStateConstants.K_DEFAULT_REFRESH_COLOR;
+            }
+
+            if (refreshBackgroundColor == null) {
+                refreshBackgroundColor = ColorStateConstants.K_DEFAULT_REFRESH_BACKGROUND_COLOR;
+            }
         }
     }
 
@@ -120,6 +134,7 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
                         .getColorStateList(R.styleable.AdapteredView_refresh_color);
                 Attributes.getInstance().refreshBackgroundColor = a
                         .getColorStateList(R.styleable.AdapteredView_refresh_background);
+                Attributes.getInstance().validate();
             } finally {
                 Attributes.getInstance().isInit = true;
                 a.recycle();
