@@ -36,20 +36,27 @@ public abstract class BaseRecyclerItem<T extends BaseObject> extends BaseRecycle
      */
     @Override
     protected void onCallbacksInitialize() {
-        ViewGroup view = (ViewGroup) findViewById(getClickedID());
+        View view = findViewById(getClickedID());
         if (view != null) {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (callbackReference != null
-                            && objectReference != null
-                            && objectReference.get() != null
-                            && callbackReference.get() != null) {
-                        T object = objectReference.get();
-                        callbackReference.get().onItemClick(index, object);
-                    }
+                    onItemClick();
                 }
             });
+        }
+    }
+
+    /**
+     * Method which provide the on item click action
+     */
+    protected final void onItemClick() {
+        if (callbackReference != null
+                && objectReference != null
+                && objectReference.get() != null
+                && callbackReference.get() != null) {
+            T object = objectReference.get();
+            callbackReference.get().onItemClick(index, object);
         }
     }
 
