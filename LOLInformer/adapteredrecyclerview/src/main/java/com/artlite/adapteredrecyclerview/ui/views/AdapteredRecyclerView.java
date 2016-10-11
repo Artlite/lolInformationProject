@@ -296,7 +296,7 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
      *
      * @param itemActionListener
      */
-    public void setActionCallback(OnAdapteredBaseCallback itemActionListener) {
+    public void setActionCallback(@Nullable final OnAdapteredBaseCallback itemActionListener) {
         if (innerAdapter != null) {
             innerAdapter.setActionCallback(itemActionListener);
         }
@@ -307,7 +307,7 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
      *
      * @param pagingCallback lazy load callback
      */
-    public void setPagingCallback(@NonNull OnAdapteredPagingCallback pagingCallback) {
+    public void setPagingCallback(@Nullable final OnAdapteredPagingCallback pagingCallback) {
         if (innerAdapter != null) {
             innerAdapter.setPagingCallback(pagingCallback);
         }
@@ -318,7 +318,7 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
      *
      * @param objectList priority list
      */
-    private void sortByPriority(@Nullable List<T> objectList) {
+    private void sortByPriority(@Nullable final List<T> objectList) {
         if (objectList != null) {
             Collections.sort(objectList, new PriorityComparator());
         }

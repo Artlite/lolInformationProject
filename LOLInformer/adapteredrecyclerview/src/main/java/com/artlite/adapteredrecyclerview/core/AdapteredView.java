@@ -377,6 +377,49 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
     public List<T> getListItems() {
         return this.recyclerView.getListItems();
     }
+
+    /**
+     * Method which provide the setting of the {@link OnAdapteredBaseCallback}
+     *
+     * @param callback callback
+     */
+    public void setActionCallback(@Nullable final OnAdapteredBaseCallback callback) {
+        if (callback != null) {
+            this.recyclerView.setActionCallback(callback);
+        }
+    }
+
+    /**
+     * Method which provide the setting of the {@link OnAdapteredPagingCallback}
+     *
+     * @param callback callback
+     */
+    public void setPagingCallback(@Nullable final OnAdapteredPagingCallback callback) {
+        //Set paging callback
+        if (callback != null) {
+            this.recyclerView.setPagingCallback(callback);
+        }
+    }
+
+    /**
+     * Method which provide the setting of the {@link OnAdapteredRefreshCallback}
+     *
+     * @param callback
+     */
+    public void setRefreshCallback(@Nullable final OnAdapteredRefreshCallback callback) {
+        //Set refresh callback
+        if (callback != null) {
+            this.refreshCallback = callback;
+        }
+    }
+
+    /**
+     * Method which provide the setting of the definition if {@link AdapteredView} need swipe down to refresh
+     * @param isNeedResfresh
+     */
+    public void setIsNeedResfresh(boolean isNeedResfresh){
+        refreshLayout.setEnabled(isNeedResfresh);
+    }
 }
 
 /*HOW TO USE
