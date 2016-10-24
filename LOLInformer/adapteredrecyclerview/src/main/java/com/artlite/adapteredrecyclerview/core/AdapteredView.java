@@ -3,6 +3,8 @@ package com.artlite.adapteredrecyclerview.core;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
+import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -18,6 +20,7 @@ import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredBaseCallback;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredPagingCallback;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredRefreshCallback;
 import com.artlite.adapteredrecyclerview.constants.ColorStateConstants;
+import com.artlite.adapteredrecyclerview.helpers.ColorHelper;
 import com.artlite.adapteredrecyclerview.models.BaseObject;
 import com.artlite.adapteredrecyclerview.ui.views.AdapteredRecyclerView;
 
@@ -154,13 +157,9 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
             Attributes.getInstance().refreshColor = ColorStateList
                     .valueOf(getContext().getResources().getColor(android.R.color.white));
         }
-        int[] focusedState = {android.R.attr.state_focused};
         refreshLayout.setEnabled(Attributes.getInstance().isNeedRefresh);
-        refreshLayout.setColorSchemeColors(
-                Attributes.getInstance().refreshColor.getColorForState(focusedState, android.R.color.black)
-        );
-        refreshLayout.setProgressBackgroundColorSchemeColor(
-                Attributes.getInstance().refreshBackgroundColor.getColorForState(focusedState, android.R.color.white));
+        setRefreshColoursRes(Attributes.getInstance().refreshBackgroundColor,
+                Attributes.getInstance().refreshColor);
     }
 
     //INIT METHODS
@@ -415,10 +414,59 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
 
     /**
      * Method which provide the setting of the definition if {@link AdapteredView} need swipe down to refresh
+     *
      * @param isNeedResfresh
      */
-    public void setIsNeedResfresh(boolean isNeedResfresh){
+    public void setIsNeedResfresh(boolean isNeedResfresh) {
         refreshLayout.setEnabled(isNeedResfresh);
+    }
+
+    /**
+     * Method which provide the setting of the refresh color
+     * from color resources
+     *
+     * @param backgroundColor background color resource
+     * @param refreshColor    refresh color resource
+     */
+    public void setRefreshColoursInt(@ColorInt int backgroundColor, @ColorInt int refreshColor) {
+        final ColorStateList background = ColorHelper.getColorStateList(backgroundColor);
+        final ColorStateList refresh = ColorHelper.getColorStateList(refreshColor);
+        setRefreshColoursRes(background, refresh);
+    }
+
+    /**
+     * Method which provide the setting of the refresh color
+     * from color resources
+     *
+     * @param backgroundColor background color resource
+     * @param refreshColor    refresh color resource
+     */
+    public void setRefreshColoursRes(@ColorRes int backgroundColor, @ColorRes int refreshColor) {
+        final ColorStateList background = ColorHelper.getColorStateList(backgroundColor, getContext());
+        final ColorStateList refresh = ColorHelper.getColorStateList(refreshColor, getContext());
+        setRefreshColoursRes(background, refresh);
+    }
+
+    /**
+     * Method which provide the setting of the refresh color
+     * from {@link ColorStateList}
+     *
+     * @param backgroundColor
+     * @param refreshColor
+     */
+    public void setRefreshColoursRes(@Nullable final ColorStateList backgroundColor,
+                                     @Nullable final ColorStateList refreshColor) {
+        int[] focusedState = {android.R.attr.state_focused};
+        if ((refreshColor != null)
+                && (refreshLayout != null)) {
+            refreshLayout.setColorSchemeColors(
+                    refreshColor.getColorForState(focusedState, android.R.color.black));
+        }
+        if ((backgroundColor != null)
+                && (refreshLayout != null)) {
+            refreshLayout.setProgressBackgroundColorSchemeColor(
+                    backgroundColor.getColorForState(focusedState, android.R.color.white));
+        }
     }
 }
 
