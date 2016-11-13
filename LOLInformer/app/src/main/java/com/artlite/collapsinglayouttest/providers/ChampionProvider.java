@@ -66,6 +66,12 @@ public class ChampionProvider implements BaseProvider<Champion> {
                         .addHistory(R.string.text_history_ashe)
                         .build(),
 
+                new Champion.Builder().addIcon(R.drawable.ic_aosol)
+                        .addName(R.string.aurelion_sol_name)
+                        .addChampionType(ChampionType.MAGE)
+                        .addHistory(R.string.text_history_aurelion_sol)
+                        .build(),
+
                 new Champion.Builder().addIcon(R.drawable.ic_azir)
                         .addName(R.string.azir_name)
                         .addChampionType(ChampionType.MAGE)
