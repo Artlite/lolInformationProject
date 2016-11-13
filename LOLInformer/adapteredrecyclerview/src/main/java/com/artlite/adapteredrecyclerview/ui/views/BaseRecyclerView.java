@@ -31,6 +31,11 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
 
     protected View baseView;
 
+    /**
+     * Default constructor
+     *
+     * @param context context to set
+     */
     public BaseRecyclerView(@NonNull final Context context) {
         super(context);
         onInitializeView(context, null);
