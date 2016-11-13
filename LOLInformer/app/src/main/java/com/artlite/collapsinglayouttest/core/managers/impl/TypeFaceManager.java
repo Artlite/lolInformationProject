@@ -14,7 +14,7 @@ import java.lang.ref.WeakReference;
  * manager which provide to adding of the custom font inside the application
  * Created by dlernatovich on 12/1/15.
  */
-public class TypeFaceManager extends AbstractManager {
+public final class TypeFaceManager extends AbstractManager {
 
     private static TypeFaceManager instance;
 

@@ -13,11 +13,9 @@ import com.artlite.collapsinglayouttest.utils.AppLogger;
 /**
  * Created by dlernatovich on 7/23/15.
  */
-public class CurrentApplication extends Application {
+public final class CurrentApplication extends Application {
 
     private static CurrentApplication instance;
-
-    private Champion currentChampion;
 
     /**
      * Called when the application is starting, before any activity, service,
@@ -39,7 +37,7 @@ public class CurrentApplication extends Application {
      *
      * @return current Application
      */
-    public static CurrentApplication getInstance() {
+    private static CurrentApplication getInstance() {
         return instance;
     }
 
@@ -49,7 +47,7 @@ public class CurrentApplication extends Application {
      * @return application {@link Context}
      */
     public static Context getContext() {
-        return getInstance().getApplicationContext();
+        return getInstance();
     }
 
     /**
@@ -59,33 +57,13 @@ public class CurrentApplication extends Application {
      * @return returned String
      */
     @NonNull
-    public final String getStringValue(@StringRes int stringId) {
+    public static final String getStringValue(@StringRes int stringId) {
         try {
-            return getResources().getString(stringId);
+            return getInstance().getResources().getString(stringId);
         } catch (Exception ex) {
-            AppLogger.error(this, ex.toString(), "CurrentApplication -> getStringValue");
+            AppLogger.error(getInstance(), ex.toString(), "CurrentApplication -> getStringValue");
         }
         return "";
     }
 
-    //GETTERS AND SETTERS
-
-    /**
-     * Method which provide the getting of the current champion
-     *
-     * @return current {@link Champion}
-     */
-    @Nullable
-    public Champion getChampion() {
-        return currentChampion;
-    }
-
-    /**
-     * Method which provide the setting of the current champion
-     *
-     * @param champion {@link Champion} to set
-     */
-    public void setChampion(@Nullable Champion champion) {
-        this.currentChampion = champion;
-    }
 }

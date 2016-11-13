@@ -17,7 +17,7 @@ public class MainActivity extends BaseActivity {
     @InjectView(R.id.pager)
     ViewPager mainViewPager;
 
-    private MainPagerAdapter mainPagerAdapter;
+    protected MainPagerAdapter mainPagerAdapter;
 
 
     @Override

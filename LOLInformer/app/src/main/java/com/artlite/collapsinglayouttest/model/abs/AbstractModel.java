@@ -20,6 +20,6 @@ public abstract class AbstractModel extends BaseObject {
      */
     @Nullable
     protected static String getText(@StringRes int stringId) {
-        return CurrentApplication.getInstance().getStringValue(stringId);
+        return CurrentApplication.getStringValue(stringId);
     }
 }

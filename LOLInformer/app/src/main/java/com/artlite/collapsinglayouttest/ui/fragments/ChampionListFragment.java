@@ -10,6 +10,7 @@ import com.artlite.adapteredrecyclerview.core.AdapteredView;
 import com.artlite.adapteredrecyclerview.events.RecycleEvent;
 import com.artlite.collapsinglayouttest.R;
 import com.artlite.collapsinglayouttest.core.application.CurrentApplication;
+import com.artlite.collapsinglayouttest.core.managers.Managers;
 import com.artlite.collapsinglayouttest.model.Champion;
 import com.artlite.collapsinglayouttest.mvp.contracts.ChampionContract;
 import com.artlite.collapsinglayouttest.mvp.impl.ChampionPresenter;
@@ -97,7 +98,7 @@ public class ChampionListFragment extends BaseFragment {
          */
         @Override
         public void onChampionClick(@NonNull Champion champion) {
-            CurrentApplication.getInstance().setChampion(champion);
+            Managers.getTransferManager().setChampion(champion);
             startActivity(ChampionDetailActivity.class);
         }
 

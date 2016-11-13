@@ -1,8 +1,6 @@
 package com.artlite.collapsinglayouttest.factories;
 
 import com.artlite.collapsinglayouttest.R;
-import com.artlite.collapsinglayouttest.core.application.CurrentApplication;
-import com.artlite.collapsinglayouttest.core.managers.Managers;
 import com.artlite.collapsinglayouttest.factories.abs.AbstractFactory;
 import com.artlite.collapsinglayouttest.ui.fragments.AboutFragment;
 import com.artlite.collapsinglayouttest.ui.fragments.abs.BaseFragment;

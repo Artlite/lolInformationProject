@@ -3,7 +3,6 @@ package com.artlite.collapsinglayouttest.ui.views.fonted;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
@@ -55,7 +54,7 @@ public class FTabLayout extends android.support.design.widget.TabLayout {
      */
     @NonNull
     TypeFaceManager getTypeFaceManager() {
-        return Managers.TYPE_FACE.getManager();
+        return Managers.getTypeFaceManager();
     }
 
     /**

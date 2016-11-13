@@ -54,7 +54,7 @@ public class ChampionRecycleItem extends BaseRecyclerItem<Champion> {
     /**
      * Method which provide the updating of the UI
      */
-    private void updateUI() {
+    protected void updateUI() {
         if (champion != null) {
             mainTextView.setText(champion.getName());
             historyTextView.setText(champion.getShortHistory());

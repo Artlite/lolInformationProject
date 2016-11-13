@@ -70,7 +70,7 @@ public class FTextView extends TextView {
      */
     @NonNull
     TypeFaceManager getTypeFaceManager() {
-        return Managers.TYPE_FACE.getManager();
+        return Managers.getTypeFaceManager();
     }
 
     /**

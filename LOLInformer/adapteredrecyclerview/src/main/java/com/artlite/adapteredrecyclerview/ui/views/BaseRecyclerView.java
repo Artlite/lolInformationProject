@@ -123,7 +123,7 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
      *
      * @param activtyClass activity which should be starting
      */
-    public void startActivity(@NonNull Class activtyClass) {
+    public void startActivity(@NonNull final Class activtyClass) {
         getContext().startActivity(new Intent(getContext(), activtyClass));
     }
 
@@ -132,7 +132,7 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
      *
      * @param activtyClass activity class
      */
-    protected void startActivityWithClearTop(@NonNull Class activtyClass) {
+    protected void startActivityWithClearTop(@NonNull final Class activtyClass) {
         Intent intent = new Intent(getContext(), activtyClass);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         getContext().startActivity(intent);
@@ -144,7 +144,7 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
      * @param activtyClass activity which should be starting
      * @param resultCode   result code
      */
-    protected void startActivityForResults(@NonNull Class activtyClass, final int resultCode) {
+    protected void startActivityForResults(@NonNull final Class activtyClass, final int resultCode) {
         if (getActivity() != null) {
             getActivity().startActivityForResult(new Intent(getContext(), activtyClass), resultCode);
         }
@@ -156,7 +156,7 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
      * @param activtyClass activity which should be starting
      * @param resultCode   result code
      */
-    protected void startActivityForResults(@NonNull Intent activtyClass, final int resultCode) {
+    protected void startActivityForResults(@NonNull final Intent activtyClass, final int resultCode) {
         if (getActivity() != null) {
             getActivity().startActivityForResult(activtyClass, resultCode);
         }
@@ -167,7 +167,7 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
      *
      * @param views current list of Views
      */
-    protected void setOnClickListeners(@NonNull View... views) {
+    protected void setOnClickListeners(@NonNull final View... views) {
         for (View view : views) {
             view.setOnClickListener(this);
         }
@@ -218,7 +218,7 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
      * Method which provide the keyboard hiding
      */
     protected void hideKeyboard() {
-        Activity activity = getActivity();
+        final Activity activity = getActivity();
         if (activity != null) {
             InputMethodManager inputMethod = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
             inputMethod.hideSoftInputFromWindow(activity.getWindow().getDecorView().getRootView().getWindowToken(), 0);
@@ -230,6 +230,7 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
      *
      * @return getting activity
      */
+    @Nullable
     protected Activity getActivity() {
         Context context = getContext();
         while (context instanceof ContextWrapper) {

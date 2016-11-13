@@ -2,6 +2,7 @@ package com.artlite.adapteredrecyclerview.models;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -20,7 +21,12 @@ public abstract class BaseRecyclerItem<T extends BaseObject> extends BaseRecycle
     protected WeakReference<T> objectReference;
     protected int index;
 
-    public BaseRecyclerItem(Context context) {
+    /**
+     * Default constructor
+     *
+     * @param context context to set
+     */
+    public BaseRecyclerItem(@NonNull final Context context) {
         super(context);
     }
 
@@ -29,7 +35,7 @@ public abstract class BaseRecyclerItem<T extends BaseObject> extends BaseRecycle
      *
      * @param baseObject current object
      */
-    public abstract void setUp(@NonNull T baseObject);
+    public abstract void setUp(@NonNull final T baseObject);
 
     /**
      * Method which provide the listener initializing
@@ -65,7 +71,7 @@ public abstract class BaseRecyclerItem<T extends BaseObject> extends BaseRecycle
      *
      * @param object current object
      */
-    public void setObject(@NonNull T object) {
+    public void setObject(@NonNull final T object) {
         index = object.getIndex();
         objectReference = new WeakReference<T>(object);
     }
@@ -75,7 +81,7 @@ public abstract class BaseRecyclerItem<T extends BaseObject> extends BaseRecycle
      *
      * @param itemActionListener
      */
-    public void setItemActionListener(OnAdapteredBaseCallback itemActionListener) {
+    public void setItemActionListener(@Nullable final OnAdapteredBaseCallback itemActionListener) {
         this.callbackReference = new WeakReference<OnAdapteredBaseCallback>(itemActionListener);
     }
 
@@ -84,7 +90,7 @@ public abstract class BaseRecyclerItem<T extends BaseObject> extends BaseRecycle
      *
      * @param recycleEvent recycler event
      */
-    protected void sendEvent(@NonNull RecycleEvent recycleEvent) {
+    protected void sendEvent(@NonNull final RecycleEvent recycleEvent) {
         if (callbackReference != null
                 && callbackReference.get() != null
                 && objectReference != null

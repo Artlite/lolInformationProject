@@ -26,7 +26,7 @@ import java.util.List;
 /**
  * Created by Artli_000 on 02.11.2015.
  */
-public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
+public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
 
     private static final String TAG = "AdapteredRecyclerView";
 
@@ -42,16 +42,34 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
     private BaseRecyclerViewAdapter innerAdapter;
     private List<T> innerObjects;
 
+    /**
+     * Constructor with context
+     *
+     * @param context context
+     */
     public AdapteredRecyclerView(Context context) {
         super(context);
         onCreate(context);
     }
 
+    /**
+     * Constructor with context and attributes
+     *
+     * @param context context
+     * @param attrs   attributes
+     */
     public AdapteredRecyclerView(Context context, AttributeSet attrs) {
         super(context, attrs);
         onCreate(context);
     }
 
+    /**
+     * Constructor with context and attributes and styles
+     *
+     * @param context  context
+     * @param attrs    attributes
+     * @param defStyle style
+     */
     public AdapteredRecyclerView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         onCreate(context);
@@ -62,7 +80,7 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
      *
      * @param context current context
      */
-    private void onCreate(@NonNull Context context) {
+    private void onCreate(@NonNull final Context context) {
         if (isInEditMode() == true) {
             return;
         }
@@ -241,7 +259,7 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
      * @param object object
      * @return index
      */
-    public int getIndex(@Nullable T object) {
+    public int getIndex(@Nullable final T object) {
         try {
             int index = innerObjects.indexOf(object);
             return index;
@@ -261,7 +279,7 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
     /**
      * Method which provide the notifying of the data set changed
      */
-    public void notifyDataSetChanged(final boolean needViewsReload) {
+    private void notifyDataSetChanged(final boolean needViewsReload) {
         runOnMainThread(0, new OnActionPerformer() {
             @Override
             public void onActionPerform() {
@@ -330,7 +348,7 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
      * @param delay     delaying time (in seconds)
      * @param performer current action
      */
-    protected void runOnMainThread(int delay, final OnActionPerformer performer) {
+    protected void runOnMainThread(int delay, @NonNull final OnActionPerformer performer) {
         MAIN_THREAD_HANDLER.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -344,7 +362,7 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
      *
      * @param onActionPerformer action performer
      */
-    protected void runOnBackground(final OnActionPerformer onActionPerformer) {
+    protected void runOnBackground(@NonNull final OnActionPerformer onActionPerformer) {
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
@@ -361,6 +379,11 @@ public class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
      * Priority comparator class
      */
     private static class PriorityComparator implements Comparator<BaseObject> {
+        /**
+         * Compares its two arguments for order.  Returns a negative integer,
+         * zero, or a positive integer as the first argument is less than, equal
+         * to, or greater than the second.<p>
+         */
         @Override
         public int compare(BaseObject lhs, BaseObject rhs) {
             return lhs.getPriority().compareTo(rhs.getPriority());
