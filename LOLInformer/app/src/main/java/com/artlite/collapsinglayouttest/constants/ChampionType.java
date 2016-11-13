@@ -1,5 +1,8 @@
 package com.artlite.collapsinglayouttest.constants;
 
+import android.support.annotation.DrawableRes;
+import android.support.annotation.StringRes;
+
 import com.artlite.collapsinglayouttest.R;
 
 /**
@@ -16,15 +19,33 @@ public enum ChampionType {
     private final int imageID;
     private final int nameID;
 
-    ChampionType(int imageID, int name) {
+    /**
+     * Default constructor
+     *
+     * @param imageID image res
+     * @param name    name res
+     */
+    ChampionType(@DrawableRes int imageID, @StringRes int name) {
         this.imageID = imageID;
         this.nameID = name;
     }
 
+    /**
+     * Method which provide the getting of the image ID
+     *
+     * @return
+     */
+    @DrawableRes
     public int getImageID() {
         return imageID;
     }
 
+    /**
+     * Method which provide the getting of the type name
+     *
+     * @return type name
+     */
+    @StringRes
     public int getNameID() {
         return nameID;
     }

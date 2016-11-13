@@ -1,8 +1,12 @@
 package com.artlite.collapsinglayouttest.core.application;
 
 import android.app.Application;
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 
-import com.artlite.collapsinglayouttest.core.managers.TypeFaceManager;
+import com.artlite.collapsinglayouttest.core.managers.impl.TypeFaceManager;
 import com.artlite.collapsinglayouttest.model.Champion;
 import com.artlite.collapsinglayouttest.utils.AppLogger;
 
@@ -15,11 +19,19 @@ public class CurrentApplication extends Application {
 
     private Champion currentChampion;
 
+    /**
+     * Called when the application is starting, before any activity, service,
+     * or receiver objects (excluding content providers) have been created.
+     * Implementations should be as quick as possible (for example using
+     * lazy initialization of state) since the time spent in this function
+     * directly impacts the performance of starting the first activity,
+     * service, or receiver in a process.
+     * If you override this method, be sure to call super.onCreate().
+     */
     @Override
     public void onCreate() {
         super.onCreate();
         instance = this;
-        TypeFaceManager.getInstance(this);
     }
 
     /**
@@ -32,26 +44,48 @@ public class CurrentApplication extends Application {
     }
 
     /**
+     * Method which provide the getting of the {@link Context}
+     *
+     * @return application {@link Context}
+     */
+    public static Context getContext() {
+        return getInstance().getApplicationContext();
+    }
+
+    /**
      * Method which provide the getting of the String value from the xml
      *
      * @param stringId current String ID
      * @return returned String
      */
-    public String getStringValue(int stringId) {
+    @NonNull
+    public final String getStringValue(@StringRes int stringId) {
         try {
             return getResources().getString(stringId);
         } catch (Exception ex) {
-            AppLogger.error(this, ex.toString(), "getStringValue method");
+            AppLogger.error(this, ex.toString(), "CurrentApplication -> getStringValue");
         }
         return "";
     }
 
     //GETTERS AND SETTERS
-    public Champion getCurrentChampion() {
+
+    /**
+     * Method which provide the getting of the current champion
+     *
+     * @return current {@link Champion}
+     */
+    @Nullable
+    public Champion getChampion() {
         return currentChampion;
     }
 
-    public void setCurrentChampion(Champion currentChampion) {
-        this.currentChampion = currentChampion;
+    /**
+     * Method which provide the setting of the current champion
+     *
+     * @param champion {@link Champion} to set
+     */
+    public void setChampion(@Nullable Champion champion) {
+        this.currentChampion = champion;
     }
 }

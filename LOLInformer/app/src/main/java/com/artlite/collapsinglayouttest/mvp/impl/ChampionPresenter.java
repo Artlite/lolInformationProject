@@ -34,7 +34,10 @@ public final class ChampionPresenter implements ChampionContract.Presenter {
     @Override
     public int getColumnCount() {
         if (view != null) {
-            if (view.getCurrentContext().getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            if (view.getCurrentContext()
+                    .getResources()
+                    .getConfiguration()
+                    .orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 return 2;
             }
         }
@@ -43,12 +46,14 @@ public final class ChampionPresenter implements ChampionContract.Presenter {
 
     /**
      * Method which provide the getting of the layout manager
+     *
      * @return layout manager
      */
     @NonNull
     @Override
     public RecyclerView.LayoutManager getLayoutManager(@NonNull final Context context) {
-        return new StaggeredGridLayoutManager(getColumnCount(), StaggeredGridLayoutManager.VERTICAL);
+        return new StaggeredGridLayoutManager(getColumnCount(),
+                StaggeredGridLayoutManager.VERTICAL);
     }
 
 

@@ -42,7 +42,7 @@ public class ChampionDetailActivity extends BaseActivity {
 
     @Override
     protected void onCreateActivity() {
-        currentChampion = CurrentApplication.getInstance().getCurrentChampion();
+        currentChampion = CurrentApplication.getInstance().getChampion();
         setOnClickListeners(buttonBack);
         updateUI();
     }
@@ -52,7 +52,7 @@ public class ChampionDetailActivity extends BaseActivity {
             championImageView.setBackgroundResource(currentChampion.getIconID());
             nameTextView.setText(currentChampion.getName());
             historyTextView.setText(currentChampion.getHistory());
-            typeImageView.setImageResource(currentChampion.getChampionType().getImageID());
+            typeImageView.setImageResource(currentChampion.getTypeImage());
         }
     }
 

@@ -1,7 +1,6 @@
 package com.artlite.collapsinglayouttest.ui.fragments;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.view.View;
 
@@ -98,7 +97,7 @@ public class ChampionListFragment extends BaseFragment {
          */
         @Override
         public void onChampionClick(@NonNull Champion champion) {
-            CurrentApplication.getInstance().setCurrentChampion(champion);
+            CurrentApplication.getInstance().setChampion(champion);
             startActivity(ChampionDetailActivity.class);
         }
 

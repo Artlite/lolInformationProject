@@ -2,11 +2,13 @@ package com.artlite.collapsinglayouttest.ui.views.fonted;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.support.annotation.NonNull;
 import android.text.Html;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
-import com.artlite.collapsinglayouttest.core.managers.TypeFaceManager;
+import com.artlite.collapsinglayouttest.core.managers.Managers;
+import com.artlite.collapsinglayouttest.core.managers.impl.TypeFaceManager;
 
 /**
  * Created by dlernatovich on 12/1/15.
@@ -41,13 +43,34 @@ public class FTextView extends TextView {
         }
     }
 
+    /**
+     * Method which provide the getting of the default typeface
+     *
+     * @return default typeface
+     * @see TypeFaceManager
+     */
     protected Typeface getDefaultTypeface() {
-        return TypeFaceManager.getInstance().getBarriolFont();
+        return getTypeFaceManager().getBarriolFont();
     }
 
-
+    /**
+     * Method which provide the getting of the bold typeface
+     *
+     * @return bold typeface
+     * @see TypeFaceManager
+     */
     protected Typeface getBoldTypeface() {
-        return TypeFaceManager.getInstance().getBarriolBoldFont();
+        return getTypeFaceManager().getBarriolBoldFont();
+    }
+
+    /**
+     * Method which provide the getting of the {@link TypeFaceManager}
+     *
+     * @return {@link TypeFaceManager}
+     */
+    @NonNull
+    TypeFaceManager getTypeFaceManager() {
+        return Managers.TYPE_FACE.getManager();
     }
 
     /**

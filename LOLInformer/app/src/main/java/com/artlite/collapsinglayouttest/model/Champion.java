@@ -1,24 +1,33 @@
 package com.artlite.collapsinglayouttest.model;
 
 import android.content.Context;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 
 import com.artlite.adapteredrecyclerview.models.BaseObject;
 import com.artlite.adapteredrecyclerview.models.BaseRecyclerItem;
 import com.artlite.collapsinglayouttest.R;
 import com.artlite.collapsinglayouttest.constants.ChampionType;
 import com.artlite.collapsinglayouttest.core.application.CurrentApplication;
+import com.artlite.collapsinglayouttest.model.abs.AbstractModel;
 import com.artlite.collapsinglayouttest.ui.views.recycler.ChampionRecycleItem;
 
 /**
  * Created by dlernatovich on 7/22/15.
  */
-public class Champion extends BaseObject {
+public class Champion extends AbstractModel {
 
     private static final String DEFAULT_SKIN_URL = "http://ru.leagueoflegends.com/sites/default/files/upload/art/teambuilder-wallpaper.jpg";
 
+    @DrawableRes
     private int iconID;
+    @StringRes
     private int name;
+    @StringRes
     private int title;
+    @StringRes
     private int history;
     private ChampionType championType;
 
@@ -34,6 +43,24 @@ public class Champion extends BaseObject {
         return new ChampionRecycleItem(context);
     }
 
+    /**
+     * Method which provide the getting of the short history of the {@link Champion}
+     *
+     * @param history history id
+     * @return history text
+     */
+    @Nullable
+    public static String getShortHistory(@StringRes int history) {
+        String historyValue = getText(history);
+        if (historyValue.isEmpty() == false) {
+            return historyValue.split("\n")[0];
+        }
+        return "";
+    }
+
+    /**
+     * Builder
+     */
     public static class Builder {
         private int iconID;
         private int name;
@@ -53,12 +80,12 @@ public class Champion extends BaseObject {
             title = R.string.text_empty;
         }
 
-        public Builder addIcon(int iconID) {
+        public Builder addIcon(@DrawableRes int iconID) {
             this.iconID = iconID;
             return this;
         }
 
-        public Builder addName(int name) {
+        public Builder addName(@StringRes int name) {
             this.name = name;
             return this;
         }
@@ -68,17 +95,17 @@ public class Champion extends BaseObject {
             return this;
         }
 
-        public Builder addTitle(int title) {
+        public Builder addTitle(@StringRes int title) {
             this.title = title;
             return this;
         }
 
-        public Builder addChampionType(ChampionType championType) {
+        public Builder addChampionType(@NonNull ChampionType championType) {
             this.championType = championType;
             return this;
         }
 
-        public Builder addHistory(int history) {
+        public Builder addHistory(@StringRes int history) {
             this.history = history;
             return this;
         }
@@ -134,6 +161,17 @@ public class Champion extends BaseObject {
         return championType;
     }
 
+    /**
+     * Method which provide the getting of the type image ID
+     *
+     * @return type image ID
+     * @see ChampionType
+     */
+    @DrawableRes
+    public int getTypeImage() {
+        return championType.getImageID();
+    }
+
     public void setChampionType(ChampionType championType) {
         this.championType = championType;
     }
@@ -147,11 +185,6 @@ public class Champion extends BaseObject {
     }
 
     public String getShortHistory() {
-        String historyValue = CurrentApplication.getInstance().getStringValue(history);
-        if (historyValue.isEmpty() == false) {
-            return historyValue.split("\n")[0];
-        }
-        return "";
+        return getShortHistory(history);
     }
-
 }

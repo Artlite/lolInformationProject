@@ -23,7 +23,7 @@ public class ChampionRecycleItem extends BaseRecyclerItem<Champion> {
     @InjectView(R.id.imageview_type)
     ImageView typeImageView;
     @InjectView(R.id.textview_history)
-    FTextView hidtoryTextView;
+    FTextView historyTextView;
 
     private Champion champion;
 
@@ -57,12 +57,17 @@ public class ChampionRecycleItem extends BaseRecyclerItem<Champion> {
     private void updateUI() {
         if (champion != null) {
             mainTextView.setText(champion.getName());
-            hidtoryTextView.setText(champion.getShortHistory());
+            historyTextView.setText(champion.getShortHistory());
             championImageView.setImageResource(champion.getIconID());
-            typeImageView.setImageResource(champion.getChampionType().getImageID());
+            typeImageView.setImageResource(champion.getTypeImage());
         }
     }
 
+    /**
+     * Method which provide the setting up for the current recycler item
+     *
+     * @param baseObject current object
+     */
     @Override
     public void setUp(Champion baseObject) {
         this.champion = baseObject;
