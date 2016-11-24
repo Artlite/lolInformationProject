@@ -378,6 +378,15 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
     }
 
     /**
+     * Method which provide the getting of the list item size
+     *
+     * @return list item size
+     */
+    public int getListSize() {
+        return (getListItems() != null) ? getListItems().size() : 0;
+    }
+
+    /**
      * Method which provide the setting of the {@link OnAdapteredBaseCallback}
      *
      * @param callback callback

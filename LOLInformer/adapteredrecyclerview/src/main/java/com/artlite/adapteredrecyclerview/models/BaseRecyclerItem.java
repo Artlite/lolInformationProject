@@ -62,8 +62,19 @@ public abstract class BaseRecyclerItem<T extends BaseObject> extends BaseRecycle
                 && objectReference.get() != null
                 && callbackReference.get() != null) {
             T object = objectReference.get();
+            onItemClick(object);
             callbackReference.get().onItemClick(index, object);
         }
+    }
+
+    /**
+     * Method which provide the functional of the object management
+     * (just use for override)
+     *
+     * @param object object instance
+     */
+    protected void onItemClick(@NonNull final T object) {
+        // TODO: Override this if needed
     }
 
     /**
