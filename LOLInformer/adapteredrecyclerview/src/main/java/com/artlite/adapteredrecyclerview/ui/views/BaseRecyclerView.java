@@ -8,15 +8,21 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  * Created by Artli_000 on 24.07.2016.
  */
 public abstract class BaseRecyclerView extends FrameLayout implements View.OnClickListener {
+
+    private static final String TAG = BaseRecyclerView.class.getSimpleName();
 
     /**
      * Interface which provide the doing some action inside the Handler thread
@@ -47,7 +53,8 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
      * @param context current context
      * @param attrs   current attribute
      */
-    private void onInitializeView(@NonNull Context context, @Nullable AttributeSet attrs) {
+    private void onInitializeView(@NonNull final Context context,
+                                  @Nullable final AttributeSet attrs) {
 
         if (isInEditMode() == true) {
             return;
@@ -70,7 +77,7 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
      *
      * @param attrs attributes
      */
-    protected void onAttributeInitialize(@NonNull AttributeSet attrs) {
+    protected void onAttributeInitialize(@NonNull final AttributeSet attrs) {
 
     }
 
@@ -129,7 +136,10 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
      * @param activtyClass activity which should be starting
      */
     public void startActivity(@NonNull final Class activtyClass) {
-        getContext().startActivity(new Intent(getContext(), activtyClass));
+        final Context context = getContext();
+        if (context != null) {
+            context.startActivity(new Intent(context, activtyClass));
+        }
     }
 
     /**
@@ -138,20 +148,13 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
      * @param activtyClass activity class
      */
     protected void startActivityWithClearTop(@NonNull final Class activtyClass) {
-        Intent intent = new Intent(getContext(), activtyClass);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        getContext().startActivity(intent);
-    }
-
-    /**
-     * Method which provide starting the Activity for results
-     *
-     * @param activtyClass activity which should be starting
-     * @param resultCode   result code
-     */
-    protected void startActivityForResults(@NonNull final Class activtyClass, final int resultCode) {
-        if (getActivity() != null) {
-            getActivity().startActivityForResult(new Intent(getContext(), activtyClass), resultCode);
+        final Context context = getContext();
+        if (context != null) {
+            Intent intent = new Intent(context, activtyClass);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK |
+                    Intent.FLAG_ACTIVITY_NEW_TASK |
+                    Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            context.startActivity(intent);
         }
     }
 
@@ -161,9 +164,25 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
      * @param activtyClass activity which should be starting
      * @param resultCode   result code
      */
-    protected void startActivityForResults(@NonNull final Intent activtyClass, final int resultCode) {
-        if (getActivity() != null) {
-            getActivity().startActivityForResult(activtyClass, resultCode);
+    protected void startActivityForResults(@NonNull final Class activtyClass, final int resultCode) {
+        final Activity activity = getActivity();
+        final Context context = getContext();
+        if ((activity != null) && (context != null)) {
+            activity.startActivityForResult(new Intent(context, activtyClass), resultCode);
+        }
+    }
+
+    /**
+     * Method which provide starting the Activity for results
+     *
+     * @param intent     intent which should be starting
+     * @param resultCode result code
+     */
+    protected void startActivityForResults(@NonNull final Intent intent, final int resultCode) {
+        final Activity activity = getActivity();
+        final Context context = getContext();
+        if ((activity != null) && (context != null)) {
+            activity.startActivityForResult(intent, resultCode);
         }
     }
 
@@ -191,14 +210,25 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
     /**
      * Method which provide the doing action on UI thread after the delaying time
      *
+     * @param performer current action
+     */
+    protected void runOnMainThread(@Nullable final OnActionPerformer performer) {
+        runOnMainThread(0, performer);
+    }
+
+    /**
+     * Method which provide the doing action on UI thread after the delaying time
+     *
      * @param delay     delaying time (in seconds)
      * @param performer current action
      */
-    protected void runOnMainThread(int delay, final OnActionPerformer performer) {
+    protected void runOnMainThread(int delay, @Nullable final OnActionPerformer performer) {
         MAIN_THREAD_HANDLER.postDelayed(new Runnable() {
             @Override
             public void run() {
-                performer.onActionPerform();
+                if (performer != null) {
+                    performer.onActionPerform();
+                }
             }
         }, delay);
     }
@@ -206,17 +236,27 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
     /**
      * Method which provide the running action on the background thread
      *
-     * @param delay             delay
-     * @param onActionPerformer action performer
+     * @param performer action performer
      */
-    protected void runOnBackground(int delay, final OnActionPerformer onActionPerformer) {
-        Runnable runnable = new Runnable() {
+    protected void runOnBackground(@Nullable final OnActionPerformer performer) {
+        runOnBackground(0, performer);
+    }
+
+    /**
+     * Method which provide the running action on the background thread
+     *
+     * @param delay     delaying time (in seconds)
+     * @param performer action performer
+     */
+    protected void runOnBackground(int delay, @Nullable final OnActionPerformer performer) {
+        new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                onActionPerformer.onActionPerform();
+                if (performer != null) {
+                    performer.onActionPerform();
+                }
             }
-        };
-        new Thread(runnable).start();
+        }, delay * 1000);
     }
 
     /**
@@ -225,8 +265,14 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
     protected void hideKeyboard() {
         final Activity activity = getActivity();
         if (activity != null) {
-            InputMethodManager inputMethod = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-            inputMethod.hideSoftInputFromWindow(activity.getWindow().getDecorView().getRootView().getWindowToken(), 0);
+            try {
+                InputMethodManager inputMethod = (InputMethodManager) activity
+                        .getSystemService(Context.INPUT_METHOD_SERVICE);
+                inputMethod.hideSoftInputFromWindow(activity.getWindow()
+                        .getDecorView().getRootView().getWindowToken(), 0);
+            } catch (Exception ex) {
+                Log.e(TAG, ex.toString());
+            }
         }
     }
 
@@ -238,11 +284,13 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
     @Nullable
     protected Activity getActivity() {
         Context context = getContext();
-        while (context instanceof ContextWrapper) {
-            if (context instanceof Activity) {
-                return (Activity) context;
+        if (context != null) {
+            while (context instanceof ContextWrapper) {
+                if (context instanceof Activity) {
+                    return (Activity) context;
+                }
+                context = ((ContextWrapper) context).getBaseContext();
             }
-            context = ((ContextWrapper) context).getBaseContext();
         }
         return null;
     }

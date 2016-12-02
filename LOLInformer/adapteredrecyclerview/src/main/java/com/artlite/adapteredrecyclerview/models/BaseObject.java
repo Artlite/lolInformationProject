@@ -26,7 +26,7 @@ public abstract class BaseObject {
      * @param context current context
      * @return current instance for the Recycler item
      */
-    public abstract BaseRecyclerItem getRecyclerItem(@NonNull Context context);
+    public abstract BaseRecyclerItem getRecyclerItem(@NonNull final Context context);
 
     /**
      * Method which provide the priority getting
@@ -42,7 +42,7 @@ public abstract class BaseObject {
      *
      * @param priority
      */
-    public void setPriority(Priority priority) {
+    public void setPriority(@NonNull final Priority priority) {
         this.priority = priority;
     }
 

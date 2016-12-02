@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by Artli_000 on 24.07.2016.
@@ -47,7 +49,7 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
      *
      * @param context context
      */
-    public AdapteredRecyclerView(Context context) {
+    public AdapteredRecyclerView(@NonNull final Context context) {
         super(context);
         onCreate(context);
     }
@@ -58,7 +60,8 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
      * @param context context
      * @param attrs   attributes
      */
-    public AdapteredRecyclerView(Context context, AttributeSet attrs) {
+    public AdapteredRecyclerView(@NonNull final Context context,
+                                 @Nullable final AttributeSet attrs) {
         super(context, attrs);
         onCreate(context);
     }
@@ -70,7 +73,9 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
      * @param attrs    attributes
      * @param defStyle style
      */
-    public AdapteredRecyclerView(Context context, AttributeSet attrs, int defStyle) {
+    public AdapteredRecyclerView(@NonNull final Context context,
+                                 @Nullable final AttributeSet attrs,
+                                 int defStyle) {
         super(context, attrs, defStyle);
         onCreate(context);
     }
@@ -97,7 +102,7 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
      * @param comparator comparartor
      * @param isReverse  is need reverse
      */
-    public void sort(final Comparator<T> comparator, final boolean isReverse) {
+    public void sort(@NonNull final Comparator<T> comparator, final boolean isReverse) {
         runOnBackground(new OnActionPerformer() {
             @Override
             public void onActionPerform() {
@@ -106,7 +111,7 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
                 } else {
                     Collections.sort(innerObjects, Collections.reverseOrder(comparator));
                 }
-                notifyDataSetChanged(true);
+                notifyDataSetChanged();
             }
         });
     }
@@ -273,30 +278,14 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
      * Method which provide the notifying of the data set changed
      */
     public void notifyDataSetChanged() {
-        this.notifyDataSetChanged(true);
-    }
-
-    /**
-     * Method which provide the notifying of the data set changed
-     */
-    private void notifyDataSetChanged(final boolean needViewsReload) {
         runOnMainThread(0, new OnActionPerformer() {
             @Override
             public void onActionPerform() {
-                if (needViewsReload == true) {
-                    forceReloadViewHolder();
-                }
                 if (getAdapter() != null) {
                     getAdapter().notifyDataSetChanged();
                 }
             }
         });
-    }
-
-    /**
-     * Method that provide the invalidate {@link StaggeredGridLayoutManager}
-     */
-    private final void forceReloadViewHolder() {
     }
 
     /**
@@ -312,22 +301,22 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
     /**
      * Method which provide the setting of the item action listener
      *
-     * @param itemActionListener
+     * @param callback
      */
-    public void setActionCallback(@Nullable final OnAdapteredBaseCallback itemActionListener) {
+    public void setActionCallback(@Nullable final OnAdapteredBaseCallback callback) {
         if (innerAdapter != null) {
-            innerAdapter.setActionCallback(itemActionListener);
+            innerAdapter.setActionCallback(callback);
         }
     }
 
     /**
      * Method which provide the setting of the lazy load callback
      *
-     * @param pagingCallback lazy load callback
+     * @param callback lazy load callback
      */
-    public void setPagingCallback(@Nullable final OnAdapteredPagingCallback pagingCallback) {
+    public void setPagingCallback(@Nullable final OnAdapteredPagingCallback callback) {
         if (innerAdapter != null) {
-            innerAdapter.setPagingCallback(pagingCallback);
+            innerAdapter.setPagingCallback(callback);
         }
     }
 
@@ -345,14 +334,25 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
     /**
      * Method which provide the doing action on UI thread after the delaying time
      *
+     * @param performer current action
+     */
+    protected void runOnMainThread(@Nullable final OnActionPerformer performer) {
+        runOnMainThread(0, performer);
+    }
+
+    /**
+     * Method which provide the doing action on UI thread after the delaying time
+     *
      * @param delay     delaying time (in seconds)
      * @param performer current action
      */
-    protected void runOnMainThread(int delay, @NonNull final OnActionPerformer performer) {
+    protected void runOnMainThread(int delay, @Nullable final OnActionPerformer performer) {
         MAIN_THREAD_HANDLER.postDelayed(new Runnable() {
             @Override
             public void run() {
-                performer.onActionPerform();
+                if (performer != null) {
+                    performer.onActionPerform();
+                }
             }
         }, delay);
     }
@@ -360,16 +360,28 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
     /**
      * Method which provide the running action on the background thread
      *
-     * @param onActionPerformer action performer
+     * @param performer action performer
      */
-    protected void runOnBackground(@NonNull final OnActionPerformer onActionPerformer) {
-        Runnable runnable = new Runnable() {
+    protected void runOnBackground(@Nullable final OnActionPerformer performer) {
+        runOnBackground(0, performer);
+
+    }
+
+    /**
+     * Method which provide the running action on the background thread
+     *
+     * @param delay     delaying time (in seconds)
+     * @param performer action performer
+     */
+    protected void runOnBackground(int delay, @Nullable final OnActionPerformer performer) {
+        new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                onActionPerformer.onActionPerform();
+                if (performer != null) {
+                    performer.onActionPerform();
+                }
             }
-        };
-        new Thread(runnable).start();
+        }, delay * 1000);
     }
 
 
@@ -385,7 +397,7 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
          * to, or greater than the second.<p>
          */
         @Override
-        public int compare(BaseObject lhs, BaseObject rhs) {
+        public int compare(@NonNull final BaseObject lhs, @NonNull final BaseObject rhs) {
             return lhs.getPriority().compareTo(rhs.getPriority());
         }
     }

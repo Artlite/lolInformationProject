@@ -20,6 +20,14 @@ public interface OnAdapteredBaseCallback<T extends BaseObject> {
     void onItemClick(int index, @NonNull final T object);
 
     /**
+     * Method which provide the action when user doing the long press on item
+     *
+     * @param index  index
+     * @param object object
+     */
+    void onItemLongClick(int index, @NonNull final T object);
+
+    /**
      * Method which provide the action listening
      *
      * @param recycleEvent event

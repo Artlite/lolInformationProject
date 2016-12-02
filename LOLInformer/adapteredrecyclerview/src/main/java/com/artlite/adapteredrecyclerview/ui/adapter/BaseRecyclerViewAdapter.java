@@ -25,8 +25,8 @@ public class BaseRecyclerViewAdapter<T extends BaseObject> extends RecyclerView.
     private int oldSizeList;
     //ViewHolder management
     private int index = 0;
-    private List<Class> classes = new ArrayList<>();
-    private List<ViewHolder> viewHolders = new ArrayList<>();
+    private final List<Class> classes = new ArrayList<>();
+    private final List<ViewHolder> viewHolders = new ArrayList<>();
 
     /**
      * Default constructor
@@ -59,7 +59,7 @@ public class BaseRecyclerViewAdapter<T extends BaseObject> extends RecyclerView.
      * @see #onBindViewHolder(RecyclerView.ViewHolder, int)
      */
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@Nullable final ViewGroup parent, int viewType) {
         ViewHolder viewHolder = null;
         if (viewType < viewHolders.size()) {
             viewHolder = viewHolders.get(viewType);
@@ -112,7 +112,7 @@ public class BaseRecyclerViewAdapter<T extends BaseObject> extends RecyclerView.
      * @param position The position of the item within the adapter's data set.
      */
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(@Nullable final ViewHolder holder, int position) {
         //Get object
         T recyclerItem = listItems.get(position);
         //Set index
@@ -147,20 +147,20 @@ public class BaseRecyclerViewAdapter<T extends BaseObject> extends RecyclerView.
     /**
      * Method which provide the setting of the item action listener
      *
-     * @param itemActionListener
+     * @param callback
      */
-    public void setActionCallback(@Nullable final OnAdapteredBaseCallback itemActionListener) {
-        this.actionCallback = itemActionListener;
+    public void setActionCallback(@Nullable final OnAdapteredBaseCallback callback) {
+        this.actionCallback = callback;
         notifyDataSetChanged();
     }
 
     /**
      * Method which provide the setting of the lazy load callback
      *
-     * @param lazyLoadCallback lazy load callback
+     * @param callback lazy load callback
      */
-    public void setPagingCallback(@NonNull final OnAdapteredPagingCallback lazyLoadCallback) {
-        this.pagingCallback = lazyLoadCallback;
+    public void setPagingCallback(@NonNull final OnAdapteredPagingCallback callback) {
+        this.pagingCallback = callback;
     }
 
     /**

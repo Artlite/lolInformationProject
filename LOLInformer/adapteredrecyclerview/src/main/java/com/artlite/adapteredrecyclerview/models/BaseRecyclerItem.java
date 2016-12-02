@@ -50,6 +50,13 @@ public abstract class BaseRecyclerItem<T extends BaseObject> extends BaseRecycle
                     onItemClick();
                 }
             });
+            view.setOnLongClickListener(new OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    onItemLongClick();
+                    return true;
+                }
+            });
         }
     }
 
@@ -78,6 +85,30 @@ public abstract class BaseRecyclerItem<T extends BaseObject> extends BaseRecycle
     }
 
     /**
+     * Method which provide the item long click functional
+     */
+    protected final void onItemLongClick() {
+        if (callbackReference != null
+                && objectReference != null
+                && objectReference.get() != null
+                && callbackReference.get() != null) {
+            T object = objectReference.get();
+            onItemLongClick(object);
+            callbackReference.get().onItemLongClick(index, object);
+        }
+    }
+
+    /**
+     * Method which provide the item long click functional
+     * (just use for override)
+     *
+     * @param object object instance
+     */
+    protected final void onItemLongClick(@NonNull final T object) {
+        // TODO: Override this if needed
+    }
+
+    /**
      * Method which provide the setting of the object inside the view
      *
      * @param object current object
@@ -90,10 +121,12 @@ public abstract class BaseRecyclerItem<T extends BaseObject> extends BaseRecycle
     /**
      * Method which provide the setting of the item action listener
      *
-     * @param itemActionListener
+     * @param callback
      */
-    public void setItemActionListener(@Nullable final OnAdapteredBaseCallback itemActionListener) {
-        this.callbackReference = new WeakReference<OnAdapteredBaseCallback>(itemActionListener);
+    public void setItemActionListener(@Nullable final OnAdapteredBaseCallback callback) {
+        if (callback != null) {
+            this.callbackReference = new WeakReference<OnAdapteredBaseCallback>(callback);
+        }
     }
 
     /**

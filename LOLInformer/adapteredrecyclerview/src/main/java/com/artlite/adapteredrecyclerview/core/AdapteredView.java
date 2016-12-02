@@ -92,7 +92,7 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
      * @param context  current context
      * @param layoutID layout id
      */
-    private void inflateView(Context context, int layoutID) {
+    private void inflateView(@NonNull final Context context, int layoutID) {
         LayoutInflater inflater = LayoutInflater.from(context);
         this.baseView = inflater.inflate(layoutID, this);
     }
@@ -102,7 +102,8 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
      *
      * @param context
      */
-    private void onInitializeView(Context context, @Nullable AttributeSet attributeSet) {
+    private void onInitializeView(@NonNull final Context context,
+                                  @Nullable final AttributeSet attributeSet) {
         if (isInEditMode() == true) {
             return;
         }
@@ -127,7 +128,7 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
      * @param attrs   attributes
      * @param context context
      */
-    private void onInitiAttrs(@NonNull AttributeSet attrs, @NonNull Context context) {
+    private void onInitiAttrs(@NonNull final AttributeSet attrs, @NonNull final Context context) {
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.AdapteredView);
         if (Attributes.getInstance().isInit == false) {
             try {
@@ -174,7 +175,7 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
     /**
      * Method which provide the initialize of the recycler view
      */
-    public final void init(@NonNull RecyclerView.LayoutManager layoutManager) {
+    public final void init(@NonNull final RecyclerView.LayoutManager layoutManager) {
         this.init(layoutManager, null, null, null);
     }
 
@@ -183,8 +184,8 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
      *
      * @param layoutManager layout manager
      */
-    public final void init(@NonNull RecyclerView.LayoutManager layoutManager,
-                           @Nullable OnAdapteredBaseCallback callback) {
+    public final void init(@NonNull final RecyclerView.LayoutManager layoutManager,
+                           @Nullable final OnAdapteredBaseCallback callback) {
         this.init(layoutManager, callback, null, null);
     }
 
@@ -194,9 +195,9 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
      * @param layoutManager layout manager
      * @param callback      action callback
      */
-    public final void init(@NonNull RecyclerView.LayoutManager layoutManager,
-                           @Nullable OnAdapteredBaseCallback callback,
-                           @Nullable OnAdapteredRefreshCallback refreshCallback) {
+    public final void init(@NonNull final RecyclerView.LayoutManager layoutManager,
+                           @Nullable final OnAdapteredBaseCallback callback,
+                           @Nullable final OnAdapteredRefreshCallback refreshCallback) {
         this.init(layoutManager, callback, refreshCallback, null);
     }
 
@@ -207,10 +208,10 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
      * @param callback       action callback
      * @param pagingCallback paging callback
      */
-    public final void init(@NonNull RecyclerView.LayoutManager layoutManager,
-                           @Nullable OnAdapteredBaseCallback callback,
-                           @Nullable OnAdapteredRefreshCallback refreshCallback,
-                           @Nullable OnAdapteredPagingCallback pagingCallback) {
+    public final void init(@NonNull final RecyclerView.LayoutManager layoutManager,
+                           @Nullable final OnAdapteredBaseCallback callback,
+                           @Nullable final OnAdapteredRefreshCallback refreshCallback,
+                           @Nullable final OnAdapteredPagingCallback pagingCallback) {
         this.recyclerView.setLayoutManager(layoutManager);
         this.recyclerView.setHasFixedSize(true);
         //Set callback
@@ -363,7 +364,7 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
      * @param object object
      * @return index
      */
-    public final int getIndex(@Nullable T object) {
+    public final int getIndex(@Nullable final T object) {
         return this.recyclerView.getIndex(object);
     }
 
