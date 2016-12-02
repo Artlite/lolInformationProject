@@ -51,6 +51,11 @@ public class ChampionListFragment extends BaseFragment {
         }
 
         @Override
+        public void onItemLongClick(int index, @NonNull Champion object) {
+
+        }
+
+        @Override
         public void onActionReceived(@NonNull RecycleEvent recycleEvent, int index, @NonNull Champion object) {
 
         }
