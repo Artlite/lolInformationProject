@@ -16,7 +16,8 @@ import com.artlite.collapsinglayouttest.ui.views.fonted.FTextView;
  */
 public class ChampionRecycleItem extends BaseRecyclerItem<Champion> {
 
-    @FindViewBy(id = R.id.textview_main)
+//    @FindViewBy(id = R.id.textview_main)
+    @FindLibraryViewBy(name = "textview_main")
     private FTextView mainTextView;
     @FindViewBy(id = R.id.imageview_champion)
     private ImageView championImageView;

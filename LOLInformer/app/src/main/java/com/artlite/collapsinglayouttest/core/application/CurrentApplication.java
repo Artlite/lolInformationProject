@@ -5,6 +5,8 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 
+import com.artlite.adapteredrecyclerview.containers.LibrariesId;
+import com.artlite.collapsinglayouttest.R;
 import com.artlite.collapsinglayouttest.utils.AppLogger;
 
 /**
@@ -27,6 +29,7 @@ public final class CurrentApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        LibrariesId.create(R.id.class);
     }
 
     /**

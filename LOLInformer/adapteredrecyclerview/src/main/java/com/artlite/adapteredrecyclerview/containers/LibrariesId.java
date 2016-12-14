@@ -48,11 +48,13 @@ public final class LibrariesId {
      * Method which provide the creating data from the Android R class. Using for library,
      * and should be calling from {@link android.app.Application} instance in onCreate method
      *
-     * @param rCLass R.id.class for library
+     * @param classes R.id.class for library
      */
-    public static void create(@Nullable final Class rCLass) {
-        if (rCLass != null) {
-            getInstance().add(rCLass);
+    public static void create(@Nullable final Class... classes) {
+        if (classes != null) {
+            for (final Class rClass : classes) {
+                getInstance().add(rClass);
+            }
         }
     }
 
@@ -62,7 +64,10 @@ public final class LibrariesId {
      *
      * @param rClass instance of the R.id.class
      */
-    public final void add(@NonNull final Class rClass) {
+    public final void add(@Nullable final Class rClass) {
+        if (rClass == null) {
+            return;
+        }
         final Field[] declaredFields = rClass.getDeclaredFields();
         for (int i = 0; i < declaredFields.length; i++) {
             final Field declaredField = declaredFields[i];
