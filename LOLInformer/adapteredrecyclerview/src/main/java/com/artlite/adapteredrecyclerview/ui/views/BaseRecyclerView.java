@@ -11,12 +11,15 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 
-import com.artlite.adapteredrecyclerview.anotations.LinkViewBy;
+import com.artlite.adapteredrecyclerview.anotations.FindStringBy;
+import com.artlite.adapteredrecyclerview.anotations.FindViewBy;
+import com.artlite.adapteredrecyclerview.callbacks.OnAnnotationCallback;
+import com.artlite.adapteredrecyclerview.helpers.AnnotationHelper;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -104,23 +107,23 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
 
     /**
      * Method which provide the link interface from
-     * {@link com.artlite.adapteredrecyclerview.anotations.LinkViewBy}
+     * {@link FindViewBy}
      */
     private void onLinkFromAnnotations() {
-        final Field[] fields = getClass().getDeclaredFields();
-        if ((fields != null) && (fields.length > 0)) {
-            for (final Field field : fields) {
-                final LinkViewBy anotation = field.getAnnotation(LinkViewBy.class);
-                if (anotation != null) {
-                    try {
-                        final View view = findViewById(anotation.id());
-                        field.set(this, view);
-                    } catch (Exception e) {
-                        Log.e(TAG, e.toString());
+        final OnAnnotationCallback<BaseRecyclerView> callback =
+                new OnAnnotationCallback<BaseRecyclerView>() {
+                    @Override
+                    public void onFoundAnnotation(@NonNull BaseRecyclerView object,
+                                                  @NonNull Annotation annotation,
+                                                  @NonNull Field field) throws IllegalAccessException {
+                        if (annotation instanceof FindViewBy) {
+                            AnnotationHelper.annotateView(object, field, annotation);
+                        } else if (annotation instanceof FindStringBy) {
+                            AnnotationHelper.annotateString(object, getContext(), field, annotation);
+                        }
                     }
-                }
-            }
-        }
+                };
+        AnnotationHelper.annotate(this, callback, FindViewBy.class, FindStringBy.class);
     }
 
     /**
@@ -139,10 +142,10 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
     /**
      * Method which provide the interface linking
      *
-     * @deprecated for now added the annotation for link interface, use {@link LinkViewBy} for
+     * @warning it should be use only for library projects
+     * @information for now added the annotation for link interface, use {@link FindViewBy} for
      * injecting view
      */
-    @Deprecated
     protected void onLinkInterface() {
     }
 
@@ -260,7 +263,7 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
                     performer.onActionPerform();
                 }
             }
-        }, delay);
+        }, delay * 1000);
     }
 
     /**

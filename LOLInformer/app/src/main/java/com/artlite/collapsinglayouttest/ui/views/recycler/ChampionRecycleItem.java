@@ -3,28 +3,28 @@ package com.artlite.collapsinglayouttest.ui.views.recycler;
 import android.content.Context;
 import android.widget.ImageView;
 
-import com.artlite.adapteredrecyclerview.anotations.LinkViewBy;
+import com.artlite.adapteredrecyclerview.anotations.FindStringBy;
+import com.artlite.adapteredrecyclerview.anotations.FindViewBy;
 import com.artlite.adapteredrecyclerview.models.BaseRecyclerItem;
 import com.artlite.collapsinglayouttest.R;
 import com.artlite.collapsinglayouttest.model.Champion;
 import com.artlite.collapsinglayouttest.ui.views.fonted.FTextView;
-
-import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * Created by dlernatovich on 7/22/15.
  */
 public class ChampionRecycleItem extends BaseRecyclerItem<Champion> {
 
-    @LinkViewBy(id = R.id.textview_main)
+    @FindViewBy(id = R.id.textview_main)
     FTextView mainTextView;
-    @LinkViewBy(id = R.id.imageview_champion)
+    @FindViewBy(id = R.id.imageview_champion)
     ImageView championImageView;
-    @LinkViewBy(id = R.id.imageview_type)
+    @FindViewBy(id = R.id.imageview_type)
     ImageView typeImageView;
-    @LinkViewBy(id = R.id.textview_history)
+    @FindViewBy(id = R.id.textview_history)
     FTextView historyTextView;
+    @FindStringBy(id = R.string.aatrox_name)
+    String aatroxName;
 
     private Champion champion;
 
