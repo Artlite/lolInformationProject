@@ -2,6 +2,11 @@ package com.artlite.adapteredrecyclerview.anotations;
 
 import android.support.annotation.NonNull;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
 /**
  * {@link java.lang.annotation.Annotation} which provide the getting of the library view by name
  *
@@ -9,7 +14,8 @@ import android.support.annotation.NonNull;
  * use @FindLibraryViewBy(name = "textview_main")
  * Created by dlernatovich on 12/14/2016.
  */
-
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.FIELD)
 public @interface FindLibraryViewBy {
     @NonNull String name();
 }
