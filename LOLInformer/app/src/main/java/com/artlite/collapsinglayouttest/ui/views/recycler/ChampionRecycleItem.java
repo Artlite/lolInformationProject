@@ -23,8 +23,6 @@ public class ChampionRecycleItem extends BaseRecyclerItem<Champion> {
     ImageView typeImageView;
     @FindViewBy(id = R.id.textview_history)
     FTextView historyTextView;
-    @FindStringBy(id = R.string.aatrox_name)
-    String aatroxName;
 
     private Champion champion;
 
