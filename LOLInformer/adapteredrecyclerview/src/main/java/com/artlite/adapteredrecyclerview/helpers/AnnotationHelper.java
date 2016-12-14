@@ -9,7 +9,7 @@ import com.artlite.adapteredrecyclerview.anotations.FindLibraryViewBy;
 import com.artlite.adapteredrecyclerview.anotations.FindStringBy;
 import com.artlite.adapteredrecyclerview.anotations.FindViewBy;
 import com.artlite.adapteredrecyclerview.callbacks.OnAnnotationCallback;
-import com.artlite.adapteredrecyclerview.containers.LibrariesId;
+import com.artlite.adapteredrecyclerview.containers.AdapteredResourceContainer;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -116,7 +116,7 @@ public final class AnnotationHelper extends BaseHelper {
                 id = ((FindViewBy) annotation).id();
             } else if (annotation instanceof FindLibraryViewBy) {
                 final String name = ((FindLibraryViewBy) annotation).name();
-                id = LibrariesId.getInstance().get(name);
+                id = AdapteredResourceContainer.getInstance().get(name);
             }
             if (id != null) {
                 final View foundedView = view.findViewById(id);

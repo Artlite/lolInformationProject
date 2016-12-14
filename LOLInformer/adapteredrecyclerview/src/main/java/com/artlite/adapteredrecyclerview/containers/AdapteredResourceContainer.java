@@ -1,6 +1,5 @@
 package com.artlite.adapteredrecyclerview.containers;
 
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 
@@ -13,12 +12,12 @@ import java.util.Map;
  * Created by dlernatovich on 12/14/2016.
  */
 
-public final class LibrariesId {
+public final class AdapteredResourceContainer {
 
     /**
      * Instance
      */
-    private static LibrariesId instance;
+    private static AdapteredResourceContainer instance;
 
     /**
      * Identificators container
@@ -28,18 +27,18 @@ public final class LibrariesId {
     /**
      * Constructor which provide the
      */
-    private LibrariesId() {
+    private AdapteredResourceContainer() {
         this.ids = new HashMap<>();
     }
 
     /**
-     * Method which provide the getting instance of the {@link LibrariesId}
+     * Method which provide the getting instance of the {@link AdapteredResourceContainer}
      *
-     * @return instance of the {@link LibrariesId}
+     * @return instance of the {@link AdapteredResourceContainer}
      */
-    public static LibrariesId getInstance() {
+    public static AdapteredResourceContainer getInstance() {
         if (instance == null) {
-            instance = new LibrariesId();
+            instance = new AdapteredResourceContainer();
         }
         return instance;
     }
