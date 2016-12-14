@@ -3,6 +3,7 @@ package com.artlite.collapsinglayouttest.ui.views.recycler;
 import android.content.Context;
 import android.widget.ImageView;
 
+import com.artlite.adapteredrecyclerview.anotations.FindLibraryViewBy;
 import com.artlite.adapteredrecyclerview.anotations.FindStringBy;
 import com.artlite.adapteredrecyclerview.anotations.FindViewBy;
 import com.artlite.adapteredrecyclerview.models.BaseRecyclerItem;

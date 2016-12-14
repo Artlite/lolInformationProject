@@ -5,9 +5,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.artlite.adapteredrecyclerview.anotations.FindLibraryViewBy;
 import com.artlite.adapteredrecyclerview.anotations.FindStringBy;
 import com.artlite.adapteredrecyclerview.anotations.FindViewBy;
 import com.artlite.adapteredrecyclerview.callbacks.OnAnnotationCallback;
+import com.artlite.adapteredrecyclerview.containers.LibrariesId;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -109,8 +111,14 @@ public final class AnnotationHelper extends BaseHelper {
                                     @Nullable final Annotation annotation) {
         final String methodName = "void annotateView(object, view, field, annotation)";
         if (validate(object, view, field, annotation)) {
+            Integer id = null;
             if (annotation instanceof FindViewBy) {
-                final int id = ((FindViewBy) annotation).id();
+                id = ((FindViewBy) annotation).id();
+            } else if (annotation instanceof FindLibraryViewBy) {
+                final String name = ((FindLibraryViewBy) annotation).name();
+                id = LibrariesId.getInstance().get(name);
+            }
+            if (id != null) {
                 final View foundedView = view.findViewById(id);
                 if (view != null) {
                     try {

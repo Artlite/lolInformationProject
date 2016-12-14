@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.os.Handler;
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 
+import com.artlite.adapteredrecyclerview.anotations.FindLibraryViewBy;
 import com.artlite.adapteredrecyclerview.anotations.FindStringBy;
 import com.artlite.adapteredrecyclerview.anotations.FindViewBy;
 import com.artlite.adapteredrecyclerview.callbacks.OnAnnotationCallback;
@@ -120,10 +122,13 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
                             AnnotationHelper.annotateView(object, field, annotation);
                         } else if (annotation instanceof FindStringBy) {
                             AnnotationHelper.annotateString(object, getContext(), field, annotation);
+                        } else if (annotation instanceof FindLibraryViewBy) {
+                            AnnotationHelper.annotateView(object, field, annotation);
                         }
                     }
                 };
-        AnnotationHelper.annotate(this, callback, FindViewBy.class, FindStringBy.class);
+        AnnotationHelper.annotate(this, callback, FindViewBy.class, FindStringBy.class,
+                FindLibraryViewBy.class);
     }
 
     /**
