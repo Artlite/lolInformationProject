@@ -3,6 +3,7 @@ package com.artlite.collapsinglayouttest.ui.views.recycler;
 import android.content.Context;
 import android.widget.ImageView;
 
+import com.artlite.adapteredrecyclerview.anotations.LinkViewBy;
 import com.artlite.adapteredrecyclerview.models.BaseRecyclerItem;
 import com.artlite.collapsinglayouttest.R;
 import com.artlite.collapsinglayouttest.model.Champion;
@@ -16,13 +17,13 @@ import butterknife.InjectView;
  */
 public class ChampionRecycleItem extends BaseRecyclerItem<Champion> {
 
-    @InjectView(R.id.textview_main)
+    @LinkViewBy(id = R.id.textview_main)
     FTextView mainTextView;
-    @InjectView(R.id.imageview_champion)
+    @LinkViewBy(id = R.id.imageview_champion)
     ImageView championImageView;
-    @InjectView(R.id.imageview_type)
+    @LinkViewBy(id = R.id.imageview_type)
     ImageView typeImageView;
-    @InjectView(R.id.textview_history)
+    @LinkViewBy(id = R.id.textview_history)
     FTextView historyTextView;
 
     private Champion champion;
@@ -34,11 +35,6 @@ public class ChampionRecycleItem extends BaseRecyclerItem<Champion> {
     @Override
     protected int getLayoutId() {
         return R.layout.recycle_item_main;
-    }
-
-    @Override
-    protected void onLinkInterface() {
-        ButterKnife.inject(this);
     }
 
     @Override

@@ -11,9 +11,13 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 
+import com.artlite.adapteredrecyclerview.anotations.LinkViewBy;
+
+import java.lang.reflect.Field;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -23,6 +27,7 @@ import java.util.TimerTask;
 public abstract class BaseRecyclerView extends FrameLayout implements View.OnClickListener {
 
     private static final String TAG = BaseRecyclerView.class.getSimpleName();
+    protected static int K_DEFAULT_ID = Integer.MIN_VALUE;
 
     /**
      * Interface which provide the doing some action inside the Handler thread
@@ -30,8 +35,6 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
     protected interface OnActionPerformer {
         void onActionPerform();
     }
-
-    protected static int K_DEFAULT_ID = Integer.MIN_VALUE;
 
     private final Handler MAIN_THREAD_HANDLER = new Handler();
 
@@ -62,6 +65,7 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
 
         inflateView(context, getLayoutId());
         if (baseView != null) {
+            onLinkFromAnnotations();
             onLinkInterface();
             if (attrs != null) {
                 onAttributeInitialize(attrs);
@@ -99,6 +103,27 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
     }
 
     /**
+     * Method which provide the link interface from
+     * {@link com.artlite.adapteredrecyclerview.anotations.LinkViewBy}
+     */
+    private void onLinkFromAnnotations() {
+        final Field[] fields = getClass().getDeclaredFields();
+        if ((fields != null) && (fields.length > 0)) {
+            for (final Field field : fields) {
+                final LinkViewBy anotation = field.getAnnotation(LinkViewBy.class);
+                if (anotation != null) {
+                    try {
+                        final View view = findViewById(anotation.id());
+                        field.set(this, view);
+                    } catch (Exception e) {
+                        Log.e(TAG, e.toString());
+                    }
+                }
+            }
+        }
+    }
+
+    /**
      * Method which provide the listener initializing
      */
     protected abstract void onCallbacksInitialize();
@@ -113,8 +138,13 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
 
     /**
      * Method which provide the interface linking
+     *
+     * @deprecated for now added the annotation for link interface, use {@link LinkViewBy} for
+     * injecting view
      */
-    protected abstract void onLinkInterface();
+    @Deprecated
+    protected void onLinkInterface() {
+    }
 
     /**
      * Method which provide the getting of the clicked view ID
