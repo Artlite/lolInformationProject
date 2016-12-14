@@ -3,7 +3,6 @@ package com.artlite.adapteredrecyclerview.helpers;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 
 import com.artlite.adapteredrecyclerview.anotations.FindStringBy;
@@ -72,6 +71,7 @@ public final class AnnotationHelper extends BaseHelper {
                                                    @NonNull final Field field) {
         final String methodName = "void execute(object, callback, annotation, field)";
         try {
+            field.setAccessible(true);
             callback.onFoundAnnotation(object, annotation, field);
         } catch (Exception ex) {
             log(TAG, methodName, ex, null);
@@ -142,6 +142,7 @@ public final class AnnotationHelper extends BaseHelper {
                 final int id = ((FindStringBy) annotation).id();
                 try {
                     final String text = context.getString(id);
+                    field.setAccessible(true);
                     field.set(object, text);
                 } catch (Exception ex) {
                     log(TAG, methodName, ex, null);
