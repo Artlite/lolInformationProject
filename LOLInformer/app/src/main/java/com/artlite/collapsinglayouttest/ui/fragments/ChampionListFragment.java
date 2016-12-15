@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredBaseCallback;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredRefreshCallback;
+import com.artlite.adapteredrecyclerview.containers.AdapteredResourceContainer;
 import com.artlite.adapteredrecyclerview.core.AdapteredView;
 import com.artlite.adapteredrecyclerview.events.RecycleEvent;
 import com.artlite.collapsinglayouttest.R;
@@ -44,22 +45,24 @@ public class ChampionListFragment extends BaseFragment {
     /**
      * Callback which provide the action performing
      */
-    private final OnAdapteredBaseCallback<Champion> recyclerCallback = new OnAdapteredBaseCallback<Champion>() {
-        @Override
-        public void onItemClick(int index, @NonNull Champion object) {
-            championView.onChampionClick(object);
-        }
+    private final OnAdapteredBaseCallback<Champion> recyclerCallback =
+            new OnAdapteredBaseCallback<Champion>() {
+                @Override
+                public void onItemClick(int index, @NonNull Champion object) {
+                    championView.onChampionClick(object);
+                }
 
-        @Override
-        public void onItemLongClick(int index, @NonNull Champion object) {
+                @Override
+                public void onItemLongClick(int index, @NonNull Champion object) {
 
-        }
+                }
 
-        @Override
-        public void onActionReceived(@NonNull RecycleEvent recycleEvent, int index, @NonNull Champion object) {
+                @Override
+                public void onActionReceived(@NonNull RecycleEvent recycleEvent,
+                                             int index, @NonNull Champion object) {
 
-        }
-    };
+                }
+            };
 
     /**
      * Callback which provide the listening of the refresh callback
