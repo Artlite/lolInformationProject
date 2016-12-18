@@ -7,7 +7,7 @@ android {
     defaultConfig {
         applicationId "com.artlite.lolinformer"
         minSdkVersion 15
-        targetSdkVersion 22
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
     }
@@ -21,9 +21,8 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.jakewharton:butterknife:5.1.1'
-    compile 'com.android.support:support-v4:+'
-    compile 'com.android.support:cardview-v7:+'
-    compile 'com.android.support:design:+'
+    compile 'com.android.support:support-v4:23.0.0'
+    compile 'com.android.support:cardview-v7:23.0.0'
+    compile 'com.android.support:design:23.0.0'
     compile project(':adapteredrecyclerview')
 }

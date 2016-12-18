@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
 
+import com.artlite.adapteredrecyclerview.anotations.FindViewBy;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredBaseCallback;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredRefreshCallback;
 import com.artlite.adapteredrecyclerview.containers.AdapteredResourceContainer;
@@ -21,15 +22,13 @@ import com.artlite.collapsinglayouttest.ui.fragments.abs.BaseFragment;
 
 import java.util.List;
 
-import butterknife.InjectView;
-
 /**
  * Created by dlernatovich on 7/22/15.
  */
 public class ChampionListFragment extends BaseFragment {
 
-    @InjectView(R.id.main_recycler_view)
-    AdapteredView recyclerView;
+    @FindViewBy(id = R.id.main_recycler_view)
+    private AdapteredView recyclerView;
 
     @Override
     protected int getLayoutId() {
@@ -38,7 +37,9 @@ public class ChampionListFragment extends BaseFragment {
 
     @Override
     protected void onCreateFragment(View containerView) {
-        recyclerView.init(championPresenter.getLayoutManager(getContext()), recyclerCallback, refreshCallback);
+        recyclerView.init(championPresenter.getLayoutManager(getContext()), recyclerCallback,
+                refreshCallback);
+        recyclerView.setIsNeedResfresh(false);
         championView.onCreateView();
     }
 

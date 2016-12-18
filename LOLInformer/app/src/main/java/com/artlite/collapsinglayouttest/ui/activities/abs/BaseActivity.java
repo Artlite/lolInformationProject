@@ -8,7 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.View;
 
-import butterknife.ButterKnife;
+import com.artlite.adapteredrecyclerview.helpers.AdapteredInjector;
+
 
 /**
  * Created by dlernatovich on 7/22/15.
@@ -21,7 +22,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
-        ButterKnife.inject(this);
+        AdapteredInjector.inject(this);
         onCreateActivity();
     }
 

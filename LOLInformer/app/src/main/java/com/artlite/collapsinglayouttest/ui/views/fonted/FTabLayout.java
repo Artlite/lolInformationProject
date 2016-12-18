@@ -44,7 +44,7 @@ public class FTabLayout extends android.support.design.widget.TabLayout {
             return;
         }
 
-        currentTypeface = getTypeFaceManager().getBarriolFont();
+        currentTypeface = getTypeFaceManager().getBarriolBoldFont();
     }
 
     /**

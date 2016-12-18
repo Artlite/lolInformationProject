@@ -19,6 +19,7 @@ import com.artlite.adapteredrecyclerview.anotations.FindLibraryViewBy;
 import com.artlite.adapteredrecyclerview.anotations.FindStringBy;
 import com.artlite.adapteredrecyclerview.anotations.FindViewBy;
 import com.artlite.adapteredrecyclerview.callbacks.OnAnnotationCallback;
+import com.artlite.adapteredrecyclerview.helpers.AdapteredInjector;
 import com.artlite.adapteredrecyclerview.helpers.AnnotationHelper;
 
 import java.lang.annotation.Annotation;
@@ -112,23 +113,7 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
      * {@link FindViewBy}
      */
     private void onLinkFromAnnotations() {
-        final OnAnnotationCallback<BaseRecyclerView> callback =
-                new OnAnnotationCallback<BaseRecyclerView>() {
-                    @Override
-                    public void onFoundAnnotation(@NonNull BaseRecyclerView object,
-                                                  @NonNull Annotation annotation,
-                                                  @NonNull Field field) throws IllegalAccessException {
-                        if (annotation instanceof FindViewBy) {
-                            AnnotationHelper.annotateView(object, field, annotation);
-                        } else if (annotation instanceof FindStringBy) {
-                            AnnotationHelper.annotateString(object, getContext(), field, annotation);
-                        } else if (annotation instanceof FindLibraryViewBy) {
-                            AnnotationHelper.annotateView(object, field, annotation);
-                        }
-                    }
-                };
-        AnnotationHelper.annotate(this, callback, FindViewBy.class, FindStringBy.class,
-                FindLibraryViewBy.class);
+        AdapteredInjector.inject(this);
     }
 
     /**

@@ -4,18 +4,17 @@ import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
 
+import com.artlite.adapteredrecyclerview.anotations.FindViewBy;
 import com.artlite.collapsinglayouttest.R;
 import com.artlite.collapsinglayouttest.ui.fragments.abs.BaseFragment;
-
-import butterknife.InjectView;
 
 /**
  * Created by dlernatovich on 7/22/15.
  */
 public class AboutFragment extends BaseFragment {
 
-    @InjectView(R.id.textview_about_information)
-    TextView informationTextView;
+    @FindViewBy(id = R.id.textview_about_information)
+    private TextView informationTextView;
 
     /**
      * Method which provide the getting of the current layout ID

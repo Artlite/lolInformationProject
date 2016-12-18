@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import butterknife.ButterKnife;
+import com.artlite.adapteredrecyclerview.helpers.AdapteredInjector;
 
 /**
  * Created by dlernatovich on 7/22/15.
@@ -34,7 +34,7 @@ public abstract class BaseView extends LinearLayout implements View.OnClickListe
     private void onInitializeView(Context context) {
         inflateView(context, getLayoutId());
         if (baseView != null) {
-            ButterKnife.inject(this, baseView);
+            AdapteredInjector.inject(this);
         }
 
         onCreateView();

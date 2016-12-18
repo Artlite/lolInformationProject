@@ -1,10 +1,16 @@
 package com.artlite.adapteredrecyclerview.helpers;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.view.View;
 
+import com.artlite.adapteredrecyclerview.anotations.FindColorBy;
+import com.artlite.adapteredrecyclerview.anotations.FindDrawableBy;
 import com.artlite.adapteredrecyclerview.anotations.FindLibraryViewBy;
 import com.artlite.adapteredrecyclerview.anotations.FindStringBy;
 import com.artlite.adapteredrecyclerview.anotations.FindViewBy;
@@ -119,13 +125,11 @@ public final class AnnotationHelper extends BaseHelper {
                 id = AdapteredResourceContainer.getInstance().get(name);
             }
             if (id != null) {
-                final View foundedView = view.findViewById(id);
-                if (view != null) {
-                    try {
-                        field.set(object, foundedView);
-                    } catch (Exception ex) {
-                        log(TAG, methodName, ex, null);
-                    }
+                try {
+                    final View foundedView = view.findViewById(id);
+                    field.set(object, foundedView);
+                } catch (Exception ex) {
+                    log(TAG, methodName, ex, null);
                 }
             }
         }
@@ -150,8 +154,122 @@ public final class AnnotationHelper extends BaseHelper {
                 final int id = ((FindStringBy) annotation).id();
                 try {
                     final String text = context.getString(id);
-                    field.setAccessible(true);
                     field.set(object, text);
+                } catch (Exception ex) {
+                    log(TAG, methodName, ex, null);
+                }
+            }
+        }
+    }
+
+    /**
+     * Method which provide the setting of the {@link Field} from
+     * {@link com.artlite.adapteredrecyclerview.anotations.FindDrawableBy}
+     *
+     * @param object     instance of owner
+     * @param context    instance of {@link Context}
+     * @param field      instance of {@link Field}
+     * @param annotation instance of {@link Annotation}
+     */
+    public static void annotateDrawable(@Nullable final Object object,
+                                        @Nullable final Context context,
+                                        @Nullable final Field field,
+                                        @Nullable final Annotation annotation) {
+        final String methodName = "void annotateString(object, context, field, annotation)";
+        if (validate(context, field, annotation)) {
+            if (annotation instanceof FindDrawableBy) {
+                final int id = ((FindDrawableBy) annotation).id();
+                try {
+                    final Drawable drawable = context.getResources().getDrawable(id);
+                    field.set(object, drawable);
+                } catch (Exception ex) {
+                    log(TAG, methodName, ex, null);
+                }
+            }
+        }
+    }
+
+    /**
+     * Method which provide the setting of the {@link Field} from
+     * {@link com.artlite.adapteredrecyclerview.anotations.FindColorBy}
+     *
+     * @param object     instance of owner
+     * @param context    instance of {@link Context}
+     * @param field      instance of {@link Field}
+     * @param annotation instance of {@link Annotation}
+     */
+    public static void annotateColor(@Nullable final Object object,
+                                     @Nullable final Context context,
+                                     @Nullable final Field field,
+                                     @Nullable final Annotation annotation) {
+        final String methodName = "void annotateString(object, context, field, annotation)";
+        if (validate(context, field, annotation)) {
+            if (annotation instanceof FindColorBy) {
+                final int id = ((FindColorBy) annotation).id();
+                try {
+                    final ColorStateList drawable = context.getResources().getColorStateList(id);
+                    field.set(object, drawable);
+                } catch (Exception ex) {
+                    log(TAG, methodName, ex, null);
+                }
+            }
+        }
+    }
+
+    /**
+     * Method which provide the annotate of activity
+     *
+     * @param activity   activity instance
+     * @param field      field
+     * @param annotation annotation
+     */
+    public static void annotateActivity(@Nullable final Activity activity,
+                                        @Nullable final Field field,
+                                        @Nullable final Annotation annotation) {
+        final String methodName = "void annotateView(object, view, field, annotation)";
+        if (validate(activity, field, annotation)) {
+            Integer id = null;
+            if (annotation instanceof FindViewBy) {
+                id = ((FindViewBy) annotation).id();
+            } else if (annotation instanceof FindLibraryViewBy) {
+                final String name = ((FindLibraryViewBy) annotation).name();
+                id = AdapteredResourceContainer.getInstance().get(name);
+            }
+            if (id != null) {
+                try {
+                    final View foundedView = activity.findViewById(id);
+                    field.set(activity, foundedView);
+                } catch (Exception ex) {
+                    log(TAG, methodName, ex, null);
+                }
+            }
+        }
+    }
+
+    /**
+     * Method which provide the annotate of activity
+     *
+     * @param fragment   activity instance
+     * @param field      field
+     * @param annotation annotation
+     */
+    public static void annotateFragment(@Nullable final Fragment fragment,
+                                        @Nullable final View fragmentView,
+                                        @Nullable final Field field,
+                                        @Nullable final Annotation annotation) {
+        final String methodName = "void annotateView(object, view, field, annotation)";
+        if (validate(fragment, field, annotation)) {
+            Integer id = null;
+            if (annotation instanceof FindViewBy) {
+                id = ((FindViewBy) annotation).id();
+            } else if (annotation instanceof FindLibraryViewBy) {
+                final String name = ((FindLibraryViewBy) annotation).name();
+                id = AdapteredResourceContainer.getInstance().get(name);
+            }
+            if (id != null) {
+                try {
+                    final View foundedView = fragmentView.findViewById(id);
+                    field.set(fragment, foundedView);
                 } catch (Exception ex) {
                     log(TAG, methodName, ex, null);
                 }

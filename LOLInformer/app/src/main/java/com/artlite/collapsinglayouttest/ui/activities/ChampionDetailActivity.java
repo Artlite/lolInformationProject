@@ -3,6 +3,7 @@ package com.artlite.collapsinglayouttest.ui.activities;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.artlite.adapteredrecyclerview.anotations.FindViewBy;
 import com.artlite.collapsinglayouttest.R;
 import com.artlite.collapsinglayouttest.core.managers.Managers;
 import com.artlite.collapsinglayouttest.model.Champion;
@@ -10,23 +11,21 @@ import com.artlite.collapsinglayouttest.ui.activities.abs.BaseActivity;
 import com.artlite.collapsinglayouttest.ui.custom.RoundedImageView;
 import com.artlite.collapsinglayouttest.ui.views.fonted.FTextView;
 
-import butterknife.InjectView;
-
 /**
  * Created by dlernatovich on 7/23/15.
  */
 public class ChampionDetailActivity extends BaseActivity {
 
-    @InjectView(R.id.championImageView)
-    RoundedImageView championImageView;
-    @InjectView(R.id.textview_name)
-    FTextView nameTextView;
-    @InjectView(R.id.textview_history)
-    FTextView historyTextView;
-    @InjectView(R.id.imageview_type)
-    ImageView typeImageView;
-    @InjectView(R.id.button_back)
-    View buttonBack;
+    @FindViewBy(id = R.id.championImageView)
+    private RoundedImageView championImageView;
+    @FindViewBy(id = R.id.textview_name)
+    private FTextView nameTextView;
+    @FindViewBy(id = R.id.textview_history)
+    private FTextView historyTextView;
+    @FindViewBy(id = R.id.imageview_type)
+    private ImageView typeImageView;
+    @FindViewBy(id = R.id.button_back)
+    private View buttonBack;
 
     protected Champion champion;
 

@@ -1,11 +1,17 @@
 package com.artlite.collapsinglayouttest.model;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 
+import com.artlite.adapteredrecyclerview.anotations.FindColorBy;
+import com.artlite.adapteredrecyclerview.anotations.FindDrawableBy;
+import com.artlite.adapteredrecyclerview.anotations.FindStringBy;
+import com.artlite.adapteredrecyclerview.helpers.AdapteredInjector;
 import com.artlite.adapteredrecyclerview.models.BaseObject;
 import com.artlite.adapteredrecyclerview.models.BaseRecyclerItem;
 import com.artlite.collapsinglayouttest.R;
@@ -40,6 +46,7 @@ public class Champion extends AbstractModel {
 
     @Override
     public BaseRecyclerItem getRecyclerItem(Context context) {
+        AdapteredInjector.inject(this, context);
         return new ChampionRecycleItem(context);
     }
 

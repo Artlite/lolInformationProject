@@ -8,9 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.artlite.adapteredrecyclerview.helpers.AdapteredInjector;
 import com.artlite.collapsinglayouttest.R;
 
-import butterknife.ButterKnife;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,7 +27,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         containerView = inflater.inflate(getLayoutId(), container, false);
-        ButterKnife.inject(this, containerView);
+        AdapteredInjector.inject(this, containerView);
         onCreateFragment(containerView);
         return containerView;
     }
