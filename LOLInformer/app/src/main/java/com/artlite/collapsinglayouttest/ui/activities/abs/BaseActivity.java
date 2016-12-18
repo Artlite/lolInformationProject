@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.artlite.adapteredrecyclerview.helpers.AdapteredInjector;
@@ -64,6 +65,18 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     protected void setOnClickListeners(View... views) {
         for (View view : views) {
             view.setOnClickListener(this);
+        }
+    }
+
+    /**
+     * Bug found in some when toolbar is half-way collapsed and a touch is made on image (some phones only)
+     */
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        try {
+            return super.dispatchTouchEvent(ev);
+        } catch (Exception e) {
+            return false;
         }
     }
 
