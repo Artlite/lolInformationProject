@@ -113,7 +113,9 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
         this.refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                refreshCallback.onRefreshData();
+                if (refreshCallback != null) {
+                    refreshCallback.onRefreshData();
+                }
             }
         });
         if (attributeSet != null) {
