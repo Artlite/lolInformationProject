@@ -454,7 +454,13 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
          */
         @Override
         public int compare(@NonNull final BaseObject lhs, @NonNull final BaseObject rhs) {
-            return lhs.getPriority().compareTo(rhs.getPriority());
+            if (lhs.getPriority().ordinal() < rhs.getPriority().ordinal()) {
+                return 1;
+            } else if (lhs.getPriority().ordinal() == rhs.getPriority().ordinal()) {
+                return 0;
+            } else {
+                return -1;
+            }
         }
     }
 
