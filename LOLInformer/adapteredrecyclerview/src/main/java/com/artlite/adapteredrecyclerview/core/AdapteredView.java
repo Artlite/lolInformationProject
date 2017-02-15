@@ -259,16 +259,6 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
     //MANAGEMENT METHODS
 
     /**
-     * Method which provide the sorting of the objects
-     *
-     * @param comparator comparartor
-     * @param isReverse  is need reverse
-     */
-    public final void sort(@NonNull final Comparator<T> comparator, final boolean isReverse) {
-        this.recyclerView.sort(comparator, isReverse);
-    }
-
-    /**
      * Method which provide the object setting
      *
      * @param object object to set
@@ -387,6 +377,36 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
      */
     public int getListSize() {
         return (getListItems() != null) ? getListItems().size() : 0;
+    }
+
+    /**
+     * Method which provide the object sorting by priority
+     */
+    public void sort() {
+        if (recyclerView != null) {
+            recyclerView.sort();
+        }
+    }
+
+    /**
+     * Method which provide the sorting of the objects
+     *
+     * @param comparator comparartor
+     * @param isReverse  is need reverse
+     */
+    public <K extends Comparator> void sort(@NonNull final K comparator, final boolean isReverse) {
+        if (recyclerView != null) {
+            recyclerView.sort(comparator, isReverse);
+        }
+    }
+
+    /**
+     * Method which provide the notifying of the data set changed
+     */
+    public void notifyDataSetChanged() {
+        if (recyclerView != null) {
+            recyclerView.notifyDataSetChanged();
+        }
     }
 
     /**

@@ -5,7 +5,6 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
 import android.util.Log;
 
@@ -44,6 +43,10 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
     private BaseRecyclerViewAdapter innerAdapter;
     private List<T> innerObjects;
 
+    //==============================================================================================
+    //                                      CONSTRUCTORS
+    //==============================================================================================
+
     /**
      * Constructor with context
      *
@@ -80,6 +83,10 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
         onCreate(context);
     }
 
+    //==============================================================================================
+    //                                      ON CREATE
+    //==============================================================================================
+
     /**
      * Method which provide the action when RecyclerView is creating
      *
@@ -96,13 +103,24 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
         setHasFixedSize(true);
     }
 
+    //==============================================================================================
+    //                                      SORT
+    //==============================================================================================
+
+    /**
+     * Method which provide the object sorting by priority
+     */
+    public void sort() {
+        sort(new PriorityComparator(), false);
+    }
+
     /**
      * Method which provide the sorting of the objects
      *
      * @param comparator comparartor
      * @param isReverse  is need reverse
      */
-    public void sort(@NonNull final Comparator<T> comparator, final boolean isReverse) {
+    public <K extends Comparator> void sort(@NonNull final K comparator, final boolean isReverse) {
         runOnBackground(new OnActionPerformer() {
             @Override
             public void onActionPerform() {
@@ -115,6 +133,21 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
             }
         });
     }
+
+    /**
+     * Method which provide the sorting by priority
+     *
+     * @param objectList priority list
+     */
+    private void sortByPriority(@Nullable final List<T> objectList) {
+        if (objectList != null) {
+            Collections.sort(objectList, new PriorityComparator());
+        }
+    }
+
+    //==============================================================================================
+    //                                          SET
+    //==============================================================================================
 
     /**
      * Method which provide the object setting
@@ -144,6 +177,10 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
         }
     }
 
+    //==============================================================================================
+    //                                          ADD
+    //==============================================================================================
+
     /**
      * Method which provide the object adding
      *
@@ -171,6 +208,10 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
             notifyDataSetChanged();
         }
     }
+
+    //==============================================================================================
+    //                                          DELETE
+    //==============================================================================================
 
     /**
      * Method which provide the item deleting
@@ -208,6 +249,10 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
         }
     }
 
+    //==============================================================================================
+    //                                          CLEAR
+    //==============================================================================================
+
     /**
      * Method which provide the list clearing
      */
@@ -216,6 +261,10 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
         innerAdapter.setOldSizeList(0);
         notifyDataSetChanged();
     }
+
+    //==============================================================================================
+    //                                          UPDATE
+    //==============================================================================================
 
     /**
      * Method which provide the update object view by object
@@ -240,6 +289,10 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
             getAdapter().notifyItemChanged(index);
         }
     }
+
+    //==============================================================================================
+    //                                          GET
+    //==============================================================================================
 
     /**
      * Method which provide the getting of the item by index
@@ -275,6 +328,20 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
     }
 
     /**
+     * Method which provide the getting of the items list
+     *
+     * @return current items list
+     */
+    @NonNull
+    public List<T> getListItems() {
+        return innerObjects;
+    }
+
+    //==============================================================================================
+    //                                      NOTIFY
+    //==============================================================================================
+
+    /**
      * Method which provide the notifying of the data set changed
      */
     public void notifyDataSetChanged() {
@@ -288,15 +355,9 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
         });
     }
 
-    /**
-     * Method which provide the getting of the items list
-     *
-     * @return current items list
-     */
-    @NonNull
-    public List<T> getListItems() {
-        return innerObjects;
-    }
+    //==============================================================================================
+    //                                      CALLBACKS
+    //==============================================================================================
 
     /**
      * Method which provide the setting of the item action listener
@@ -320,16 +381,9 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
         }
     }
 
-    /**
-     * Method which provide the sorting by priority
-     *
-     * @param objectList priority list
-     */
-    private void sortByPriority(@Nullable final List<T> objectList) {
-        if (objectList != null) {
-            Collections.sort(objectList, new PriorityComparator());
-        }
-    }
+    //==============================================================================================
+    //                                          THREADS
+    //==============================================================================================
 
     /**
      * Method which provide the doing action on UI thread after the delaying time
@@ -385,7 +439,9 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
     }
 
 
-    //COMPARATORS
+    //==============================================================================================
+    //                                      COMPARATORS
+    //==============================================================================================
 
     /**
      * Priority comparator class
