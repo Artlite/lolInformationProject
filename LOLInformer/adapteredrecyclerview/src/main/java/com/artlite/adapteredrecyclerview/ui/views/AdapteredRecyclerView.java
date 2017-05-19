@@ -29,6 +29,9 @@ import java.util.TimerTask;
  */
 public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
 
+    /**
+     * {@link String} constants of the tag
+     */
     private static final String TAG = "AdapteredRecyclerView";
 
     /**
@@ -38,9 +41,19 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
         void onActionPerform();
     }
 
+    /**
+     * Instance of the {@link Handler}
+     */
     private final Handler MAIN_THREAD_HANDLER = new Handler();
 
+    /**
+     * Instance of the {@link BaseRecyclerViewAdapter}
+     */
     private BaseRecyclerViewAdapter innerAdapter;
+
+    /**
+     * Instance of the {@link List} of the objects
+     */
     private List<T> innerObjects;
 
     //==============================================================================================
@@ -335,6 +348,38 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
     @NonNull
     public List<T> getListItems() {
         return innerObjects;
+    }
+
+    /**
+     * Method which provide the getting of the {@link List} of the selected {@link BaseObject}
+     *
+     * @return instance of the selected {@link List} of the {@link BaseObject}
+     */
+    @NonNull
+    public List<T> getSelectedItems() {
+        final List<T> result = new ArrayList<>();
+        for (T object : innerObjects) {
+            if (object.isSelected()) {
+                result.add(object);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Method which provide the getting of the {@link List} of the deselected {@link BaseObject}
+     *
+     * @return instance of the deselected {@link List} of the {@link BaseObject}
+     */
+    @NonNull
+    public List<T> getDeselectedItems() {
+        final List<T> result = new ArrayList<>();
+        for (T object : innerObjects) {
+            if (!object.isSelected()) {
+                result.add(object);
+            }
+        }
+        return result;
     }
 
     //==============================================================================================

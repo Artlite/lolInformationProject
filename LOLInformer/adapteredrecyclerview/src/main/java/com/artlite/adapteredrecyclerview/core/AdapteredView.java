@@ -24,6 +24,7 @@ import com.artlite.adapteredrecyclerview.helpers.ColorHelper;
 import com.artlite.adapteredrecyclerview.models.BaseObject;
 import com.artlite.adapteredrecyclerview.ui.views.AdapteredRecyclerView;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -499,6 +500,32 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
             refreshLayout.setProgressBackgroundColorSchemeColor(
                     backgroundColor.getColorForState(focusedState, android.R.color.white));
         }
+    }
+
+    /**
+     * Method which provide the getting of the {@link List} of the selected {@link BaseObject}
+     *
+     * @return instance of the selected {@link List} of the {@link BaseObject}
+     */
+    @NonNull
+    public List<T> getSelectedItems() {
+        if (recyclerView != null) {
+            return recyclerView.getSelectedItems();
+        }
+        return new ArrayList<>();
+    }
+
+    /**
+     * Method which provide the getting of the {@link List} of the deselected {@link BaseObject}
+     *
+     * @return instance of the deselected {@link List} of the {@link BaseObject}
+     */
+    @NonNull
+    public List<T> getDeselectedItems() {
+        if (recyclerView != null) {
+            return recyclerView.getDeselectedItems();
+        }
+        return new ArrayList<>();
     }
 }
 

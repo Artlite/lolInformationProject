@@ -38,14 +38,27 @@ public abstract class BaseObject implements Parcelable {
         HIGH
     }
 
+    /**
+     * {@link Priority} for the {@link BaseObject}
+     */
     private Priority priority = Priority.MIDDLE;
+
+    /**
+     * {@link Integer} value of the index
+     */
     private int index;
+
+    /**
+     * {@link Boolean} value value which define if object is selected
+     */
+    private boolean isSelected;
 
     /**
      * Default constructor for {@link BaseObject}
      */
     public BaseObject() {
         this.priority = Priority.MIDDLE;
+        this.isSelected = false;
     }
 
     /**
@@ -57,6 +70,7 @@ public abstract class BaseObject implements Parcelable {
         int tmpPriority = parcel.readInt();
         this.priority = tmpPriority == -1 ? null : Priority.values()[tmpPriority];
         this.index = parcel.readInt();
+        this.isSelected = parcel.readInt() == 1;
     }
 
     /**
@@ -104,6 +118,31 @@ public abstract class BaseObject implements Parcelable {
     }
 
     /**
+     * Method which provide the setting of the {@link Boolean} value if object is selected
+     *
+     * @param selected {@link Boolean} value if object is selected
+     */
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
+
+    /**
+     * Method which provide the getting of the {@link Boolean} value if object is selected
+     *
+     * @return {@link Boolean} value if object is selected
+     */
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    /**
+     * Method which provide the switching of the selected value
+     */
+    public void switchSelected() {
+        setSelected(!isSelected());
+    }
+
+    /**
      * Method which provide the describe content for the {@link BaseObject}
      *
      * @return described content for the {@link BaseObject}
@@ -123,6 +162,7 @@ public abstract class BaseObject implements Parcelable {
     public void writeToParcel(Parcel parcel, int flags) {
         parcel.writeInt(this.priority == null ? -1 : this.priority.ordinal());
         parcel.writeInt(this.index);
+        parcel.writeInt((isSelected() == true) ? 1 : 0);
     }
 
 }

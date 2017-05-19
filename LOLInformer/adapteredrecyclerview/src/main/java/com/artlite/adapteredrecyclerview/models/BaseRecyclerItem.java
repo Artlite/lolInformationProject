@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredBaseCallback;
 import com.artlite.adapteredrecyclerview.events.RecycleEvent;
@@ -17,8 +16,19 @@ import java.lang.ref.WeakReference;
  */
 public abstract class BaseRecyclerItem<T extends BaseObject> extends BaseRecyclerView {
 
+    /**
+     * Instance of the {@link WeakReference}
+     */
     protected WeakReference<OnAdapteredBaseCallback> callbackReference;
+
+    /**
+     * Instance of the {@link WeakReference}
+     */
     protected WeakReference<T> objectReference;
+
+    /**
+     * {@link Integer} value of the index
+     */
     protected int index;
 
     /**
@@ -64,13 +74,13 @@ public abstract class BaseRecyclerItem<T extends BaseObject> extends BaseRecycle
      * Method which provide the on item click action
      */
     protected final void onItemClick() {
-        if (callbackReference != null
-                && objectReference != null
-                && objectReference.get() != null
-                && callbackReference.get() != null) {
-            T object = objectReference.get();
+        final T object = getObject();
+        final OnAdapteredBaseCallback callback = getCallback();
+        if (object != null) {
             onItemClick(object);
-            callbackReference.get().onItemClick(index, object);
+            if (callback != null) {
+                callback.onItemClick(index, object);
+            }
         }
     }
 
@@ -88,13 +98,13 @@ public abstract class BaseRecyclerItem<T extends BaseObject> extends BaseRecycle
      * Method which provide the item long click functional
      */
     protected final void onItemLongClick() {
-        if (callbackReference != null
-                && objectReference != null
-                && objectReference.get() != null
-                && callbackReference.get() != null) {
-            T object = objectReference.get();
+        final T object = getObject();
+        final OnAdapteredBaseCallback callback = getCallback();
+        if (object != null) {
             onItemLongClick(object);
-            callbackReference.get().onItemLongClick(index, object);
+            if (callback != null) {
+                callback.onItemLongClick(index, object);
+            }
         }
     }
 
@@ -119,14 +129,47 @@ public abstract class BaseRecyclerItem<T extends BaseObject> extends BaseRecycle
     }
 
     /**
+     * Method which provide the getting of the instance of the {@link Object}
+     *
+     * @return instance of the {@link Object}
+     */
+    @Nullable
+    public T getObject() {
+        return (objectReference == null)
+                ? null : objectReference.get();
+    }
+
+    /**
+     * Method which provide the setting of the item action listener
+     *
+     * @param callback
+     * @deprecated user {@link #setAdapteredCallback(OnAdapteredBaseCallback)} instead of it
+     */
+    @Deprecated
+    public void setItemActionListener(@Nullable final OnAdapteredBaseCallback callback) {
+        setAdapteredCallback(callback);
+    }
+
+    /**
      * Method which provide the setting of the item action listener
      *
      * @param callback
      */
-    public void setItemActionListener(@Nullable final OnAdapteredBaseCallback callback) {
+    public void setAdapteredCallback(@Nullable final OnAdapteredBaseCallback callback) {
         if (callback != null) {
             this.callbackReference = new WeakReference<OnAdapteredBaseCallback>(callback);
         }
+    }
+
+    /**
+     * Method which provide the getting of the instance of the {@link OnAdapteredBaseCallback}
+     *
+     * @return instance of the {@link OnAdapteredBaseCallback}
+     */
+    @Nullable
+    protected OnAdapteredBaseCallback getCallback() {
+        return (callbackReference == null)
+                ? null : callbackReference.get();
     }
 
     /**
@@ -135,11 +178,10 @@ public abstract class BaseRecyclerItem<T extends BaseObject> extends BaseRecycle
      * @param recycleEvent recycler event
      */
     protected void sendEvent(@NonNull final RecycleEvent recycleEvent) {
-        if (callbackReference != null
-                && callbackReference.get() != null
-                && objectReference != null
-                && objectReference.get() != null) {
-            callbackReference.get().onActionReceived(recycleEvent, index, objectReference.get());
+        final T object = getObject();
+        final OnAdapteredBaseCallback callback = getCallback();
+        if ((object != null) && (callback != null)) {
+            callback.onActionReceived(recycleEvent, index, objectReference.get());
         }
     }
 }
