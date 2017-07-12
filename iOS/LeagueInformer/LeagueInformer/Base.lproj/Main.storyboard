@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8KY-8A-pq9">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Champions-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MainController" customModule="LeagueInformer" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Azv-1o-vKP" userLabel="View Content">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <connections>
+                                    <segue destination="63e-T1-nfe" kind="embed" id="IRg-E3-x3k"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M7e-7A-ZPP" userLabel="View Menu">
+                                <rect key="frame" x="-250" y="64" width="250" height="603"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="zRG-cU-Er0"/>
+                                </constraints>
+                                <connections>
+                                    <segue destination="niK-Bg-bI1" kind="embed" id="Cli-X7-M2G"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Azv-1o-vKP" secondAttribute="bottom" id="ROw-Wc-8Fh"/>
+                            <constraint firstItem="M7e-7A-ZPP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-250" id="dvK-SN-6nK"/>
+                            <constraint firstItem="M7e-7A-ZPP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="gPv-sZ-k6u"/>
+                            <constraint firstAttribute="trailing" secondItem="Azv-1o-vKP" secondAttribute="trailing" id="r7p-Fa-hqP"/>
+                            <constraint firstItem="Azv-1o-vKP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="u5u-gN-8d4"/>
+                            <constraint firstItem="Azv-1o-vKP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="vWY-1o-orf"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="M7e-7A-ZPP" secondAttribute="bottom" id="znz-b5-qpK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Champions" id="gBs-9p-Xgh">
+                        <barButtonItem key="leftBarButtonItem" image="ic_menu" id="Efx-rQ-KKE">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="onMenuPressed:" destination="BYZ-38-t0r" id="hEr-gt-wiW"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="constMenuLeft" destination="dvK-SN-6nK" id="3fW-uW-tsV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="856.79999999999995" y="-559.07046476761627"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="H2P-CF-tdv">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8KY-8A-pq9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dnx-DL-AP4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Mfv-Qh-Fyc">
+                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="HIw-2J-04d"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VHC-N0-izN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="-559.07046476761627"/>
+        </scene>
+        <!--Menu-->
+        <scene sceneID="Bey-ok-oAr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Menu" id="niK-Bg-bI1" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="acT-TV-xLA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="856" y="-141"/>
+        </scene>
+        <!--Content-->
+        <scene sceneID="y5W-Nz-ZIj">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Content" id="63e-T1-nfe" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a4o-uP-4aL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1361" y="-560"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic_menu" width="25" height="25"/>
+    </resources>
+</document>

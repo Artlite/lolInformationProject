@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_splash_bck_1" translatesAutoresizingMaskIntoConstraints="NO" id="X3n-O7-3um">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="INFORMER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9O-AD-D1P">
+                                <rect key="frame" x="24" y="304.5" width="327" height="58.5"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="46"/>
+                                <color key="textColor" red="0.97319072484970093" green="0.91010576486587524" blue="0.48217952251434326" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LEAGUE" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ybm-0X-ncg">
+                                <rect key="frame" x="24" y="238" width="327" height="58.5"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="46"/>
+                                <color key="textColor" red="0.97319072480000002" green="0.91010576489999995" blue="0.48217952250000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="X3n-O7-3um" secondAttribute="trailing" id="I8s-uu-G76"/>
+                            <constraint firstItem="D9O-AD-D1P" firstAttribute="top" secondItem="ybm-0X-ncg" secondAttribute="bottom" constant="8" id="KBR-Qr-xra"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ybm-0X-ncg" secondAttribute="trailing" constant="8" id="PCu-Rw-zTN"/>
+                            <constraint firstItem="D9O-AD-D1P" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="8" id="SNi-qW-hT1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="D9O-AD-D1P" secondAttribute="trailing" constant="8" id="WkQ-qc-cY1"/>
+                            <constraint firstItem="X3n-O7-3um" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Ykh-Dl-jwN"/>
+                            <constraint firstItem="D9O-AD-D1P" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="o9b-yK-pNg"/>
+                            <constraint firstItem="ybm-0X-ncg" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="8" id="py8-o5-gRh"/>
+                            <constraint firstItem="X3n-O7-3um" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="-20" id="th4-q7-zti"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="X3n-O7-3um" secondAttribute="bottom" id="wSU-qb-0jO"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52" y="374.66266866566718"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="img_splash_bck_1" width="600" height="915"/>
+    </resources>
+</document>
