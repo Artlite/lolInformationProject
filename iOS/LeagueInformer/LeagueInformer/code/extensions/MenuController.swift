@@ -51,7 +51,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     ///   - section: {@link Int} value of the section number
     /// - Returns: numbers of rows
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10;
+        return 9;
     }
     
     /// Method which provide the define of the cell for index
