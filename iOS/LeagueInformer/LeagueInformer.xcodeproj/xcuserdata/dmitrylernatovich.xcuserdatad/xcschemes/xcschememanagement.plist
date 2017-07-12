@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>asdasd.xcscheme</key>
+		<key>LeagueInformer.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,17 +12,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>01FD0DA71F166E420050E501</key>
+		<key>0178E2241F1656BB00DBC505</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>01FD0DBB1F166E420050E501</key>
+		<key>0178E2381F1656BB00DBC505</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>01FD0DC61F166E420050E501</key>
+		<key>0178E2431F1656BB00DBC505</key>
 		<dict>
 			<key>primary</key>
 			<true/>

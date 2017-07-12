@@ -50,7 +50,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Champions" id="gBs-9p-Xgh">
                         <barButtonItem key="leftBarButtonItem" image="ic_menu" id="Efx-rQ-KKE">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" red="0.38593027000000002" green="0.54839098450000001" blue="0.76661324500000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
                                 <action selector="onMenuPressed:" destination="BYZ-38-t0r" id="hEr-gt-wiW"/>
                             </connections>
@@ -69,9 +69,12 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8KY-8A-pq9" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dnx-DL-AP4">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dnx-DL-AP4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.38593026995658875" green="0.54839098453521729" blue="0.76661324501037598" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Mfv-Qh-Fyc">

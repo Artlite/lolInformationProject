@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "01FD0DA71F166E420050E501"
-               BuildableName = "asdasd.app"
-               BlueprintName = "asdasd"
-               ReferencedContainer = "container:asdasd.xcodeproj">
+               BlueprintIdentifier = "0178E2241F1656BB00DBC505"
+               BuildableName = "LeagueInformer.app"
+               BlueprintName = "LeagueInformer"
+               ReferencedContainer = "container:LeagueInformer.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,30 +32,30 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "01FD0DBB1F166E420050E501"
-               BuildableName = "asdasdTests.xctest"
-               BlueprintName = "asdasdTests"
-               ReferencedContainer = "container:asdasd.xcodeproj">
+               BlueprintIdentifier = "0178E2381F1656BB00DBC505"
+               BuildableName = "LeagueInformerTests.xctest"
+               BlueprintName = "LeagueInformerTests"
+               ReferencedContainer = "container:LeagueInformer.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "01FD0DC61F166E420050E501"
-               BuildableName = "asdasdUITests.xctest"
-               BlueprintName = "asdasdUITests"
-               ReferencedContainer = "container:asdasd.xcodeproj">
+               BlueprintIdentifier = "0178E2431F1656BB00DBC505"
+               BuildableName = "LeagueInformerUITests.xctest"
+               BlueprintName = "LeagueInformerUITests"
+               ReferencedContainer = "container:LeagueInformer.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "01FD0DA71F166E420050E501"
-            BuildableName = "asdasd.app"
-            BlueprintName = "asdasd"
-            ReferencedContainer = "container:asdasd.xcodeproj">
+            BlueprintIdentifier = "0178E2241F1656BB00DBC505"
+            BuildableName = "LeagueInformer.app"
+            BlueprintName = "LeagueInformer"
+            ReferencedContainer = "container:LeagueInformer.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -75,10 +75,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "01FD0DA71F166E420050E501"
-            BuildableName = "asdasd.app"
-            BlueprintName = "asdasd"
-            ReferencedContainer = "container:asdasd.xcodeproj">
+            BlueprintIdentifier = "0178E2241F1656BB00DBC505"
+            BuildableName = "LeagueInformer.app"
+            BlueprintName = "LeagueInformer"
+            ReferencedContainer = "container:LeagueInformer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,10 +94,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "01FD0DA71F166E420050E501"
-            BuildableName = "asdasd.app"
-            BlueprintName = "asdasd"
-            ReferencedContainer = "container:asdasd.xcodeproj">
+            BlueprintIdentifier = "0178E2241F1656BB00DBC505"
+            BuildableName = "LeagueInformer.app"
+            BlueprintName = "LeagueInformer"
+            ReferencedContainer = "container:LeagueInformer.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

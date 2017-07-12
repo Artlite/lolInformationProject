@@ -44,18 +44,25 @@ class MainController: UIViewController {
     /// Instance of the {@link NSLayoutConstraint}
     @IBOutlet weak var constMenuLeft: NSLayoutConstraint!
     
-    //MARK: - 
+    //MARK: - Init methods
     
     /// Method which provide the actions when controller was load
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        super.viewDidLoad();
+        self.onInitGetsures();
     }
 
     /// Method which provide the actions when controller catch the memory warning
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    /// Method which provide the getsures initialization
+    private func onInitGetsures() {
+        UISwipeGestureRecognizer.addBorderSwipe(target: self, view: self.view, direction: UIRectEdge.left, selector: #selector(MainController.openMenu));
+        UISwipeGestureRecognizer.addSwipe(target: self, view: self.view, direction: UISwipeGestureRecognizerDirection.left, selector: #selector(MainController.closeMenu));
+        
     }
     
     //MARK: - Menu functional
@@ -77,7 +84,7 @@ class MainController: UIViewController {
     }
     
     /// Method which provide the menu opening
-    private func openMenu() {
+    @objc private func openMenu() {
         self.view.layoutIfNeeded();
         UIView.animate(withDuration: 0.5) {[weak self] in
             self?.constMenuLeft.constant = 0;
@@ -86,17 +93,12 @@ class MainController: UIViewController {
     }
     
     /// Method which provide the menu opening
-    private func closeMenu() {
+    @objc private func closeMenu() {
         self.view.layoutIfNeeded();
         UIView.animate(withDuration: 0.5) {[weak self] in
             self?.constMenuLeft.constant = -MainController.K_MENU_WIDTH;
             self?.view.layoutIfNeeded();
         }
     }
-    
-    
-    
-    
-
 }
 
