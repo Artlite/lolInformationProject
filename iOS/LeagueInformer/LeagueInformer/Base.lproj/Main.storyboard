@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Champions-->
+        <!--CHAMPIONS-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainController" customModule="LeagueInformer" customModuleProvider="target" sceneMemberID="viewController">
@@ -48,9 +48,9 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="M7e-7A-ZPP" secondAttribute="bottom" id="znz-b5-qpK"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Champions" id="gBs-9p-Xgh">
+                    <navigationItem key="navigationItem" title="CHAMPIONS" id="gBs-9p-Xgh">
                         <barButtonItem key="leftBarButtonItem" image="ic_menu" id="Efx-rQ-KKE">
-                            <color key="tintColor" red="0.38593027000000002" green="0.54839098450000001" blue="0.76661324500000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="onMenuPressed:" destination="BYZ-38-t0r" id="hEr-gt-wiW"/>
                             </connections>
@@ -72,8 +72,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dnx-DL-AP4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.38593027000000002" green="0.54839098450000001" blue="0.76661324500000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" red="0.38593026995658875" green="0.54839098453521729" blue="0.76661324501037598" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
