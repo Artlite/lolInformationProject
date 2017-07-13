@@ -12,7 +12,7 @@
         <!--Champions-->
         <scene sceneID="HLi-tr-dQ7">
             <objects>
-                <viewController id="2ZB-aL-agp" sceneMemberID="viewController">
+                <viewController id="2ZB-aL-agp" customClass="ChampionsController" customModule="LeagueInformer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="96W-Qy-JQ5"/>
                         <viewControllerLayoutGuide type="bottom" id="t8B-SH-HIc"/>
@@ -20,7 +20,6 @@
                     <view key="view" contentMode="scaleToFill" id="A0v-gW-slp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Champions" id="anX-L6-nbE"/>
                 </viewController>

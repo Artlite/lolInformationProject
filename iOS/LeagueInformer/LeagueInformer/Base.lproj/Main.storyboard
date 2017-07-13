@@ -28,7 +28,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M7e-7A-ZPP" userLabel="View Menu">
-                                <rect key="frame" x="-250" y="64" width="250" height="603"/>
+                                <rect key="frame" x="-250" y="64" width="250" height="553"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="zRG-cU-Er0"/>
                                 </constraints>
@@ -45,12 +45,12 @@
                             <constraint firstAttribute="trailing" secondItem="Azv-1o-vKP" secondAttribute="trailing" id="r7p-Fa-hqP"/>
                             <constraint firstItem="Azv-1o-vKP" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="u5u-gN-8d4"/>
                             <constraint firstItem="Azv-1o-vKP" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="vWY-1o-orf"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="M7e-7A-ZPP" secondAttribute="bottom" id="znz-b5-qpK"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="M7e-7A-ZPP" secondAttribute="bottom" constant="50" id="znz-b5-qpK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="CHAMPIONS" id="gBs-9p-Xgh">
                         <barButtonItem key="leftBarButtonItem" image="ic_menu" id="Efx-rQ-KKE">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="0.37647058820000001" green="0.60392156860000001" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="onMenuPressed:" destination="BYZ-38-t0r" id="hEr-gt-wiW"/>
                             </connections>
@@ -72,9 +72,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="dnx-DL-AP4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.38593027000000002" green="0.54839098450000001" blue="0.76661324500000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <textAttributes key="titleTextAttributes">
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" red="0.37647058820000001" green="0.60392156860000001" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>

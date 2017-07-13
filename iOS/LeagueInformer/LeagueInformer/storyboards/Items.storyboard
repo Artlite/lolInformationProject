@@ -12,7 +12,7 @@
         <!--Items-->
         <scene sceneID="Cv9-xa-xzr">
             <objects>
-                <viewController id="1ad-6o-f7e" sceneMemberID="viewController">
+                <viewController id="1ad-6o-f7e" customClass="ItemsController" customModule="LeagueInformer" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AMf-52-clv"/>
                         <viewControllerLayoutGuide type="bottom" id="N8i-gn-WRY"/>
@@ -20,7 +20,6 @@
                     <view key="view" contentMode="scaleToFill" id="AJq-jK-vDU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Items" id="pDg-Z2-gli"/>
                 </viewController>

@@ -22,6 +22,17 @@ class MainController: UIViewController {
     /// {@link Notification.Name} of the open champion screen notification
     private static let K_NOTIFICATION_OPEN_ABOUT: Notification.Name! = Notification.Name(rawValue: "Notification:OpenAbout");
     
+    /// Enum which provide the keep the titles name
+    ///
+    /// - champion: champion title
+    /// - items: items title
+    /// - about: about titles
+    private enum ScreenTitles: String {
+        case champion = "Champions"
+        case items = "Items"
+        case about = "About"
+    }
+    
     //MARK: - Static methods
     
     /// Method which provide the open menu champions screen functional
@@ -50,6 +61,7 @@ class MainController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad();
         self.onInitGetsures();
+        self.onInitNotifications();
     }
 
     /// Method which provide the actions when controller catch the memory warning
@@ -63,6 +75,13 @@ class MainController: UIViewController {
         UISwipeGestureRecognizer.addBorderSwipe(target: self, view: self.view, direction: UIRectEdge.left, selector: #selector(MainController.openMenu));
         UISwipeGestureRecognizer.addSwipe(target: self, view: self.view, direction: UISwipeGestureRecognizerDirection.left, selector: #selector(MainController.closeMenu));
         
+    }
+    
+    /// Method which provide the subscribe for the notifications
+    private func onInitNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(MainController.setChampionsTitle), name: MainController.K_NOTIFICATION_OPEN_CHAMPIONS, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(MainController.setItemsTitle), name: MainController.K_NOTIFICATION_OPEN_ITEMS, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(MainController.setAboutTitle), name: MainController.K_NOTIFICATION_OPEN_ABOUT, object: nil);
     }
     
     //MARK: - Menu functional
@@ -99,6 +118,23 @@ class MainController: UIViewController {
             self?.constMenuLeft.constant = -MainController.K_MENU_WIDTH;
             self?.view.layoutIfNeeded();
         }
+    }
+    
+    //MARK: - Set titles
+    
+    /// Method which provide the setting of the champions titles
+    @objc private func setChampionsTitle() {
+        self.title = ScreenTitles.champion.rawValue.uppercased();
+    }
+    
+    /// Method which provide the setting of the champions titles
+    @objc private func setItemsTitle() {
+        self.title = ScreenTitles.items.rawValue.uppercased();
+    }
+    
+    /// Method which provide the setting of the champions titles
+    @objc private func setAboutTitle() {
+        self.title = ScreenTitles.about.rawValue.uppercased();
     }
 }
 
