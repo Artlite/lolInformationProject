@@ -25,8 +25,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     /// Method which provide the actions when controller was load
     override func viewDidLoad() {
         super.viewDidLoad();
-        self.tableView.delegate = self;
-        self.tableView.dataSource = self;
+        self.tableView.setup(withDelegate: self, withDatasource: self);
     }
     
     /// Method which provide the actions when controller catch the memory warning
