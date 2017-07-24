@@ -31,7 +31,7 @@
         <scene sceneID="tyh-99-ZyK">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="uDB-k1-mbU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Champions" id="Cpy-tn-3ds"/>
+                    <tabBarItem key="tabBarItem" title="Champions" image="img_tab_champions" id="Cpy-tn-3ds"/>
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -49,4 +49,7 @@
             <point key="canvasLocation" x="2376.8000000000002" y="-887.40629685157433"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="img_tab_champions" width="36" height="36"/>
+    </resources>
 </document>

@@ -31,7 +31,7 @@
         <scene sceneID="Bx6-hG-r5c">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="c1v-dB-E7v" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Items" id="Z5Z-07-pEP"/>
+                    <tabBarItem key="tabBarItem" title="Items" image="img_tab_items" id="Z5Z-07-pEP"/>
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -49,4 +49,7 @@
             <point key="canvasLocation" x="2600.8000000000002" y="-785.75712143928047"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="img_tab_items" width="36" height="36"/>
+    </resources>
 </document>

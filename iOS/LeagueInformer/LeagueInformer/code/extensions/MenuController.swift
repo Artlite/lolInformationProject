@@ -10,7 +10,7 @@ import UIKit
 
 class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    //MARK: - Constants
+    // MARK: - Constants
     
     /// {@link String} value of the cell identifier
     private static let K_CELL_IDENTIFIER: String! = "cellMenu";
@@ -20,11 +20,12 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
     /// Instance of the {@link UITableView}
     @IBOutlet weak var tableView: UITableView!
     
-    //MARK: - Create functions
+    // MARK: - Create functions
     
     /// Method which provide the actions when controller was load
     override func viewDidLoad() {
         super.viewDidLoad();
+        self.initialize();
         self.tableView.setup(withDelegate: self, withDatasource: self);
     }
     
@@ -33,7 +34,7 @@ class MenuController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.didReceiveMemoryWarning();
     }
     
-    //MARK: - Table view
+    // MARK: - Table view
     
     /// Method which provide the defining numbers of sections
     ///

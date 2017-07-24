@@ -15,6 +15,7 @@ class AboutController: UIViewController {
     /// Method which provide the actions when controller was load
     override func viewDidLoad() {
         super.viewDidLoad();
+        self.initialize();
     }
     
     /// Method provide the actions when controller will appear

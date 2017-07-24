@@ -25,10 +25,10 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J5g-hF-epU">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="949.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1025"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_bckg_battle" translatesAutoresizingMaskIntoConstraints="NO" id="lmc-5W-mvm">
-                                                <rect key="frame" x="8" y="8" width="100" height="933.5"/>
+                                                <rect key="frame" x="8" y="8" width="100" height="1009"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="100" id="MPD-VV-S3S"/>
                                                 </constraints>
@@ -37,30 +37,96 @@
                                                         <real key="value" value="10"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" red="0.37647058820000001" green="0.60392156860000001" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                         <real key="value" value="1"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8An-jy-csr">
-                                                <rect key="frame" x="116" y="8" width="251" height="933.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Battle Head-to-Head" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8An-jy-csr">
+                                                <rect key="frame" x="116" y="8" width="251" height="20.5"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" priority="250" constant="582" id="82u-j5-8hu"/>
+                                                    <constraint firstAttribute="height" priority="250" constant="16" id="82u-j5-8hu"/>
                                                 </constraints>
-                                                <mutableString key="text">Battle Head-to-Head
-Combine strategic thinking, lightning reflexes and coordinated team-play to crush your enemies in both small-scale skirmishes and intense 5v5 battles
-Strategize and Evolve
-With regular gameplay updates, multiple maps and game modes, and new champions constantly joining the League, the only limit to your success is your own ingenuity
-Compete Your Way
-Whether you're enjoying a game against bots or climbing the ranks of the league system, League of Legends has the tech to quickly match you with a group of similarly-skilled competitors
-Fight with honor
-Compete with honor and receive special commendations from your peers to reward your good sportsmanship
-Experience eSports
-As the world's most active competitive scene, League of Legends sports numerous tournaments worldwide, including the prestigious Championship Series where salaried pros compete for millions
-World's Largest Online Gaming Community
-Join the world's largest online gaming community: make friends, form teams and battle tens of millions of opponents from countries across the globe, then exchange strats on reddit, YouTube, the forums and beyond</mutableString>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JV5-Oz-wrp">
+                                                <rect key="frame" x="116" y="36.5" width="251" height="122"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="250" constant="500" id="bVO-l4-mzw"/>
+                                                </constraints>
+                                                <string key="text">Combine strategic thinking, lightning reflexes and coordinated team-play to crush your enemies in both small-scale skirmishes and intense 5v5 battles</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Strategize and Evolve" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKU-wW-95h">
+                                                <rect key="frame" x="116" y="166" width="251" height="21"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I5C-1n-eV3">
+                                                <rect key="frame" x="116" y="195" width="251" height="122"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="250" constant="500" id="zRB-ha-i4Y"/>
+                                                </constraints>
+                                                <string key="text">With regular gameplay updates, multiple maps and game modes, and new champions constantly joining the League, the only limit to your success is your own ingenuity</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Compete Your Way" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKp-FI-o2S">
+                                                <rect key="frame" x="116" y="325" width="251" height="21"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HM9-Kk-UXN">
+                                                <rect key="frame" x="116" y="354" width="251" height="142.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="250" constant="500" id="lpI-2x-b7t"/>
+                                                </constraints>
+                                                <string key="text">Whether you're enjoying a game against bots or climbing the ranks of the league system, League of Legends has the tech to quickly match you with a group of similarly-skilled competitors</string>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fight with honor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YzL-Tu-bw7">
+                                                <rect key="frame" x="116" y="504.5" width="251" height="21"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96i-Rw-9U4">
+                                                <rect key="frame" x="116" y="533.5" width="251" height="264"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="250" constant="500" id="79Z-UY-DNU"/>
+                                                </constraints>
+                                                <mutableString key="text">Compete with honor and receive special commendations from your peers to reward your good sportsmanship
+Experience eSports As the world's most active competitive scene, League of Legends sports numerous tournaments worldwide, including the prestigious Championship Series where salaried pros compete for millions</mutableString>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="World's Largest Online Gaming Community" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Usg-md-qBi">
+                                                <rect key="frame" x="116" y="805.5" width="251" height="41"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="250" constant="500" id="pUH-0L-aE5"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gx-Xn-wG1">
+                                                <rect key="frame" x="116" y="854.5" width="251" height="162.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="250" constant="500" id="gmr-Ab-aNE"/>
+                                                </constraints>
+                                                <string key="text">Join the world's largest online gaming community: make friends, form teams and battle tens of millions of opponents from countries across the globe, then exchange strats on reddit, YouTube, the forums and beyond</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -68,14 +134,41 @@ Join the world's largest online gaming community: make friends, form teams and b
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="Usg-md-qBi" firstAttribute="top" secondItem="96i-Rw-9U4" secondAttribute="bottom" constant="8" id="0ao-J2-bwN"/>
                                             <constraint firstItem="8An-jy-csr" firstAttribute="leading" secondItem="lmc-5W-mvm" secondAttribute="trailing" constant="8" id="0sV-QE-gm8"/>
+                                            <constraint firstItem="pKU-wW-95h" firstAttribute="leading" secondItem="lmc-5W-mvm" secondAttribute="trailing" constant="8" id="14N-jU-lDo"/>
+                                            <constraint firstItem="YzL-Tu-bw7" firstAttribute="leading" secondItem="lmc-5W-mvm" secondAttribute="trailing" constant="8" id="2Zs-Ap-wsl"/>
+                                            <constraint firstItem="Usg-md-qBi" firstAttribute="leading" secondItem="lmc-5W-mvm" secondAttribute="trailing" constant="8" id="3ca-OH-8a3"/>
+                                            <constraint firstAttribute="trailing" secondItem="YzL-Tu-bw7" secondAttribute="trailing" constant="8" id="4LZ-gO-3D2"/>
+                                            <constraint firstAttribute="trailing" secondItem="I5C-1n-eV3" secondAttribute="trailing" constant="8" id="4xo-Ah-YaZ"/>
                                             <constraint firstAttribute="trailing" secondItem="8An-jy-csr" secondAttribute="trailing" constant="8" id="96M-Sj-bWT"/>
+                                            <constraint firstAttribute="trailing" secondItem="JV5-Oz-wrp" secondAttribute="trailing" constant="8" id="9Kh-9i-PKn"/>
+                                            <constraint firstAttribute="bottom" secondItem="9gx-Xn-wG1" secondAttribute="bottom" priority="300" constant="8" id="BIS-RU-kSK"/>
+                                            <constraint firstItem="HM9-Kk-UXN" firstAttribute="leading" secondItem="lmc-5W-mvm" secondAttribute="trailing" constant="8" id="DU3-d6-5Kr"/>
+                                            <constraint firstItem="I5C-1n-eV3" firstAttribute="top" secondItem="pKU-wW-95h" secondAttribute="bottom" constant="8" id="H0i-kV-cej"/>
                                             <constraint firstAttribute="height" priority="250" constant="598" id="Hlh-EV-gca"/>
-                                            <constraint firstAttribute="bottom" secondItem="8An-jy-csr" secondAttribute="bottom" constant="8" id="alr-Fl-1Zj"/>
+                                            <constraint firstAttribute="trailing" secondItem="96i-Rw-9U4" secondAttribute="trailing" constant="8" id="I3v-Xh-73p"/>
+                                            <constraint firstItem="pKU-wW-95h" firstAttribute="top" secondItem="JV5-Oz-wrp" secondAttribute="bottom" constant="8" id="LIJ-ne-eKw"/>
+                                            <constraint firstItem="YzL-Tu-bw7" firstAttribute="top" secondItem="HM9-Kk-UXN" secondAttribute="bottom" constant="8" id="M0x-kL-xxw"/>
+                                            <constraint firstItem="I5C-1n-eV3" firstAttribute="leading" secondItem="lmc-5W-mvm" secondAttribute="trailing" constant="8" id="MCX-rV-0UV"/>
+                                            <constraint firstItem="96i-Rw-9U4" firstAttribute="leading" secondItem="lmc-5W-mvm" secondAttribute="trailing" constant="8" id="Pgs-WT-9rf"/>
+                                            <constraint firstItem="9gx-Xn-wG1" firstAttribute="top" secondItem="Usg-md-qBi" secondAttribute="bottom" constant="8" id="Qty-kK-aZA"/>
+                                            <constraint firstAttribute="trailing" secondItem="HM9-Kk-UXN" secondAttribute="trailing" constant="8" id="USG-6O-Qqb"/>
+                                            <constraint firstItem="XKp-FI-o2S" firstAttribute="top" secondItem="I5C-1n-eV3" secondAttribute="bottom" constant="8" id="ahM-jV-PrJ"/>
+                                            <constraint firstItem="HM9-Kk-UXN" firstAttribute="top" secondItem="XKp-FI-o2S" secondAttribute="bottom" constant="8" id="c6u-bH-IcZ"/>
                                             <constraint firstItem="lmc-5W-mvm" firstAttribute="leading" secondItem="J5g-hF-epU" secondAttribute="leading" constant="8" id="cRT-VQ-sYz"/>
+                                            <constraint firstItem="9gx-Xn-wG1" firstAttribute="leading" secondItem="lmc-5W-mvm" secondAttribute="trailing" constant="8" id="grV-jP-WiA"/>
+                                            <constraint firstAttribute="trailing" secondItem="Usg-md-qBi" secondAttribute="trailing" constant="8" id="i8N-rh-30k"/>
+                                            <constraint firstItem="JV5-Oz-wrp" firstAttribute="top" secondItem="8An-jy-csr" secondAttribute="bottom" constant="8" id="itp-ti-uuH"/>
+                                            <constraint firstItem="JV5-Oz-wrp" firstAttribute="leading" secondItem="lmc-5W-mvm" secondAttribute="trailing" constant="8" id="kdq-cg-MR0"/>
+                                            <constraint firstAttribute="trailing" secondItem="9gx-Xn-wG1" secondAttribute="trailing" constant="8" id="oBw-Np-sAh"/>
+                                            <constraint firstAttribute="trailing" secondItem="pKU-wW-95h" secondAttribute="trailing" constant="8" id="qdy-dK-TAR"/>
                                             <constraint firstItem="8An-jy-csr" firstAttribute="top" secondItem="J5g-hF-epU" secondAttribute="top" constant="8" id="svO-ZI-5jp"/>
                                             <constraint firstAttribute="bottom" secondItem="lmc-5W-mvm" secondAttribute="bottom" constant="8" id="tCN-it-0Wq"/>
+                                            <constraint firstItem="96i-Rw-9U4" firstAttribute="top" secondItem="YzL-Tu-bw7" secondAttribute="bottom" constant="8" id="uFM-IJ-6pS"/>
                                             <constraint firstItem="lmc-5W-mvm" firstAttribute="top" secondItem="J5g-hF-epU" secondAttribute="top" constant="8" id="uvS-xJ-ZHK"/>
+                                            <constraint firstAttribute="trailing" secondItem="XKp-FI-o2S" secondAttribute="trailing" constant="8" id="wwJ-ew-CrS"/>
+                                            <constraint firstItem="XKp-FI-o2S" firstAttribute="leading" secondItem="lmc-5W-mvm" secondAttribute="trailing" constant="8" id="zqh-kl-i3m"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -105,7 +198,7 @@ Join the world's largest online gaming community: make friends, form teams and b
         <scene sceneID="d2I-hS-ZOQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="J0g-cb-84w" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="About" id="pYo-MT-8AH"/>
+                    <tabBarItem key="tabBarItem" title="About" image="img_tab_about" id="pYo-MT-8AH"/>
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -125,5 +218,6 @@ Join the world's largest online gaming community: make friends, form teams and b
     </scenes>
     <resources>
         <image name="img_bckg_battle" width="450" height="675"/>
+        <image name="img_tab_about" width="24" height="24"/>
     </resources>
 </document>

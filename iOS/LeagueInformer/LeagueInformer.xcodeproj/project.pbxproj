@@ -10,6 +10,8 @@
 		013346071F177DA000406A40 /* ChampionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013346061F177DA000406A40 /* ChampionsController.swift */; };
 		013346091F177DE100406A40 /* ItemsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013346081F177DE100406A40 /* ItemsController.swift */; };
 		0133460B1F177E0200406A40 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0133460A1F177E0200406A40 /* AboutController.swift */; };
+		016D60C11F261EBC00B9C03A /* UIViewController+Customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016D60C01F261EBC00B9C03A /* UIViewController+Customization.swift */; };
+		016D60C31F26290800B9C03A /* UIStoryboard+Customization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 016D60C21F26290800B9C03A /* UIStoryboard+Customization.swift */; };
 		0178E22E1F1656BB00DBC505 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0178E22C1F1656BB00DBC505 /* Main.storyboard */; };
 		0178E2331F1656BB00DBC505 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0178E2311F1656BB00DBC505 /* LaunchScreen.storyboard */; };
 		0178E23E1F1656BB00DBC505 /* LeagueInformerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0178E23D1F1656BB00DBC505 /* LeagueInformerTests.swift */; };
@@ -50,6 +52,8 @@
 		013346061F177DA000406A40 /* ChampionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChampionsController.swift; sourceTree = "<group>"; };
 		013346081F177DE100406A40 /* ItemsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemsController.swift; sourceTree = "<group>"; };
 		0133460A1F177E0200406A40 /* AboutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
+		016D60C01F261EBC00B9C03A /* UIViewController+Customization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Customization.swift"; sourceTree = "<group>"; };
+		016D60C21F26290800B9C03A /* UIStoryboard+Customization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+Customization.swift"; sourceTree = "<group>"; };
 		0178E2251F1656BB00DBC505 /* LeagueInformer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LeagueInformer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0178E22D1F1656BB00DBC505 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0178E2321F1656BB00DBC505 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -99,6 +103,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		016D60BF1F261E9D00B9C03A /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				016D60C01F261EBC00B9C03A /* UIViewController+Customization.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
 		0178E21C1F1656BB00DBC505 = {
 			isa = PBXGroup;
 			children = (
@@ -191,9 +203,11 @@
 		01815A211F167844005FBEF0 /* extensions */ = {
 			isa = PBXGroup;
 			children = (
+				016D60BF1F261E9D00B9C03A /* controller */,
 				01815A221F167895005FBEF0 /* UIView+Customization.swift */,
 				0E9808141F16A0450058DC59 /* UISwipeGestureRecognizer+Customization.swift */,
 				019813171F1CC2D100CC63F7 /* UITableView+Customization.swift */,
+				016D60C21F26290800B9C03A /* UIStoryboard+Customization.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -371,12 +385,14 @@
 			files = (
 				0E9808171F16A48D0058DC59 /* MenuController.swift in Sources */,
 				0E9808151F16A0450058DC59 /* UISwipeGestureRecognizer+Customization.swift in Sources */,
+				016D60C31F26290800B9C03A /* UIStoryboard+Customization.swift in Sources */,
 				013346071F177DA000406A40 /* ChampionsController.swift in Sources */,
 				0E9808111F169FD50058DC59 /* MainController.swift in Sources */,
 				013346091F177DE100406A40 /* ItemsController.swift in Sources */,
 				0E98080F1F169FC70058DC59 /* AppDelegate.swift in Sources */,
 				01815A231F167895005FBEF0 /* UIView+Customization.swift in Sources */,
 				019813181F1CC2D100CC63F7 /* UITableView+Customization.swift in Sources */,
+				016D60C11F261EBC00B9C03A /* UIViewController+Customization.swift in Sources */,
 				0133460B1F177E0200406A40 /* AboutController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

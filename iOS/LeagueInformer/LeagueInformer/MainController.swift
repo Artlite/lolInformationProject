@@ -62,6 +62,7 @@ class MainController: UIViewController {
         super.viewDidLoad();
         self.onInitGetsures();
         self.onInitNotifications();
+        self.initialize();
     }
 
     /// Method which provide the actions when controller catch the memory warning
