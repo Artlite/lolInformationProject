@@ -49,7 +49,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="CHAMPIONS" id="gBs-9p-Xgh">
-                        <barButtonItem key="leftBarButtonItem" image="ic_menu" id="Efx-rQ-KKE">
+                        <barButtonItem key="leftBarButtonItem" title="⦁⦁⦁" id="Efx-rQ-KKE">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="onMenuPressed:" destination="BYZ-38-t0r" id="hEr-gt-wiW"/>
@@ -108,7 +108,4 @@
             <point key="canvasLocation" x="1361" y="-560"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="ic_menu" width="20" height="20"/>
-    </resources>
 </document>
