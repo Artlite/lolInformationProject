@@ -10,18 +10,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Created by dlernatovich on 12/14/2016.
  */
 
-public final class AdapteredResourceContainer {
+public final class ARResourceContainer {
 
     /**
      * Instance
      */
-    private static AdapteredResourceContainer instance;
+    private static ARResourceContainer instance;
 
     /**
      * Identificators container
@@ -33,19 +32,19 @@ public final class AdapteredResourceContainer {
     /**
      * Constructor which provide the
      */
-    private AdapteredResourceContainer() {
+    private ARResourceContainer() {
         this.ids = new HashMap<>();
         this.classNames = new ArrayList<>();
     }
 
     /**
-     * Method which provide the getting instance of the {@link AdapteredResourceContainer}
+     * Method which provide the getting instance of the {@link ARResourceContainer}
      *
-     * @return instance of the {@link AdapteredResourceContainer}
+     * @return instance of the {@link ARResourceContainer}
      */
-    public static AdapteredResourceContainer getInstance() {
+    public static ARResourceContainer getInstance() {
         if (instance == null) {
-            instance = new AdapteredResourceContainer();
+            instance = new ARResourceContainer();
         }
         return instance;
     }

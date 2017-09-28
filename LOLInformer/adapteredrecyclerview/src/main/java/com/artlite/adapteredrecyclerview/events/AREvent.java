@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 /**
  * Created by Artli_000 on 24.07.2016.
  */
-public class RecycleEvent implements Parcelable {
+public class AREvent implements Parcelable {
 
     /**
      * Event code value
@@ -20,43 +20,43 @@ public class RecycleEvent implements Parcelable {
     private final String eventValue;
 
     /**
-     * Constructor which provide to create of the {@link RecycleEvent} from
+     * Constructor which provide to create of the {@link AREvent} from
      *
      * @param eventCode event code value
      */
-    public RecycleEvent(int eventCode) {
+    public AREvent(int eventCode) {
         this.eventCode = eventCode;
         this.eventValue = null;
     }
 
     /**
-     * Method which provide the creating of the {@link RecycleEvent} from
+     * Method which provide the creating of the {@link AREvent} from
      *
      * @param eventCode event code
-     * @return instance of {@link RecycleEvent}
+     * @return instance of {@link AREvent}
      */
-    public static RecycleEvent create(int eventCode) {
-        return new RecycleEvent(eventCode);
+    public static AREvent create(int eventCode) {
+        return new AREvent(eventCode);
     }
 
     /**
-     * Constructor which provide to create of the {@link RecycleEvent} from
+     * Constructor which provide to create of the {@link AREvent} from
      *
      * @param eventValue event value
      */
-    public RecycleEvent(@NonNull final String eventValue) {
+    public AREvent(@NonNull final String eventValue) {
         this.eventCode = -1;
         this.eventValue = eventValue;
     }
 
     /**
-     * Method which provide the creating of the {@link RecycleEvent} from
+     * Method which provide the creating of the {@link AREvent} from
      *
      * @param eventValue event value
-     * @return instance of {@link RecycleEvent}
+     * @return instance of {@link AREvent}
      */
-    public static RecycleEvent create(@NonNull final String eventValue) {
-        return new RecycleEvent(eventValue);
+    public static AREvent create(@NonNull final String eventValue) {
+        return new AREvent(eventValue);
     }
 
     /**
@@ -70,8 +70,8 @@ public class RecycleEvent implements Parcelable {
         if (o == null) {
             return false;
         }
-        if (o instanceof RecycleEvent) {
-            RecycleEvent event = (RecycleEvent) o;
+        if (o instanceof AREvent) {
+            AREvent event = (AREvent) o;
             if ((this.eventValue != null) && (event.eventValue != null)) {
                 return this.eventValue.trim().equals(event.eventValue.trim());
             } else if (event.getEventCode() == eventCode) {
@@ -91,7 +91,7 @@ public class RecycleEvent implements Parcelable {
     }
 
     /**
-     * Method which provide the getting of the event value for the {@link RecycleEvent}
+     * Method which provide the getting of the event value for the {@link AREvent}
      *
      * @return {@link String} instance of recycle event value
      */
@@ -100,7 +100,7 @@ public class RecycleEvent implements Parcelable {
     }
 
     /**
-     * Method which provide the describing content for {@link RecycleEvent}
+     * Method which provide the describing content for {@link AREvent}
      *
      * @return described content
      */
@@ -110,7 +110,7 @@ public class RecycleEvent implements Parcelable {
     }
 
     /**
-     * Method which provide the write {@link RecycleEvent} to {@link Parcel}
+     * Method which provide the write {@link AREvent} to {@link Parcel}
      *
      * @param parcel instance of {@link Parcel}
      * @param flags  flags value
@@ -122,11 +122,11 @@ public class RecycleEvent implements Parcelable {
     }
 
     /**
-     * Constructor which provide the create {@link RecycleEvent} from {@link Parcel}
+     * Constructor which provide the create {@link AREvent} from {@link Parcel}
      *
      * @param parcel instance of {@link Parcel}
      */
-    protected RecycleEvent(Parcel parcel) {
+    protected AREvent(Parcel parcel) {
         this.eventCode = parcel.readInt();
         this.eventValue = parcel.readString();
     }
@@ -134,15 +134,15 @@ public class RecycleEvent implements Parcelable {
     /**
      * Creator field
      */
-    public static final Parcelable.Creator<RecycleEvent> CREATOR = new Parcelable.Creator<RecycleEvent>() {
+    public static final Parcelable.Creator<AREvent> CREATOR = new Parcelable.Creator<AREvent>() {
         @Override
-        public RecycleEvent createFromParcel(Parcel source) {
-            return new RecycleEvent(source);
+        public AREvent createFromParcel(Parcel source) {
+            return new AREvent(source);
         }
 
         @Override
-        public RecycleEvent[] newArray(int size) {
-            return new RecycleEvent[size];
+        public AREvent[] newArray(int size) {
+            return new AREvent[size];
         }
     };
 }

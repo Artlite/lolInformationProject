@@ -7,7 +7,7 @@ import android.graphics.Color;
  * Created by dlernatovich on 10/4/16.
  */
 
-public interface ColorStateConstants {
+public interface ARColorStateConstants {
     ColorStateList K_DEFAULT_REFRESH_COLOR = new ColorStateList(new int[][]{
             new int[]{android.R.attr.state_enabled}, // enabled
             new int[]{-android.R.attr.state_enabled}, // disabled

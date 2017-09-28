@@ -3,10 +3,8 @@ package com.artlite.collapsinglayouttest.ui.views.recycler;
 import android.content.Context;
 import android.widget.ImageView;
 
-import com.artlite.adapteredrecyclerview.anotations.FindLibraryViewBy;
-import com.artlite.adapteredrecyclerview.anotations.FindStringBy;
-import com.artlite.adapteredrecyclerview.anotations.FindViewBy;
-import com.artlite.adapteredrecyclerview.models.BaseRecyclerItem;
+import com.artlite.adapteredrecyclerview.anotations.ARFindViewBy;
+import com.artlite.adapteredrecyclerview.models.ARCell;
 import com.artlite.collapsinglayouttest.R;
 import com.artlite.collapsinglayouttest.model.Champion;
 import com.artlite.collapsinglayouttest.ui.views.fonted.FTextView;
@@ -14,15 +12,15 @@ import com.artlite.collapsinglayouttest.ui.views.fonted.FTextView;
 /**
  * Created by dlernatovich on 7/22/15.
  */
-public class ChampionRecycleItem extends BaseRecyclerItem<Champion> {
+public class ChampionRecycleItem extends ARCell<Champion> {
 
-    @FindViewBy(id = R.id.textview_main)
+    @ARFindViewBy(id = R.id.textview_main)
     private FTextView mainTextView;
-    @FindViewBy(id = R.id.imageview_champion)
+    @ARFindViewBy(id = R.id.imageview_champion)
     private ImageView championImageView;
-    @FindViewBy(id = R.id.imageview_type)
+    @ARFindViewBy(id = R.id.imageview_type)
     private ImageView typeImageView;
-    @FindViewBy(id = R.id.textview_history)
+    @ARFindViewBy(id = R.id.textview_history)
     private FTextView historyTextView;
 
     private Champion champion;

@@ -1,28 +1,23 @@
 package com.artlite.collapsinglayouttest.model;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.ColorStateList;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 
-import com.artlite.adapteredrecyclerview.anotations.FindColorBy;
-import com.artlite.adapteredrecyclerview.anotations.FindDrawableBy;
-import com.artlite.adapteredrecyclerview.anotations.FindStringBy;
-import com.artlite.adapteredrecyclerview.helpers.AdapteredInjector;
-import com.artlite.adapteredrecyclerview.models.BaseObject;
-import com.artlite.adapteredrecyclerview.models.BaseRecyclerItem;
+import com.artlite.adapteredrecyclerview.helpers.ARInjector;
+import com.artlite.adapteredrecyclerview.models.ARCell;
 import com.artlite.collapsinglayouttest.R;
 import com.artlite.collapsinglayouttest.constants.ChampionType;
-import com.artlite.collapsinglayouttest.core.application.CurrentApplication;
 import com.artlite.collapsinglayouttest.model.abs.AbstractModel;
 import com.artlite.collapsinglayouttest.ui.views.recycler.ChampionRecycleItem;
 
 /**
  * Created by dlernatovich on 7/22/15.
  */
+@SuppressLint("ParcelCreator")
 public class Champion extends AbstractModel {
 
     private static final String DEFAULT_SKIN_URL = "http://ru.leagueoflegends.com/sites/default/files/upload/art/teambuilder-wallpaper.jpg";
@@ -45,8 +40,8 @@ public class Champion extends AbstractModel {
     }
 
     @Override
-    public BaseRecyclerItem getRecyclerItem(Context context) {
-        AdapteredInjector.inject(this, context);
+    public ARCell getRecyclerItem(Context context) {
+        ARInjector.inject(this, context);
         return new ChampionRecycleItem(context);
     }
 

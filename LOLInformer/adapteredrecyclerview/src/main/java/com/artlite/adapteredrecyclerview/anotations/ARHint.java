@@ -9,6 +9,6 @@ import java.lang.annotation.RetentionPolicy;
  * Created by Artli on 15.12.2016.
  */
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Hint {
+public @interface ARHint {
     @NonNull String message();
 }

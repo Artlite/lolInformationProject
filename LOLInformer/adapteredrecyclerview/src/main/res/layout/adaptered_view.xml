@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.artlite.adapteredrecyclerview.ui.views.AdapteredRecyclerView
+        <com.artlite.adapteredrecyclerview.ui.views.ARRecycleView
             android:id="@+id/adaptered_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

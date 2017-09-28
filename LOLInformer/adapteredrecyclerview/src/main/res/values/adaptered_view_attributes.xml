@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="AdapteredView">
+    <declare-styleable name="ARView">
         <attr name="need_refresh" format="boolean" />
         <attr name="refresh_color" format="color" />
         <attr name="refresh_background" format="color" />

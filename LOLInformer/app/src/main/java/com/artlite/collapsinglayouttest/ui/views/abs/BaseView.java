@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.artlite.adapteredrecyclerview.helpers.AdapteredInjector;
+import com.artlite.adapteredrecyclerview.helpers.ARInjector;
 
 /**
  * Created by dlernatovich on 7/22/15.
@@ -34,7 +34,7 @@ public abstract class BaseView extends LinearLayout implements View.OnClickListe
     private void onInitializeView(Context context) {
         inflateView(context, getLayoutId());
         if (baseView != null) {
-            AdapteredInjector.inject(this);
+            ARInjector.inject(this);
         }
 
         onCreateView();

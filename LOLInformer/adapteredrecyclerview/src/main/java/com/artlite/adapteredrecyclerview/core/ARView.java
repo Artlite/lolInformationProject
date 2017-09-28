@@ -19,10 +19,10 @@ import com.artlite.adapteredrecyclerview.R;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredBaseCallback;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredPagingCallback;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredRefreshCallback;
-import com.artlite.adapteredrecyclerview.constants.ColorStateConstants;
-import com.artlite.adapteredrecyclerview.helpers.ColorHelper;
-import com.artlite.adapteredrecyclerview.models.BaseObject;
-import com.artlite.adapteredrecyclerview.ui.views.AdapteredRecyclerView;
+import com.artlite.adapteredrecyclerview.constants.ARColorStateConstants;
+import com.artlite.adapteredrecyclerview.helpers.ARColorHelper;
+import com.artlite.adapteredrecyclerview.models.ARObject;
+import com.artlite.adapteredrecyclerview.ui.views.ARRecycleView;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -31,7 +31,7 @@ import java.util.List;
 /**
  * Created by Artli on 25.08.2016.
  */
-public class AdapteredView<T extends BaseObject> extends FrameLayout {
+public class ARView<T extends ARObject> extends FrameLayout {
 
     private static final class Attributes {
         private static Attributes instance;
@@ -58,31 +58,31 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
          */
         protected void validate() {
             if (refreshColor == null) {
-                refreshColor = ColorStateConstants.K_DEFAULT_REFRESH_COLOR;
+                refreshColor = ARColorStateConstants.K_DEFAULT_REFRESH_COLOR;
             }
 
             if (refreshBackgroundColor == null) {
-                refreshBackgroundColor = ColorStateConstants.K_DEFAULT_REFRESH_BACKGROUND_COLOR;
+                refreshBackgroundColor = ARColorStateConstants.K_DEFAULT_REFRESH_BACKGROUND_COLOR;
             }
         }
     }
 
     private View baseView;
-    private AdapteredRecyclerView<T> recyclerView;
+    private ARRecycleView<T> recyclerView;
     private SwipeRefreshLayout refreshLayout;
     private OnAdapteredRefreshCallback refreshCallback;
 
-    public AdapteredView(Context context) {
+    public ARView(Context context) {
         super(context);
         onInitializeView(context, null);
     }
 
-    public AdapteredView(Context context, AttributeSet attrs) {
+    public ARView(Context context, AttributeSet attrs) {
         super(context, attrs);
         onInitializeView(context, attrs);
     }
 
-    public AdapteredView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ARView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         onInitializeView(context, attrs);
     }
@@ -109,7 +109,7 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
             return;
         }
         this.inflateView(context, R.layout.adaptered_view);
-        this.recyclerView = (AdapteredRecyclerView) baseView.findViewById(R.id.adaptered_recycler_view);
+        this.recyclerView = (ARRecycleView) baseView.findViewById(R.id.adaptered_recycler_view);
         this.refreshLayout = (SwipeRefreshLayout) baseView.findViewById(R.id.swipe_layout);
         this.refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -132,15 +132,15 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
      * @param context context
      */
     private void onInitiAttrs(@NonNull final AttributeSet attrs, @NonNull final Context context) {
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.AdapteredView);
+        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.ARView);
         if (Attributes.getInstance().isInit == false) {
             try {
                 Attributes.getInstance().isNeedRefresh = a
-                        .getBoolean(R.styleable.AdapteredView_need_refresh, false);
+                        .getBoolean(R.styleable.ARView_need_refresh, false);
                 Attributes.getInstance().refreshColor = a
-                        .getColorStateList(R.styleable.AdapteredView_refresh_color);
+                        .getColorStateList(R.styleable.ARView_refresh_color);
                 Attributes.getInstance().refreshBackgroundColor = a
-                        .getColorStateList(R.styleable.AdapteredView_refresh_background);
+                        .getColorStateList(R.styleable.ARView_refresh_background);
                 Attributes.getInstance().validate();
             } finally {
                 Attributes.getInstance().isInit = true;
@@ -446,7 +446,7 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
     }
 
     /**
-     * Method which provide the setting of the definition if {@link AdapteredView} need swipe down to refresh
+     * Method which provide the setting of the definition if {@link ARView} need swipe down to refresh
      *
      * @param isNeedResfresh
      */
@@ -462,8 +462,8 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
      * @param refreshColor    refresh color resource
      */
     public void setRefreshColoursInt(@ColorInt int backgroundColor, @ColorInt int refreshColor) {
-        final ColorStateList background = ColorHelper.getColorStateList(backgroundColor);
-        final ColorStateList refresh = ColorHelper.getColorStateList(refreshColor);
+        final ColorStateList background = ARColorHelper.getColorStateList(backgroundColor);
+        final ColorStateList refresh = ARColorHelper.getColorStateList(refreshColor);
         setRefreshColoursRes(background, refresh);
     }
 
@@ -475,8 +475,8 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
      * @param refreshColor    refresh color resource
      */
     public void setRefreshColoursRes(@ColorRes int backgroundColor, @ColorRes int refreshColor) {
-        final ColorStateList background = ColorHelper.getColorStateList(backgroundColor, getContext());
-        final ColorStateList refresh = ColorHelper.getColorStateList(refreshColor, getContext());
+        final ColorStateList background = ARColorHelper.getColorStateList(backgroundColor, getContext());
+        final ColorStateList refresh = ARColorHelper.getColorStateList(refreshColor, getContext());
         setRefreshColoursRes(background, refresh);
     }
 
@@ -503,9 +503,9 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
     }
 
     /**
-     * Method which provide the getting of the {@link List} of the selected {@link BaseObject}
+     * Method which provide the getting of the {@link List} of the selected {@link ARObject}
      *
-     * @return instance of the selected {@link List} of the {@link BaseObject}
+     * @return instance of the selected {@link List} of the {@link ARObject}
      */
     @NonNull
     public List<T> getSelectedItems() {
@@ -516,9 +516,9 @@ public class AdapteredView<T extends BaseObject> extends FrameLayout {
     }
 
     /**
-     * Method which provide the getting of the {@link List} of the deselected {@link BaseObject}
+     * Method which provide the getting of the {@link List} of the deselected {@link ARObject}
      *
-     * @return instance of the deselected {@link List} of the {@link BaseObject}
+     * @return instance of the deselected {@link List} of the {@link ARObject}
      */
     @NonNull
     public List<T> getDeselectedItems() {

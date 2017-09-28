@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
 import android.os.Handler;
-import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -15,24 +14,18 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 
-import com.artlite.adapteredrecyclerview.anotations.FindLibraryViewBy;
-import com.artlite.adapteredrecyclerview.anotations.FindStringBy;
-import com.artlite.adapteredrecyclerview.anotations.FindViewBy;
-import com.artlite.adapteredrecyclerview.callbacks.OnAnnotationCallback;
-import com.artlite.adapteredrecyclerview.helpers.AdapteredInjector;
-import com.artlite.adapteredrecyclerview.helpers.AnnotationHelper;
+import com.artlite.adapteredrecyclerview.anotations.ARFindViewBy;
+import com.artlite.adapteredrecyclerview.helpers.ARInjector;
 
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Field;
 import java.util.Timer;
 import java.util.TimerTask;
 
 /**
  * Created by Artli_000 on 24.07.2016.
  */
-public abstract class BaseRecyclerView extends FrameLayout implements View.OnClickListener {
+public abstract class ARBaseCell extends FrameLayout implements View.OnClickListener {
 
-    private static final String TAG = BaseRecyclerView.class.getSimpleName();
+    private static final String TAG = ARBaseCell.class.getSimpleName();
     protected static int K_DEFAULT_ID = Integer.MIN_VALUE;
 
     /**
@@ -51,7 +44,7 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
      *
      * @param context context to set
      */
-    public BaseRecyclerView(@NonNull final Context context) {
+    public ARBaseCell(@NonNull final Context context) {
         super(context);
         onInitializeView(context, null);
     }
@@ -110,10 +103,10 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
 
     /**
      * Method which provide the link interface from
-     * {@link FindViewBy}
+     * {@link ARFindViewBy}
      */
     private void onLinkFromAnnotations() {
-        AdapteredInjector.inject(this);
+        ARInjector.inject(this);
     }
 
     /**
@@ -133,7 +126,7 @@ public abstract class BaseRecyclerView extends FrameLayout implements View.OnCli
      * Method which provide the interface linking
      *
      * @warning it should be use only for library projects
-     * @information for now added the annotation for link interface, use {@link FindViewBy} for
+     * @information for now added the annotation for link interface, use {@link ARFindViewBy} for
      * injecting view
      */
     protected void onLinkInterface() {

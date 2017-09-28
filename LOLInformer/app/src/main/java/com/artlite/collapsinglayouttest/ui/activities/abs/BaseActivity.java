@@ -9,7 +9,7 @@ import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.artlite.adapteredrecyclerview.helpers.AdapteredInjector;
+import com.artlite.adapteredrecyclerview.helpers.ARInjector;
 
 
 /**
@@ -23,7 +23,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
-        AdapteredInjector.inject(this);
+        ARInjector.inject(this);
         onCreateActivity();
     }
 

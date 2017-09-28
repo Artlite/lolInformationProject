@@ -11,7 +11,7 @@ import android.support.annotation.NonNull;
  * Created by dlernatovich on 10/24/2016.
  */
 
-public final class ColorHelper {
+public final class ARColorHelper {
 
     /**
      * Method which provide the getting of the {@link ColorStateList} list from

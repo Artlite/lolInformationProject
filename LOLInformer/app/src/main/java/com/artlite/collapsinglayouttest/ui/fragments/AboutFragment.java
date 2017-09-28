@@ -4,7 +4,7 @@ import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
 
-import com.artlite.adapteredrecyclerview.anotations.FindViewBy;
+import com.artlite.adapteredrecyclerview.anotations.ARFindViewBy;
 import com.artlite.collapsinglayouttest.R;
 import com.artlite.collapsinglayouttest.ui.fragments.abs.BaseFragment;
 
@@ -13,7 +13,7 @@ import com.artlite.collapsinglayouttest.ui.fragments.abs.BaseFragment;
  */
 public class AboutFragment extends BaseFragment {
 
-    @FindViewBy(id = R.id.textview_about_information)
+    @ARFindViewBy(id = R.id.textview_about_information)
     private TextView informationTextView;
 
     /**

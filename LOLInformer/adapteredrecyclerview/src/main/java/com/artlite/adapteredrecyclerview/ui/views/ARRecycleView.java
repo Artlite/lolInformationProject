@@ -10,8 +10,8 @@ import android.util.Log;
 
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredBaseCallback;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredPagingCallback;
-import com.artlite.adapteredrecyclerview.models.BaseObject;
-import com.artlite.adapteredrecyclerview.ui.adapter.BaseRecyclerViewAdapter;
+import com.artlite.adapteredrecyclerview.models.ARObject;
+import com.artlite.adapteredrecyclerview.ui.adapter.ARBaseAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,7 +27,7 @@ import java.util.TimerTask;
 /**
  * Created by Artli_000 on 02.11.2015.
  */
-public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerView {
+public final class ARRecycleView<T extends ARObject> extends RecyclerView {
 
     /**
      * {@link String} constants of the tag
@@ -47,9 +47,9 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
     private final Handler MAIN_THREAD_HANDLER = new Handler();
 
     /**
-     * Instance of the {@link BaseRecyclerViewAdapter}
+     * Instance of the {@link ARBaseAdapter}
      */
-    private BaseRecyclerViewAdapter innerAdapter;
+    private ARBaseAdapter innerAdapter;
 
     /**
      * Instance of the {@link List} of the objects
@@ -65,7 +65,7 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
      *
      * @param context context
      */
-    public AdapteredRecyclerView(@NonNull final Context context) {
+    public ARRecycleView(@NonNull final Context context) {
         super(context);
         onCreate(context);
     }
@@ -76,8 +76,8 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
      * @param context context
      * @param attrs   attributes
      */
-    public AdapteredRecyclerView(@NonNull final Context context,
-                                 @Nullable final AttributeSet attrs) {
+    public ARRecycleView(@NonNull final Context context,
+                         @Nullable final AttributeSet attrs) {
         super(context, attrs);
         onCreate(context);
     }
@@ -89,9 +89,9 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
      * @param attrs    attributes
      * @param defStyle style
      */
-    public AdapteredRecyclerView(@NonNull final Context context,
-                                 @Nullable final AttributeSet attrs,
-                                 int defStyle) {
+    public ARRecycleView(@NonNull final Context context,
+                         @Nullable final AttributeSet attrs,
+                         int defStyle) {
         super(context, attrs, defStyle);
         onCreate(context);
     }
@@ -110,7 +110,7 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
             return;
         }
         innerObjects = new ArrayList<>();
-        innerAdapter = new BaseRecyclerViewAdapter(innerObjects);
+        innerAdapter = new ARBaseAdapter(innerObjects);
         innerAdapter.setOldSizeList(0);
         setAdapter(innerAdapter);
         setHasFixedSize(true);
@@ -351,9 +351,9 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
     }
 
     /**
-     * Method which provide the getting of the {@link List} of the selected {@link BaseObject}
+     * Method which provide the getting of the {@link List} of the selected {@link ARObject}
      *
-     * @return instance of the selected {@link List} of the {@link BaseObject}
+     * @return instance of the selected {@link List} of the {@link ARObject}
      */
     @NonNull
     public List<T> getSelectedItems() {
@@ -367,9 +367,9 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
     }
 
     /**
-     * Method which provide the getting of the {@link List} of the deselected {@link BaseObject}
+     * Method which provide the getting of the {@link List} of the deselected {@link ARObject}
      *
-     * @return instance of the deselected {@link List} of the {@link BaseObject}
+     * @return instance of the deselected {@link List} of the {@link ARObject}
      */
     @NonNull
     public List<T> getDeselectedItems() {
@@ -491,14 +491,14 @@ public final class AdapteredRecyclerView<T extends BaseObject> extends RecyclerV
     /**
      * Priority comparator class
      */
-    private static class PriorityComparator implements Comparator<BaseObject> {
+    private static class PriorityComparator implements Comparator<ARObject> {
         /**
          * Compares its two arguments for order.  Returns a negative integer,
          * zero, or a positive integer as the first argument is less than, equal
          * to, or greater than the second.<p>
          */
         @Override
-        public int compare(@NonNull final BaseObject lhs, @NonNull final BaseObject rhs) {
+        public int compare(@NonNull final ARObject lhs, @NonNull final ARObject rhs) {
             if (lhs.getPriority().ordinal() < rhs.getPriority().ordinal()) {
                 return 1;
             } else if (lhs.getPriority().ordinal() == rhs.getPriority().ordinal()) {

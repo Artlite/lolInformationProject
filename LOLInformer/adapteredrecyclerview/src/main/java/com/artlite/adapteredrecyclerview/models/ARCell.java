@@ -6,15 +6,15 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredBaseCallback;
-import com.artlite.adapteredrecyclerview.events.RecycleEvent;
-import com.artlite.adapteredrecyclerview.ui.views.BaseRecyclerView;
+import com.artlite.adapteredrecyclerview.events.AREvent;
+import com.artlite.adapteredrecyclerview.ui.views.ARBaseCell;
 
 import java.lang.ref.WeakReference;
 
 /**
  * Created by Artli_000 on 24.07.2016.
  */
-public abstract class BaseRecyclerItem<T extends BaseObject> extends BaseRecyclerView {
+public abstract class ARCell<T extends ARObject> extends ARBaseCell {
 
     /**
      * Instance of the {@link WeakReference}
@@ -36,7 +36,7 @@ public abstract class BaseRecyclerItem<T extends BaseObject> extends BaseRecycle
      *
      * @param context context to set
      */
-    public BaseRecyclerItem(@NonNull final Context context) {
+    public ARCell(@NonNull final Context context) {
         super(context);
     }
 
@@ -175,13 +175,13 @@ public abstract class BaseRecyclerItem<T extends BaseObject> extends BaseRecycle
     /**
      * Method which provide the event sending
      *
-     * @param recycleEvent recycler event
+     * @param AREvent recycler event
      */
-    protected void sendEvent(@NonNull final RecycleEvent recycleEvent) {
+    protected void sendEvent(@NonNull final AREvent AREvent) {
         final T object = getObject();
         final OnAdapteredBaseCallback callback = getCallback();
         if ((object != null) && (callback != null)) {
-            callback.onActionReceived(recycleEvent, index, objectReference.get());
+            callback.onActionReceived(AREvent, index, objectReference.get());
         }
     }
 }

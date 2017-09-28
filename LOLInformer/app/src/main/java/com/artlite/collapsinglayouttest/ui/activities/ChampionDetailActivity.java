@@ -3,7 +3,7 @@ package com.artlite.collapsinglayouttest.ui.activities;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.artlite.adapteredrecyclerview.anotations.FindViewBy;
+import com.artlite.adapteredrecyclerview.anotations.ARFindViewBy;
 import com.artlite.collapsinglayouttest.R;
 import com.artlite.collapsinglayouttest.core.managers.Managers;
 import com.artlite.collapsinglayouttest.model.Champion;
@@ -16,15 +16,15 @@ import com.artlite.collapsinglayouttest.ui.views.fonted.FTextView;
  */
 public class ChampionDetailActivity extends BaseActivity {
 
-    @FindViewBy(id = R.id.championImageView)
+    @ARFindViewBy(id = R.id.championImageView)
     private RoundedImageView championImageView;
-    @FindViewBy(id = R.id.textview_name)
+    @ARFindViewBy(id = R.id.textview_name)
     private FTextView nameTextView;
-    @FindViewBy(id = R.id.textview_history)
+    @ARFindViewBy(id = R.id.textview_history)
     private FTextView historyTextView;
-    @FindViewBy(id = R.id.imageview_type)
+    @ARFindViewBy(id = R.id.imageview_type)
     private ImageView typeImageView;
-    @FindViewBy(id = R.id.button_back)
+    @ARFindViewBy(id = R.id.button_back)
     private View buttonBack;
 
     protected Champion champion;

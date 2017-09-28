@@ -11,15 +11,15 @@ import android.support.annotation.NonNull;
 //                                         CREATOR
 //==================================================================================================
 /*
-public static final Parcelable.Creator<BaseObject> CREATOR = new Parcelable.Creator<BaseObject>() {
+public static final Parcelable.Creator<ARObject> CREATOR = new Parcelable.Creator<ARObject>() {
         @Override
-        public BaseObject createFromParcel(Parcel source) {
-            return new BaseObject(source);
+        public ARObject createFromParcel(Parcel source) {
+            return new ARObject(source);
         }
 
         @Override
-        public BaseObject[] newArray(int size) {
-            return new BaseObject[size];
+        public ARObject[] newArray(int size) {
+            return new ARObject[size];
         }
     };
  */
@@ -27,7 +27,7 @@ public static final Parcelable.Creator<BaseObject> CREATOR = new Parcelable.Crea
 /**
  * Created by Artli_000 on 24.07.2016.
  */
-public abstract class BaseObject implements Parcelable {
+public abstract class ARObject implements Parcelable {
 
     /**
      * Priority enumerator
@@ -39,7 +39,7 @@ public abstract class BaseObject implements Parcelable {
     }
 
     /**
-     * {@link Priority} for the {@link BaseObject}
+     * {@link Priority} for the {@link ARObject}
      */
     private Priority priority = Priority.MIDDLE;
 
@@ -54,19 +54,19 @@ public abstract class BaseObject implements Parcelable {
     private boolean isSelected;
 
     /**
-     * Default constructor for {@link BaseObject}
+     * Default constructor for {@link ARObject}
      */
-    public BaseObject() {
+    public ARObject() {
         this.priority = Priority.MIDDLE;
         this.isSelected = false;
     }
 
     /**
-     * Constructor which provide the creating of the {@link BaseObject} from {@link Parcel}
+     * Constructor which provide the creating of the {@link ARObject} from {@link Parcel}
      *
      * @param parcel instance of {@link Parcel}
      */
-    protected BaseObject(@NonNull final Parcel parcel) {
+    protected ARObject(@NonNull final Parcel parcel) {
         int tmpPriority = parcel.readInt();
         this.priority = tmpPriority == -1 ? null : Priority.values()[tmpPriority];
         this.index = parcel.readInt();
@@ -79,7 +79,7 @@ public abstract class BaseObject implements Parcelable {
      * @param context current context
      * @return current instance for the Recycler item
      */
-    public abstract BaseRecyclerItem getRecyclerItem(@NonNull final Context context);
+    public abstract ARCell getRecyclerItem(@NonNull final Context context);
 
     /**
      * Method which provide the priority getting
@@ -143,9 +143,9 @@ public abstract class BaseObject implements Parcelable {
     }
 
     /**
-     * Method which provide the describe content for the {@link BaseObject}
+     * Method which provide the describe content for the {@link ARObject}
      *
-     * @return described content for the {@link BaseObject}
+     * @return described content for the {@link ARObject}
      */
     @Override
     public int describeContents() {
@@ -153,7 +153,7 @@ public abstract class BaseObject implements Parcelable {
     }
 
     /**
-     * Method which provide the write {@link BaseObject} to {@link Parcel}
+     * Method which provide the write {@link ARObject} to {@link Parcel}
      *
      * @param parcel instance of {@link Parcel}
      * @param flags  flags value

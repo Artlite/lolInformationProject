@@ -9,13 +9,13 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-import com.artlite.adapteredrecyclerview.anotations.FindColorBy;
-import com.artlite.adapteredrecyclerview.anotations.FindDrawableBy;
-import com.artlite.adapteredrecyclerview.anotations.FindLibraryViewBy;
-import com.artlite.adapteredrecyclerview.anotations.FindStringBy;
-import com.artlite.adapteredrecyclerview.anotations.FindViewBy;
+import com.artlite.adapteredrecyclerview.anotations.ARFindColorBy;
+import com.artlite.adapteredrecyclerview.anotations.ARFindDrawableBy;
+import com.artlite.adapteredrecyclerview.anotations.ARFindLibraryViewBy;
+import com.artlite.adapteredrecyclerview.anotations.ARFindStringBy;
+import com.artlite.adapteredrecyclerview.anotations.ARFindViewBy;
 import com.artlite.adapteredrecyclerview.callbacks.OnAnnotationCallback;
-import com.artlite.adapteredrecyclerview.containers.AdapteredResourceContainer;
+import com.artlite.adapteredrecyclerview.containers.ARResourceContainer;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -25,11 +25,11 @@ import java.lang.reflect.Field;
  * Created by dlernatovich on 12/14/2016.
  */
 
-public final class AnnotationHelper extends BaseHelper {
+public final class ARAnnotationHelper extends ARBaseHelper {
     /**
      * TAG field
      */
-    public static final String TAG = AnnotationHelper.class.getSimpleName();
+    public static final String TAG = ARAnnotationHelper.class.getSimpleName();
 
     //==============================================================================================
     //                              BASIC ANNOTATION METHODS
@@ -118,11 +118,11 @@ public final class AnnotationHelper extends BaseHelper {
         final String methodName = "void annotateView(object, view, field, annotation)";
         if (validate(object, view, field, annotation)) {
             Integer id = null;
-            if (annotation instanceof FindViewBy) {
-                id = ((FindViewBy) annotation).id();
-            } else if (annotation instanceof FindLibraryViewBy) {
-                final String name = ((FindLibraryViewBy) annotation).name();
-                id = AdapteredResourceContainer.getInstance().get(name);
+            if (annotation instanceof ARFindViewBy) {
+                id = ((ARFindViewBy) annotation).id();
+            } else if (annotation instanceof ARFindLibraryViewBy) {
+                final String name = ((ARFindLibraryViewBy) annotation).name();
+                id = ARResourceContainer.getInstance().get(name);
             }
             if (id != null) {
                 try {
@@ -137,7 +137,7 @@ public final class AnnotationHelper extends BaseHelper {
 
     /**
      * Method which provide the setting of the {@link Field} from
-     * {@link com.artlite.adapteredrecyclerview.anotations.FindStringBy}
+     * {@link ARFindStringBy}
      *
      * @param object     instance of owner
      * @param context    instance of {@link Context}
@@ -150,8 +150,8 @@ public final class AnnotationHelper extends BaseHelper {
                                       @Nullable final Annotation annotation) {
         final String methodName = "void annotateString(object, context, field, annotation)";
         if (validate(context, field, annotation)) {
-            if (annotation instanceof FindStringBy) {
-                final int id = ((FindStringBy) annotation).id();
+            if (annotation instanceof ARFindStringBy) {
+                final int id = ((ARFindStringBy) annotation).id();
                 try {
                     final String text = context.getString(id);
                     field.set(object, text);
@@ -164,7 +164,7 @@ public final class AnnotationHelper extends BaseHelper {
 
     /**
      * Method which provide the setting of the {@link Field} from
-     * {@link com.artlite.adapteredrecyclerview.anotations.FindDrawableBy}
+     * {@link ARFindDrawableBy}
      *
      * @param object     instance of owner
      * @param context    instance of {@link Context}
@@ -177,8 +177,8 @@ public final class AnnotationHelper extends BaseHelper {
                                         @Nullable final Annotation annotation) {
         final String methodName = "void annotateString(object, context, field, annotation)";
         if (validate(context, field, annotation)) {
-            if (annotation instanceof FindDrawableBy) {
-                final int id = ((FindDrawableBy) annotation).id();
+            if (annotation instanceof ARFindDrawableBy) {
+                final int id = ((ARFindDrawableBy) annotation).id();
                 try {
                     final Drawable drawable = context.getResources().getDrawable(id);
                     field.set(object, drawable);
@@ -191,7 +191,7 @@ public final class AnnotationHelper extends BaseHelper {
 
     /**
      * Method which provide the setting of the {@link Field} from
-     * {@link com.artlite.adapteredrecyclerview.anotations.FindColorBy}
+     * {@link ARFindColorBy}
      *
      * @param object     instance of owner
      * @param context    instance of {@link Context}
@@ -204,8 +204,8 @@ public final class AnnotationHelper extends BaseHelper {
                                      @Nullable final Annotation annotation) {
         final String methodName = "void annotateString(object, context, field, annotation)";
         if (validate(context, field, annotation)) {
-            if (annotation instanceof FindColorBy) {
-                final int id = ((FindColorBy) annotation).id();
+            if (annotation instanceof ARFindColorBy) {
+                final int id = ((ARFindColorBy) annotation).id();
                 try {
                     final ColorStateList drawable = context.getResources().getColorStateList(id);
                     field.set(object, drawable);
@@ -229,11 +229,11 @@ public final class AnnotationHelper extends BaseHelper {
         final String methodName = "void annotateView(object, view, field, annotation)";
         if (validate(activity, field, annotation)) {
             Integer id = null;
-            if (annotation instanceof FindViewBy) {
-                id = ((FindViewBy) annotation).id();
-            } else if (annotation instanceof FindLibraryViewBy) {
-                final String name = ((FindLibraryViewBy) annotation).name();
-                id = AdapteredResourceContainer.getInstance().get(name);
+            if (annotation instanceof ARFindViewBy) {
+                id = ((ARFindViewBy) annotation).id();
+            } else if (annotation instanceof ARFindLibraryViewBy) {
+                final String name = ((ARFindLibraryViewBy) annotation).name();
+                id = ARResourceContainer.getInstance().get(name);
             }
             if (id != null) {
                 try {
@@ -260,11 +260,11 @@ public final class AnnotationHelper extends BaseHelper {
         final String methodName = "void annotateView(object, view, field, annotation)";
         if (validate(fragment, field, annotation)) {
             Integer id = null;
-            if (annotation instanceof FindViewBy) {
-                id = ((FindViewBy) annotation).id();
-            } else if (annotation instanceof FindLibraryViewBy) {
-                final String name = ((FindLibraryViewBy) annotation).name();
-                id = AdapteredResourceContainer.getInstance().get(name);
+            if (annotation instanceof ARFindViewBy) {
+                id = ((ARFindViewBy) annotation).id();
+            } else if (annotation instanceof ARFindLibraryViewBy) {
+                final String name = ((ARFindLibraryViewBy) annotation).name();
+                id = ARResourceContainer.getInstance().get(name);
             }
             if (id != null) {
                 try {

@@ -1,5 +1,6 @@
 package com.artlite.adapteredrecyclerview.anotations;
 
+import android.support.annotation.ColorRes;
 import android.support.annotation.DrawableRes;
 
 import java.lang.annotation.ElementType;
@@ -12,6 +13,6 @@ import java.lang.annotation.Target;
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface FindDrawableBy {
-    @DrawableRes int id();
+public @interface ARFindColorBy {
+    @ColorRes int id();
 }

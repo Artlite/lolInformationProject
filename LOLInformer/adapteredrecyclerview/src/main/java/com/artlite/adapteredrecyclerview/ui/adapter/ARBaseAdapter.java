@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredBaseCallback;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredPagingCallback;
-import com.artlite.adapteredrecyclerview.models.BaseObject;
-import com.artlite.adapteredrecyclerview.models.BaseRecyclerItem;
+import com.artlite.adapteredrecyclerview.models.ARObject;
+import com.artlite.adapteredrecyclerview.models.ARCell;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Created by Artli_000 on 24.07.2016.
  */
-public class BaseRecyclerViewAdapter<T extends BaseObject> extends RecyclerView.Adapter<BaseRecyclerViewAdapter.ViewHolder> {
+public class ARBaseAdapter<T extends ARObject> extends RecyclerView.Adapter<ARBaseAdapter.ViewHolder> {
 
     private List<T> listItems;
     private OnAdapteredBaseCallback actionCallback;
@@ -33,7 +33,7 @@ public class BaseRecyclerViewAdapter<T extends BaseObject> extends RecyclerView.
      *
      * @param listItems list item
      */
-    public BaseRecyclerViewAdapter(@NonNull final List<T> listItems) {
+    public ARBaseAdapter(@NonNull final List<T> listItems) {
         this.listItems = listItems;
         this.oldSizeList = 0;
     }
@@ -176,7 +176,7 @@ public class BaseRecyclerViewAdapter<T extends BaseObject> extends RecyclerView.
      * View holder class
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        public BaseRecyclerItem recycleItem;
+        public ARCell recycleItem;
 
         /**
          * Default constructor
@@ -185,7 +185,7 @@ public class BaseRecyclerViewAdapter<T extends BaseObject> extends RecyclerView.
          */
         public ViewHolder(@NonNull final View itemView) {
             super(itemView);
-            recycleItem = (BaseRecyclerItem) itemView;
+            recycleItem = (ARCell) itemView;
         }
     }
 }

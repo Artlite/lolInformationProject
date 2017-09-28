@@ -7,11 +7,11 @@ import android.util.Log;
  * Created by dlernatovich on 12/14/2016.
  */
 
-abstract class BaseHelper {
+abstract class ARBaseHelper {
     /**
      * TAG variable
      */
-    public static final String TAG = BaseHelper.class.getSimpleName();
+    public static final String TAG = ARBaseHelper.class.getSimpleName();
 
     //==============================================================================================
     //                                      VALIDATIONS
@@ -24,7 +24,7 @@ abstract class BaseHelper {
      * @return validation
      */
     protected static boolean validate(@Nullable final Object... objects) {
-        return ValidationHelper.emptyValidate(objects);
+        return ARValidationHelper.emptyValidate(objects);
     }
 
     //==============================================================================================

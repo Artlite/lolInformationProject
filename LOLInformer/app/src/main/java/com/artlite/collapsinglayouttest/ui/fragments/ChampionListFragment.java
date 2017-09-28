@@ -4,14 +4,12 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
 
-import com.artlite.adapteredrecyclerview.anotations.FindViewBy;
+import com.artlite.adapteredrecyclerview.anotations.ARFindViewBy;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredBaseCallback;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredRefreshCallback;
-import com.artlite.adapteredrecyclerview.containers.AdapteredResourceContainer;
-import com.artlite.adapteredrecyclerview.core.AdapteredView;
-import com.artlite.adapteredrecyclerview.events.RecycleEvent;
+import com.artlite.adapteredrecyclerview.core.ARView;
+import com.artlite.adapteredrecyclerview.events.AREvent;
 import com.artlite.collapsinglayouttest.R;
-import com.artlite.collapsinglayouttest.core.application.CurrentApplication;
 import com.artlite.collapsinglayouttest.core.managers.Managers;
 import com.artlite.collapsinglayouttest.model.Champion;
 import com.artlite.collapsinglayouttest.mvp.contracts.ChampionContract;
@@ -27,8 +25,8 @@ import java.util.List;
  */
 public class ChampionListFragment extends BaseFragment {
 
-    @FindViewBy(id = R.id.main_recycler_view)
-    private AdapteredView recyclerView;
+    @ARFindViewBy(id = R.id.main_recycler_view)
+    private ARView recyclerView;
 
     @Override
     protected int getLayoutId() {
@@ -59,7 +57,7 @@ public class ChampionListFragment extends BaseFragment {
                 }
 
                 @Override
-                public void onActionReceived(@NonNull RecycleEvent recycleEvent,
+                public void onActionReceived(@NonNull AREvent AREvent,
                                              int index, @NonNull Champion object) {
 
                 }
@@ -124,6 +122,9 @@ public class ChampionListFragment extends BaseFragment {
     };
 
     //PRESENTERS
+    /**
+     * Instance of the {@link ChampionPresenter}
+     */
     private final ChampionPresenter championPresenter = new ChampionPresenter(championView);
 
 }

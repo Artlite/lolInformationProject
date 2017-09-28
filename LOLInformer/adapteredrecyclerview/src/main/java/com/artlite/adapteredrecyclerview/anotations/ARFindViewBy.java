@@ -1,6 +1,8 @@
 package com.artlite.adapteredrecyclerview.anotations;
 
-import android.support.annotation.NonNull;
+import android.support.annotation.IdRes;
+
+import com.artlite.adapteredrecyclerview.ui.views.ARBaseCell;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -8,14 +10,14 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * {@link java.lang.annotation.Annotation} which provide the getting of the library view by name
+ * Annotation which provide to inject view by {@link java.lang.annotation.Annotation}
+ * (SIMILAR TO BUTTERKNIFE)
  *
- * @example if id is R.id.textview_main in this case you should
- * use @FindLibraryViewBy(name = "textview_main")
+ * @see ARBaseCell#onLinkFromAnnotations()
  * Created by dlernatovich on 12/14/2016.
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface FindLibraryViewBy {
-    @NonNull String name();
+public @interface ARFindViewBy {
+    @IdRes int id();
 }

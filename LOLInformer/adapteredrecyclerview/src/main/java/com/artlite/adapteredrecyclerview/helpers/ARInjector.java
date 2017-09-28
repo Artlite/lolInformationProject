@@ -8,11 +8,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-import com.artlite.adapteredrecyclerview.anotations.FindColorBy;
-import com.artlite.adapteredrecyclerview.anotations.FindDrawableBy;
-import com.artlite.adapteredrecyclerview.anotations.FindLibraryViewBy;
-import com.artlite.adapteredrecyclerview.anotations.FindStringBy;
-import com.artlite.adapteredrecyclerview.anotations.FindViewBy;
+import com.artlite.adapteredrecyclerview.anotations.ARFindColorBy;
+import com.artlite.adapteredrecyclerview.anotations.ARFindDrawableBy;
+import com.artlite.adapteredrecyclerview.anotations.ARFindLibraryViewBy;
+import com.artlite.adapteredrecyclerview.anotations.ARFindStringBy;
+import com.artlite.adapteredrecyclerview.anotations.ARFindViewBy;
 import com.artlite.adapteredrecyclerview.callbacks.OnAnnotationCallback;
 
 import java.lang.annotation.Annotation;
@@ -23,7 +23,7 @@ import java.lang.reflect.Field;
  * Created by Artli on 18.12.2016.
  */
 
-public final class AdapteredInjector extends BaseHelper {
+public final class ARInjector extends ARBaseHelper {
 
     /**
      * Method which provide the injecting from the activity
@@ -100,38 +100,38 @@ public final class AdapteredInjector extends BaseHelper {
                                                       @NonNull Annotation annotation,
                                                       @NonNull Field field) throws IllegalAccessException {
                             //======================================================================
-                            //                             FindStringBy
+                            //                             ARFindStringBy
                             //======================================================================
-                            if (annotation instanceof FindStringBy) {
-                                AnnotationHelper.annotateString(object, context, field, annotation);
+                            if (annotation instanceof ARFindStringBy) {
+                                ARAnnotationHelper.annotateString(object, context, field, annotation);
                                 //==================================================================
-                                //             FindDrawableBy
+                                //             ARFindDrawableBy
                                 //==================================================================
-                            } else if (annotation instanceof FindDrawableBy) {
-                                AnnotationHelper.annotateDrawable(object, context, field, annotation);
+                            } else if (annotation instanceof ARFindDrawableBy) {
+                                ARAnnotationHelper.annotateDrawable(object, context, field, annotation);
                                 //==================================================================
-                                //              FindColorBy
+                                //              ARFindColorBy
                                 //==================================================================
-                            } else if (annotation instanceof FindColorBy) {
-                                AnnotationHelper.annotateColor(object, context, field, annotation);
+                            } else if (annotation instanceof ARFindColorBy) {
+                                ARAnnotationHelper.annotateColor(object, context, field, annotation);
                                 //==================================================================
-                                //             FindLibraryViewBy and FindViewBy
+                                //             ARFindLibraryViewBy and ARFindViewBy
                                 //==================================================================
-                            } else if ((annotation instanceof FindLibraryViewBy) ||
-                                    (annotation instanceof FindViewBy)) {
+                            } else if ((annotation instanceof ARFindLibraryViewBy) ||
+                                    (annotation instanceof ARFindViewBy)) {
                                 if (object instanceof View) {
-                                    AnnotationHelper.annotateView((View) object, field, annotation);
+                                    ARAnnotationHelper.annotateView((View) object, field, annotation);
                                 } else if (object instanceof Activity) {
-                                    AnnotationHelper.annotateActivity((Activity) object, field, annotation);
+                                    ARAnnotationHelper.annotateActivity((Activity) object, field, annotation);
                                 } else if (object instanceof Fragment) {
-                                    AnnotationHelper.annotateFragment((Fragment) object,
+                                    ARAnnotationHelper.annotateFragment((Fragment) object,
                                             fragmentView, field, annotation);
                                 }
                             }
                         }
                     };
-            AnnotationHelper.annotate(object, callback, FindViewBy.class, FindStringBy.class,
-                    FindLibraryViewBy.class, FindDrawableBy.class, FindColorBy.class);
+            ARAnnotationHelper.annotate(object, callback, ARFindViewBy.class, ARFindStringBy.class,
+                    ARFindLibraryViewBy.class, ARFindDrawableBy.class, ARFindColorBy.class);
         }
     }
 }

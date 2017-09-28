@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.artlite.adapteredrecyclerview.core.AdapteredView
+    <com.artlite.adapteredrecyclerview.core.ARView
         android:id="@+id/main_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

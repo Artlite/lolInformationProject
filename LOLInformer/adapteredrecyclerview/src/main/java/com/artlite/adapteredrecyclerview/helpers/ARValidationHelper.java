@@ -10,7 +10,7 @@ import java.util.Map;
  * Created by dlernatovich on 12/14/2016.
  */
 
-public final class ValidationHelper {
+public final class ARValidationHelper {
     /**
      * Method which provide the validation for null elements
      *
