@@ -527,6 +527,15 @@ public class ARView<T extends ARObject> extends FrameLayout {
         }
         return new ArrayList<>();
     }
+
+    /**
+     * Method which provide the getting of the {@link ARRecycleView}
+     *
+     * @return instance of the {@link ARRecycleView}
+     */
+    public ARRecycleView<T> getRecyclerView() {
+        return recyclerView;
+    }
 }
 
 /*HOW TO USE
