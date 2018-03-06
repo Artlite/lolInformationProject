@@ -33,9 +33,13 @@ public abstract class ARObject implements Parcelable {
      * Priority enumerator
      */
     public enum Priority {
+        MIN,
+        VERY_LOW,
         LOW,
         MIDDLE,
-        HIGH
+        HIGH,
+        VERY_HIGH,
+        MAX
     }
 
     /**
