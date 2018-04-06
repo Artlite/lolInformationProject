@@ -8,8 +8,8 @@ import android.view.ViewGroup;
 
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredBaseCallback;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredPagingCallback;
-import com.artlite.adapteredrecyclerview.models.ARObject;
 import com.artlite.adapteredrecyclerview.models.ARCell;
+import com.artlite.adapteredrecyclerview.models.ARObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +27,13 @@ public class ARBaseAdapter<T extends ARObject> extends RecyclerView.Adapter<ARBa
     protected int index = 0;
     protected final List<Class> classes = new ArrayList<>();
     protected final List<ViewHolder> viewHolders = new ArrayList<>();
+
+    /**
+     * Default constructor
+     */
+    public ARBaseAdapter() {
+        this.oldSizeList = 0;
+    }
 
     /**
      * Default constructor
@@ -170,6 +177,15 @@ public class ARBaseAdapter<T extends ARObject> extends RecyclerView.Adapter<ARBa
      */
     public void setOldSizeList(int oldSizeList) {
         this.oldSizeList = oldSizeList;
+    }
+
+    /**
+     * Method which provide the setting of the {@link List} items
+     *
+     * @param listItems instance of the {@link List}
+     */
+    public void setListItems(@Nullable final List<T> listItems) {
+        this.listItems = (listItems == null) ? new ArrayList<T>() : listItems;
     }
 
     /**

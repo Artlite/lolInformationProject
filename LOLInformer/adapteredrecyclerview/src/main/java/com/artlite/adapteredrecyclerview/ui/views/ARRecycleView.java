@@ -483,6 +483,27 @@ public final class ARRecycleView<T extends ARObject> extends RecyclerView {
         }, delay * 1000);
     }
 
+    //==============================================================================================
+    //                                      SET ADAPTER
+    //==============================================================================================
+
+    /**
+     * Method which provide the adapter setting
+     *
+     * @param adapter instance of the {@link RecyclerView.Adapter}
+     */
+    @Override
+    public void setAdapter(Adapter adapter) {
+        if (adapter instanceof ARBaseAdapter) {
+            final ARBaseAdapter baseAdapter = (ARBaseAdapter) adapter;
+            if (baseAdapter.getItemCount() <= 0) {
+                baseAdapter.setListItems(this.innerObjects);
+                baseAdapter.setOldSizeList(0);
+            }
+        }
+        super.setAdapter(adapter);
+    }
+
 
     //==============================================================================================
     //                                      COMPARATORS
