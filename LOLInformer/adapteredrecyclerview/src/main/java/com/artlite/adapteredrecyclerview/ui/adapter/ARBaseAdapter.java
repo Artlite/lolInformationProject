@@ -19,14 +19,14 @@ import java.util.List;
  */
 public class ARBaseAdapter<T extends ARObject> extends RecyclerView.Adapter<ARBaseAdapter.ViewHolder> {
 
-    private List<T> listItems;
-    private OnAdapteredBaseCallback actionCallback;
-    private OnAdapteredPagingCallback pagingCallback;
-    private int oldSizeList;
+    protected List<T> listItems;
+    protected OnAdapteredBaseCallback actionCallback;
+    protected OnAdapteredPagingCallback pagingCallback;
+    protected int oldSizeList;
     //ViewHolder management
-    private int index = 0;
-    private final List<Class> classes = new ArrayList<>();
-    private final List<ViewHolder> viewHolders = new ArrayList<>();
+    protected int index = 0;
+    protected final List<Class> classes = new ArrayList<>();
+    protected final List<ViewHolder> viewHolders = new ArrayList<>();
 
     /**
      * Default constructor

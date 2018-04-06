@@ -44,17 +44,17 @@ public final class ARRecycleView<T extends ARObject> extends RecyclerView {
     /**
      * Instance of the {@link Handler}
      */
-    private final Handler MAIN_THREAD_HANDLER = new Handler();
+    protected final Handler MAIN_THREAD_HANDLER = new Handler();
 
     /**
      * Instance of the {@link ARBaseAdapter}
      */
-    private ARBaseAdapter innerAdapter;
+    protected ARBaseAdapter innerAdapter;
 
     /**
      * Instance of the {@link List} of the objects
      */
-    private List<T> innerObjects;
+    protected List<T> innerObjects;
 
     //==============================================================================================
     //                                      CONSTRUCTORS
@@ -105,7 +105,7 @@ public final class ARRecycleView<T extends ARObject> extends RecyclerView {
      *
      * @param context current context
      */
-    private void onCreate(@NonNull final Context context) {
+    protected void onCreate(@NonNull final Context context) {
         if (isInEditMode() == true) {
             return;
         }
@@ -152,7 +152,7 @@ public final class ARRecycleView<T extends ARObject> extends RecyclerView {
      *
      * @param objectList priority list
      */
-    private void sortByPriority(@Nullable final List<T> objectList) {
+    protected void sortByPriority(@Nullable final List<T> objectList) {
         if (objectList != null) {
             Collections.sort(objectList, new PriorityComparator());
         }
@@ -491,7 +491,7 @@ public final class ARRecycleView<T extends ARObject> extends RecyclerView {
     /**
      * Priority comparator class
      */
-    private static class PriorityComparator implements Comparator<ARObject> {
+    protected static class PriorityComparator implements Comparator<ARObject> {
         /**
          * Compares its two arguments for order.  Returns a negative integer,
          * zero, or a positive integer as the first argument is less than, equal

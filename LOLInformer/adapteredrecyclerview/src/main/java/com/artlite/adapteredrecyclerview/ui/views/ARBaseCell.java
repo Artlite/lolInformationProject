@@ -35,7 +35,7 @@ public abstract class ARBaseCell extends FrameLayout implements View.OnClickList
         void onActionPerform();
     }
 
-    private final Handler MAIN_THREAD_HANDLER = new Handler();
+    protected final Handler MAIN_THREAD_HANDLER = new Handler();
 
     protected View baseView;
 

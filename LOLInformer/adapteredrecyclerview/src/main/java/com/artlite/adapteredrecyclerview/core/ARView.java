@@ -67,10 +67,10 @@ public class ARView<T extends ARObject> extends FrameLayout {
         }
     }
 
-    private View baseView;
-    private ARRecycleView<T> recyclerView;
-    private SwipeRefreshLayout refreshLayout;
-    private OnAdapteredRefreshCallback refreshCallback;
+    protected View baseView;
+    protected ARRecycleView<T> recyclerView;
+    protected SwipeRefreshLayout refreshLayout;
+    protected OnAdapteredRefreshCallback refreshCallback;
 
     public ARView(Context context) {
         super(context);

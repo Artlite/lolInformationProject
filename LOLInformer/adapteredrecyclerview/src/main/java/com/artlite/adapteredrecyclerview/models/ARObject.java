@@ -45,17 +45,17 @@ public abstract class ARObject implements Parcelable {
     /**
      * {@link Priority} for the {@link ARObject}
      */
-    private Priority priority = Priority.MIDDLE;
+    protected Priority priority = Priority.MIDDLE;
 
     /**
      * {@link Integer} value of the index
      */
-    private int index;
+    protected int index;
 
     /**
      * {@link Boolean} value value which define if object is selected
      */
-    private boolean isSelected;
+    protected boolean isSelected;
 
     /**
      * Default constructor for {@link ARObject}
