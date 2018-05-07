@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/LOLInformer.iml" filepath="$PROJECT_DIR$/LOLInformer.iml" />
-      <module fileurl="file://C:/Development/Android/lolInformationProject/LOLInformer/LOLInformer.iml" filepath="C:/Development/Android/lolInformationProject/LOLInformer/LOLInformer.iml" />
       <module fileurl="file://$PROJECT_DIR$/adapteredrecyclerview/adapteredrecyclerview.iml" filepath="$PROJECT_DIR$/adapteredrecyclerview/adapteredrecyclerview.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
