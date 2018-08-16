@@ -5,6 +5,7 @@ import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.support.annotation.ColorInt;
 import android.support.annotation.ColorRes;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -72,19 +73,68 @@ public class ARView<T extends ARObject> extends FrameLayout {
     protected SwipeRefreshLayout refreshLayout;
     protected OnAdapteredRefreshCallback refreshCallback;
 
+    /**
+     * Constructor which provide to create {@link View} with parameters
+     *
+     * @param context instance of the {@link Context}
+     */
     public ARView(Context context) {
         super(context);
         onInitializeView(context, null);
     }
 
+    /**
+     * Constructor which provide to create {@link View} with parameters
+     *
+     * @param context instance of the {@link Context}
+     * @param attrs   instance of the {@link AttributeSet}
+     */
     public ARView(Context context, AttributeSet attrs) {
         super(context, attrs);
         onInitializeView(context, attrs);
     }
 
+    /**
+     * Constructor which provide to create {@link View} with parameters
+     *
+     * @param context      instance of the {@link Context}
+     * @param attrs        instance of the {@link AttributeSet}
+     * @param defStyleAttr {@link Integer} value of the defined style
+     */
     public ARView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         onInitializeView(context, attrs);
+    }
+
+    /*
+    <?xml version="1.0" encoding="utf-8"?>
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@android:color/transparent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.artlite.adapteredrecyclerview.ui.views.ARRecycleView
+            android:id="@+id/adaptered_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    </FrameLayout>
+    * */
+
+    /**
+     * Method which provide the getting of the {@link Integer} value of the layout ID
+     *
+     * @return {@link Integer} value of the layout ID
+     */
+    @LayoutRes
+    protected int getLayoutID() {
+        return R.layout.adaptered_view;
     }
 
     /**
@@ -108,7 +158,7 @@ public class ARView<T extends ARObject> extends FrameLayout {
         if (isInEditMode() == true) {
             return;
         }
-        this.inflateView(context, R.layout.adaptered_view);
+        this.inflateView(context, this.getLayoutID());
         this.recyclerView = (ARRecycleView) baseView.findViewById(R.id.adaptered_recycler_view);
         this.refreshLayout = (SwipeRefreshLayout) baseView.findViewById(R.id.swipe_layout);
         this.refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
