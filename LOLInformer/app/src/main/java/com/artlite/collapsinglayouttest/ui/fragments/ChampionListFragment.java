@@ -17,6 +17,7 @@ import com.artlite.collapsinglayouttest.mvp.impl.ChampionPresenter;
 import com.artlite.collapsinglayouttest.providers.ChampionProvider;
 import com.artlite.collapsinglayouttest.ui.activities.ChampionDetailActivity;
 import com.artlite.collapsinglayouttest.ui.fragments.abs.BaseFragment;
+import com.futuremind.recyclerviewfastscroll.FastScroller;
 
 import java.util.List;
 
@@ -27,6 +28,9 @@ public class ChampionListFragment extends BaseFragment {
 
     @ARFindViewBy(id = R.id.main_recycler_view)
     private ARView recyclerView;
+
+    @ARFindViewBy(id = R.id.fastscroll)
+    private FastScroller fastScroller;
 
     @Override
     protected int getLayoutId() {
@@ -39,6 +43,10 @@ public class ChampionListFragment extends BaseFragment {
                 refreshCallback);
         recyclerView.setIsNeedResfresh(false);
         championView.onCreateView();
+        fastScroller.setRecyclerView(this.recyclerView.getRecyclerView());
+        fastScroller.setBubbleColor(getResources().getColor(R.color.color_divider_black));
+        fastScroller.setHandleColor(getResources().getColor(R.color.color_divider_black));
+        fastScroller.setBubbleTextAppearance(R.style.TextAppearance_Art_Code_Black);
     }
 
     /**

@@ -10,6 +10,7 @@ import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredBaseCallback;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredPagingCallback;
 import com.artlite.adapteredrecyclerview.models.ARCell;
 import com.artlite.adapteredrecyclerview.models.ARObject;
+import com.futuremind.recyclerviewfastscroll.SectionTitleProvider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,9 @@ import java.util.List;
 /**
  * Created by Artli_000 on 24.07.2016.
  */
-public class ARBaseAdapter<T extends ARObject> extends RecyclerView.Adapter<ARBaseAdapter.ViewHolder> {
+public class ARBaseAdapter<T extends ARObject>
+        extends RecyclerView.Adapter<ARBaseAdapter.ViewHolder>
+        implements SectionTitleProvider {
 
     protected List<T> listItems;
     protected OnAdapteredBaseCallback actionCallback;
@@ -186,6 +189,21 @@ public class ARBaseAdapter<T extends ARObject> extends RecyclerView.Adapter<ARBa
      */
     public void setListItems(@Nullable final List<T> listItems) {
         this.listItems = (listItems == null) ? new ArrayList<T>() : listItems;
+    }
+
+    /**
+     * Should be implemented by the adapter of the RecyclerView.
+     * Provides a text to be shown by the bubble, when RecyclerView reaches
+     * the position. Usually the first letter of the text shown by the item
+     * at this position.
+     *
+     * @param position Position of the row in adapter
+     * @return The text to be shown in the bubble
+     * @see com.futuremind.recyclerviewfastscroll.FastScroller
+     */
+    @Override
+    public String getSectionTitle(int position) {
+        return this.listItems.get(position).getSectionTitle(position);
     }
 
     /**

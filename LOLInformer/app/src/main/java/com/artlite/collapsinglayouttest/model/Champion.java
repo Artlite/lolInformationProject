@@ -6,6 +6,7 @@ import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.util.Log;
 
 import com.artlite.adapteredrecyclerview.helpers.ARInjector;
 import com.artlite.adapteredrecyclerview.models.ARCell;
@@ -14,11 +15,15 @@ import com.artlite.collapsinglayouttest.constants.ChampionType;
 import com.artlite.collapsinglayouttest.model.abs.AbstractModel;
 import com.artlite.collapsinglayouttest.ui.views.recycler.ChampionRecycleItem;
 
+import java.lang.ref.WeakReference;
+
 /**
  * Created by dlernatovich on 7/22/15.
  */
 @SuppressLint("ParcelCreator")
 public class Champion extends AbstractModel {
+
+    private static final String TAG = Champion.class.getSimpleName();
 
     private static final String DEFAULT_SKIN_URL = "http://ru.leagueoflegends.com/sites/default/files/upload/art/teambuilder-wallpaper.jpg";
 
@@ -32,6 +37,8 @@ public class Champion extends AbstractModel {
     private int history;
     private ChampionType championType;
 
+    private WeakReference<Context> contextReference;
+
     //TODO Temporary variable (remove this after the implementation)
     private boolean isFinished;
 
@@ -41,6 +48,7 @@ public class Champion extends AbstractModel {
 
     @Override
     public ARCell getRecyclerItem(Context context) {
+        this.contextReference = new WeakReference<>(context);
         ARInjector.inject(this, context);
         return new ChampionRecycleItem(context);
     }
@@ -188,5 +196,25 @@ public class Champion extends AbstractModel {
 
     public String getShortHistory() {
         return getShortHistory(history);
+    }
+
+    /**
+     * Should be implemented by the adapter of the RecyclerView.
+     * Provides a text to be shown by the bubble, when RecyclerView reaches
+     * the position. Usually the first letter of the text shown by the item
+     * at this position.
+     *
+     * @param position Position of the row in adapter
+     * @return The text to be shown in the bubble
+     * @warning This method should be overriding
+     * @see com.futuremind.recyclerviewfastscroll.FastScroller
+     */
+    public String getSectionTitle(int position) {
+        try {
+            return this.getText(this.name).substring(0, 1);
+        } catch (Exception ex) {
+            Log.e(TAG, "getSectionTitle: ", ex);
+        }
+        return "#";
     }
 }

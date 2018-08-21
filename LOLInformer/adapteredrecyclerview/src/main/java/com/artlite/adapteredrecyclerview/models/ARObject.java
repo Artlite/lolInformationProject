@@ -169,4 +169,19 @@ public abstract class ARObject implements Parcelable {
         parcel.writeInt((isSelected() == true) ? 1 : 0);
     }
 
+    /**
+     * Should be implemented by the adapter of the RecyclerView.
+     * Provides a text to be shown by the bubble, when RecyclerView reaches
+     * the position. Usually the first letter of the text shown by the item
+     * at this position.
+     *
+     * @param position Position of the row in adapter
+     * @return The text to be shown in the bubble
+     * @warning This method should be overriding
+     * @see com.futuremind.recyclerviewfastscroll.FastScroller
+     */
+    public String getSectionTitle(int position) {
+        return "#";
+    }
+
 }
