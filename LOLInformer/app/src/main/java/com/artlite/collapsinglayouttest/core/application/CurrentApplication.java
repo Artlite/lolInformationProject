@@ -5,14 +5,15 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
 
+import com.artlite.bslibrary.constants.BSTypeface;
+import com.artlite.bslibrary.core.BSInstance;
+import com.artlite.bslibrary.managers.BSContextManager;
 import com.artlite.collapsinglayouttest.utils.AppLogger;
 
 /**
  * Created by dlernatovich on 7/23/15.
  */
 public final class CurrentApplication extends Application {
-
-    private static CurrentApplication instance;
 
     /**
      * Called when the application is starting, before any activity, service,
@@ -26,25 +27,7 @@ public final class CurrentApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        instance = this;
-    }
-
-    /**
-     * Method which provide the getting of the current instance of the Application
-     *
-     * @return current Application
-     */
-    private static CurrentApplication getInstance() {
-        return instance;
-    }
-
-    /**
-     * Method which provide the getting of the {@link Context}
-     *
-     * @return application {@link Context}
-     */
-    public static Context getContext() {
-        return getInstance();
+        BSInstance.init(this, BSTypeface.FIRA_SANS);
     }
 
     /**
@@ -56,9 +39,10 @@ public final class CurrentApplication extends Application {
     @NonNull
     public static final String getStringValue(@StringRes int stringId) {
         try {
-            return getInstance().getResources().getString(stringId);
+            return BSContextManager.getApplicationContext().getResources().getString(stringId);
         } catch (Exception ex) {
-            AppLogger.error(getInstance(), ex.toString(), "CurrentApplication -> getStringValue");
+            AppLogger.error(BSContextManager.getApplicationContext(),
+                    ex.toString(), "CurrentApplication -> getStringValue");
         }
         return "";
     }

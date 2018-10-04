@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.artlite.bslibrary.managers.BSTypefaceManager;
 import com.artlite.collapsinglayouttest.R;
 import com.artlite.collapsinglayouttest.core.managers.Managers;
 import com.artlite.collapsinglayouttest.core.managers.impl.TypeFaceManager;
@@ -44,17 +45,7 @@ public class FTabLayout extends android.support.design.widget.TabLayout {
             return;
         }
 
-        currentTypeface = getTypeFaceManager().getBarriolBoldFont();
-    }
-
-    /**
-     * Method which provide the getting of the {@link TypeFaceManager}
-     *
-     * @return {@link TypeFaceManager}
-     */
-    @NonNull
-    TypeFaceManager getTypeFaceManager() {
-        return Managers.getTypeFaceManager();
+        currentTypeface = BSTypefaceManager.getFiraBold();
     }
 
     /**
@@ -66,18 +57,17 @@ public class FTabLayout extends android.support.design.widget.TabLayout {
     @Override
     public void addTab(Tab tab) {
         super.addTab(tab);
-
         //Functional which provide the replacing of the font typeface in the tab bar
         ViewGroup mainView = (ViewGroup) getChildAt(0);
         ViewGroup tabView = (ViewGroup) mainView.getChildAt(tab.getPosition());
-
         int tabChildCount = tabView.getChildCount();
         for (int i = 0; i < tabChildCount; i++) {
             View tabViewChild = tabView.getChildAt(i);
             if (tabViewChild instanceof TextView) {
                 TextView textView = (TextView) tabViewChild;
                 textView.setTypeface(currentTypeface, Typeface.NORMAL);
-                textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, getResources().getDimension(R.dimen.text_16));
+                textView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
+                        getResources().getDimensionPixelSize(R.dimen.text_10));
             }
         }
     }

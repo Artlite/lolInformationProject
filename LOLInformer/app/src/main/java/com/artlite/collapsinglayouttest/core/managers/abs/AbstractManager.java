@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.artlite.bslibrary.managers.BSContextManager;
 import com.artlite.collapsinglayouttest.core.application.CurrentApplication;
 import com.artlite.collapsinglayouttest.core.managers.abs.BaseManager;
 
@@ -32,6 +33,6 @@ public abstract class AbstractManager implements BaseManager {
     @Nullable
     @Override
     public Context getContext() {
-        return CurrentApplication.getContext();
+        return BSContextManager.getApplicationContext();
     }
 }
