@@ -27,7 +27,7 @@ public final class CurrentApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        BSInstance.init(this, BSTypeface.FIRA_SANS);
+        BSInstance.init(this, BSTypeface.SFC);
     }
 
     /**

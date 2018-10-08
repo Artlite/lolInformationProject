@@ -19,45 +19,46 @@ import com.artlite.collapsinglayouttest.core.managers.impl.TypeFaceManager;
  */
 public class FTabLayout extends android.support.design.widget.TabLayout {
 
-    private Typeface currentTypeface;
-
+    /**
+     * Method which provide to create the {@link FTabLayout} with parameters
+     *
+     * @param context instance of the {@link Context}
+     */
     public FTabLayout(Context context) {
         super(context);
-        onCreate();
     }
 
+    /**
+     * Method which provide to create the {@link FTabLayout} with parameters
+     *
+     * @param context instance of the {@link Context}
+     * @param attrs   instance of the {@link AttributeSet}
+     */
     public FTabLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
-        onCreate();
     }
 
+    /**
+     * Method which provide to create the {@link FTabLayout} with parameters
+     *
+     * @param context      instance of the {@link Context}
+     * @param attrs        instance of the {@link AttributeSet}
+     * @param defStyleAttr instance of the {@link Integer}
+     */
     public FTabLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        onCreate();
     }
 
     /**
-     * Method which provide the actions when view will be create
-     */
-    private void onCreate() {
-
-        if (this.isInEditMode()) {
-            return;
-        }
-
-        currentTypeface = BSTypefaceManager.getFiraBold();
-    }
-
-    /**
-     * Add a tab to this layout. The tab will be added at the end of the list.
-     * If this is the first tab to be added it will become the selected tab.
+     * Add a tab to this layout. The tab will be inserted at <code>position</code>.
      *
-     * @param tab Tab to add
+     * @param tab         The tab to add
+     * @param position    The new position of the tab
+     * @param setSelected True if the added tab should become the selected tab.
      */
     @Override
-    public void addTab(Tab tab) {
-        super.addTab(tab);
-        //Functional which provide the replacing of the font typeface in the tab bar
+    public void addTab(@NonNull Tab tab, int position, boolean setSelected) {
+        super.addTab(tab, position, setSelected);
         ViewGroup mainView = (ViewGroup) getChildAt(0);
         ViewGroup tabView = (ViewGroup) mainView.getChildAt(tab.getPosition());
         int tabChildCount = tabView.getChildCount();
@@ -65,9 +66,9 @@ public class FTabLayout extends android.support.design.widget.TabLayout {
             View tabViewChild = tabView.getChildAt(i);
             if (tabViewChild instanceof TextView) {
                 TextView textView = (TextView) tabViewChild;
-                textView.setTypeface(currentTypeface, Typeface.NORMAL);
+                textView.setTypeface(BSTypefaceManager.getDefaultBold());
                 textView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
-                        getResources().getDimensionPixelSize(R.dimen.text_10));
+                        getResources().getDimensionPixelSize(R.dimen.text_5));
             }
         }
     }
