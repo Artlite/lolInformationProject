@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dimen_60"
+    android:background="@drawable/background_oval_blue_shadow"
+    android:clickable="true"
+    android:clipChildren="true"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical|left"
+        android:layout_marginLeft="@dimen/dimen_16"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            style="@style/styleFillImageCenter"
+            android:layout_width="@dimen/dimen_30"
+            android:layout_height="@dimen/dimen_30"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_bottom_list" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Champions"
+            android:textAllCaps="true"
+            android:textColor="#87d3ed"
+            android:textSize="@dimen/text_11"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="@dimen/dimen_0"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical|right"
+        android:layout_marginRight="@dimen/dimen_16"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            style="@style/styleFillImageCenter"
+            android:layout_width="@dimen/dimen_30"
+            android:layout_height="@dimen/dimen_30"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_bottom_info" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="About"
+            android:textAllCaps="true"
+            android:textColor="#87d3ed"
+            android:textSize="@dimen/text_11"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -7,48 +7,38 @@
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/dimen_16"
+        android:layout_marginRight="@dimen/dimen_16">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/dimen_5"
             android:gravity="center"
             android:orientation="horizontal">
-
-            <View
-                android:layout_width="@dimen/dimen_0"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1" />
 
             <ImageView
                 style="@style/styleCropImageCenter"
                 android:layout_width="@dimen/dimen_0"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_marginTop="@dimen/dimen_76"
+                android:layout_marginRight="@dimen/dimen_4"
+                android:layout_marginBottom="@dimen/dimen_76"
+                android:layout_weight="0.5"
+                android:alpha="0.5"
                 android:cropToPadding="true"
-                android:padding="@dimen/dimen_5"
                 android:src="@drawable/img_darius_vs_garen" />
 
-            <View
-                android:layout_width="@dimen/dimen_0"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1" />
-
-            <LinearLayout
+            <com.artlite.collapsinglayouttest.ui.views.fonted.FTextView
+                android:id="@+id/textview_about_information"
                 android:layout_width="@dimen/dimen_0"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.5"
-                android:orientation="vertical">
-
-                <com.artlite.collapsinglayouttest.ui.views.fonted.FTextView
-                    android:id="@+id/textview_about_information"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text=""
-                    android:textSize="@dimen/text_16" />
-
-            </LinearLayout>
+                android:layout_marginLeft="@dimen/dimen_4"
+                android:layout_marginTop="@dimen/dimen_76"
+                android:layout_marginBottom="@dimen/dimen_76"
+                android:layout_weight="1"
+                android:text=""
+                android:textSize="@dimen/text_14" />
 
         </LinearLayout>
 

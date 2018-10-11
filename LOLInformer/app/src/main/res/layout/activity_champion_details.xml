@@ -5,8 +5,14 @@
     android:id="@+id/main_content"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_primary"
+    android:layout_marginLeft="@dimen/dimen_16"
+    android:layout_marginTop="@dimen/dimen_16"
+    android:layout_marginRight="@dimen/dimen_16"
+    android:background="@drawable/background_square_no_bottom_blue_shadow"
     android:fitsSystemWindows="true"
+    android:paddingLeft="@dimen/dimen_8"
+    android:paddingTop="@dimen/dimen_8"
+    android:paddingRight="@dimen/dimen_8"
     tools:context=".MainActivity">
 
 
@@ -114,7 +120,7 @@
                 android:gravity="center"
                 android:textAppearance="@style/TextAppearance.Art.Code"
                 android:textColor="@color/color_divider_black"
-                android:textSize="@dimen/text_16" />
+                android:textSize="@dimen/text_15" />
 
             <View
                 android:layout_width="match_parent"
@@ -148,14 +154,14 @@
                     android:text="@string/text_champion_history"
                     android:textAppearance="@style/TextAppearance.Art.Code"
                     android:textColor="@color/color_divider_black"
-                    android:textSize="@dimen/text_16" />
+                    android:textSize="@dimen/text_15" />
 
                 <com.artlite.collapsinglayouttest.ui.views.fonted.FTextView
                     android:id="@+id/textview_history"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/white"
-                    android:textSize="@dimen/text_16" />
+                    android:textSize="@dimen/text_14" />
             </LinearLayout>
 
         </LinearLayout>

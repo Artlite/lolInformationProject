@@ -4,18 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_margin="@dimen/dimen_4"
+    android:layout_marginLeft="@dimen/dimen_16"
+    android:layout_marginTop="@dimen/dimen_4"
+    android:layout_marginRight="@dimen/dimen_16"
+    android:layout_marginBottom="@dimen/dimen_4"
+    android:background="@drawable/background_square_gray_shadow"
     android:gravity="center"
     android:orientation="vertical">
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_square"
-        android:paddingLeft="@dimen/dimen_10"
-        android:paddingTop="@dimen/dimen_10"
-        android:paddingRight="@dimen/dimen_10"
-        android:paddingBottom="@dimen/dimen_10">
+        android:layout_margin="@dimen/dimen_16">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,7 +58,7 @@
                     android:text="Item 1"
                     android:textAllCaps="true"
                     android:textColor="@color/color_text_selected"
-                    android:textSize="@dimen/text_16"
+                    android:textSize="@dimen/text_15"
                     android:textStyle="bold" />
             </LinearLayout>
             <!--DESCRIPTION-->
@@ -84,7 +84,7 @@
                     android:text="Item 1"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
-                    android:textSize="@dimen/text_16" />
+                    android:textSize="@dimen/text_14" />
             </LinearLayout>
         </LinearLayout>
     </FrameLayout>

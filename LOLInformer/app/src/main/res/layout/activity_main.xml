@@ -8,70 +8,73 @@
     android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
+    <!--<android.support.design.widget.AppBarLayout-->
+    <!--android:id="@+id/appbar"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:alpha="1.0">-->
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/appbar"
+    <!--<android.support.design.widget.CollapsingToolbarLayout-->
+    <!--android:id="@+id/main.collapsing"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:fitsSystemWindows="true"-->
+    <!--app:contentScrim="@color/blue_glyph"-->
+    <!--app:layout_scrollFlags="scroll|snap">-->
+
+    <!--<ImageView-->
+    <!--style="@style/styleCropImageCenter"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/dimen_100"-->
+    <!--android:src="@drawable/kindred_logo"-->
+    <!--app:layout_collapseMode="parallax" />-->
+
+    <!--</android.support.design.widget.CollapsingToolbarLayout>-->
+
+    <!--</android.support.design.widget.AppBarLayout>-->
+
+    <ImageView
+        style="@style/styleCropImageCenter"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/color_primary_dark">
+        android:layout_height="match_parent"
+        android:alpha="0.2"
+        android:src="@drawable/img_akali" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed">
-
-            <ImageView
-                style="@style/styleCropImageCenter"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_230"
-                android:src="@drawable/kindred_logo" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:orientation="vertical"
-            app:layout_collapseMode="pin">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_2"
-                android:background="@color/color_divider_black" />
-
-            <com.artlite.collapsinglayouttest.ui.views.fonted.FTabLayout
-                android:id="@+id/main_tab_bar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                app:tabGravity="center"
-                app:tabIndicatorColor="@color/color_divider_black"
-                app:tabMode="scrollable"
-                app:tabSelectedTextColor="@color/color_text_selected"
-                app:tabTextAppearance="@style/TextAppearance.Art.Code"
-                app:tabTextColor="@color/color_text" />
-        </LinearLayout>
-
-    </android.support.design.widget.AppBarLayout>
-
-
-    <com.artlite.collapsinglayouttest.ui.views.viewpager.ViewPagerWithoutScroll
+    <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/dimen_5"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-    </com.artlite.collapsinglayouttest.ui.views.viewpager.ViewPagerWithoutScroll>
-
-    <View
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="-50dp"
         android:alpha="0.9"
-        android:background="@drawable/background_oval" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_65"
+        android:alpha="0.8"
+        android:background="@drawable/background_line_bottom_round_blue_shadow"
+        app:layout_collapseMode="parallax">
+
+        <com.artlite.bslibrary.ui.fonted.BSTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/dimen_26"
+            android:layout_marginRight="@dimen/dimen_26"
+            android:gravity="center"
+            android:text="Champions"
+            android:textColor="#87d3ed"
+            android:textSize="@dimen/text_15"
+            android:textStyle="bold"
+            app:textAllCaps="true" />
+    </FrameLayout>
+
+    <com.artlite.collapsinglayouttest.ui.views.bar.ViewBottomBar
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_60"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="@dimen/dimen_16"
+        android:layout_marginRight="@dimen/dimen_16"
+        android:layout_marginBottom="@dimen/dimen_5"
+        android:alpha="0.8" />
 
 </android.support.design.widget.CoordinatorLayout>
 

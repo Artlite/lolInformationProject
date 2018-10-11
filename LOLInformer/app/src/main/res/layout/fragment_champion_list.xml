@@ -12,16 +12,5 @@
         app:need_refresh="true"
         app:refresh_background="@color/color_primary_dark"
         app:refresh_color="@color/color_divider_black" />
-    <!--app:need_refresh="false"-->
-    <!--app:refresh_background="@color/color_primary_dark"-->
-    <!--app:refresh_color="@color/color_divider_black"-->
-
-    <com.futuremind.recyclerviewfastscroll.FastScroller
-        android:id="@+id/fastscroll"
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="right"
-        android:layout_alignParentRight="true"/>
 
 </FrameLayout>

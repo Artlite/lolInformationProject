@@ -1,9 +1,14 @@
 package com.artlite.collapsinglayouttest.ui.activities;
 
+import android.os.Bundle;
+import android.support.annotation.AnimRes;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.artlite.adapteredrecyclerview.anotations.ARFindViewBy;
+import com.artlite.bslibrary.annotations.FindViewBy;
+import com.artlite.bslibrary.ui.activity.BSActivity;
 import com.artlite.collapsinglayouttest.R;
 import com.artlite.collapsinglayouttest.core.managers.Managers;
 import com.artlite.collapsinglayouttest.model.Champion;
@@ -14,19 +19,41 @@ import com.artlite.collapsinglayouttest.ui.views.fonted.FTextView;
 /**
  * Created by dlernatovich on 7/23/15.
  */
-public class ChampionDetailActivity extends BaseActivity {
+public class ChampionDetailActivity extends BSActivity {
 
-    @ARFindViewBy(id = R.id.championImageView)
+    /**
+     * Instance of the {@link View}
+     */
+    @FindViewBy(id = R.id.championImageView)
     private RoundedImageView championImageView;
-    @ARFindViewBy(id = R.id.textview_name)
+
+    /**
+     * Instance of the {@link View}
+     */
+    @FindViewBy(id = R.id.textview_name)
     private FTextView nameTextView;
-    @ARFindViewBy(id = R.id.textview_history)
+
+    /**
+     * Instance of the {@link View}
+     */
+    @FindViewBy(id = R.id.textview_history)
     private FTextView historyTextView;
-    @ARFindViewBy(id = R.id.imageview_type)
+
+    /**
+     * Instance of the {@link View}
+     */
+    @FindViewBy(id = R.id.imageview_type)
     private ImageView typeImageView;
-    @ARFindViewBy(id = R.id.button_back)
+
+    /**
+     * Instance of the {@link View}
+     */
+    @FindViewBy(id = R.id.button_back)
     private View buttonBack;
 
+    /**
+     * Instance of the {@link Champion}
+     */
     protected Champion champion;
 
     /**
@@ -40,24 +67,29 @@ public class ChampionDetailActivity extends BaseActivity {
     }
 
     /**
-     * Method which provide the getting of current menu ID
+     * Method which provide the action when Activity is created
      *
-     * @return current menu ID
+     * @param bundle
      */
     @Override
-    protected int getMenuId() {
-        return NON_MENU_ID;
+    protected void onCreateActivity(@Nullable Bundle bundle) {
+
     }
 
     /**
-     * Method which provide the action when the Activity was created
+     * Method which provide the action when Activity is created (post creation)
+     * Use it if you create any callback inside the activity like
+     * <b>final |CallbackType| callback = new |CallbackType|</b>
+     *
+     * @param bundle
      */
     @Override
-    protected void onCreateActivity() {
+    protected void onActivityPostCreation(@Nullable Bundle bundle) {
         champion = Managers.getTransferManager().getChampion();
         setOnClickListeners(buttonBack);
         updateUI();
     }
+
 
     /**
      * Method which provide the updating of the user interface
@@ -86,5 +118,59 @@ public class ChampionDetailActivity extends BaseActivity {
                 break;
 
         }
+    }
+
+    /**
+     * Method which provide the getting of the start enter animation
+     *
+     * @return id for start enter animation
+     */
+    @Override
+    @AnimRes
+    protected int getStartEnterAnim() {
+        return android.R.anim.fade_in;
+    }
+
+    /**
+     * Method which provide the getting of the start end animation
+     *
+     * @return id for start end animation
+     */
+    @Override
+    @AnimRes
+    protected int getStartEndAnim() {
+        return android.R.anim.fade_out;
+    }
+
+    /**
+     * Method which provide the getting of the finish start animation
+     *
+     * @return id for start end animation
+     */
+    @Override
+    @AnimRes
+    protected int getFinishStartAnim() {
+        return android.R.anim.fade_in;
+    }
+
+    /**
+     * Method which provide the getting of the finish start animation
+     *
+     * @return id for start end animation
+     */
+    @Override
+    @AnimRes
+    protected int getFinishEndAnim() {
+        return android.R.anim.fade_out;
+    }
+
+    /**
+     * Method which provide the defining if need to override of the transition animation
+     *
+     * @return defining results
+     */
+    @Override
+    protected boolean isOverrideTransitionAnimation() {
+        return true;
     }
 }

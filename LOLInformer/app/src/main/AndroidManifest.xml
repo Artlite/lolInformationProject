@@ -21,7 +21,8 @@
         <activity
             android:name=".ui.activities.ChampionDetailActivity"
             android:configChanges="orientation|keyboard"
-            android:label="@string/text_champion_details" />
+            android:label="@string/text_champion_details"
+            android:theme="@style/AppTheme.Fullscreen.NoActionBar.Transparent" />
     </application>
 
 </manifest>

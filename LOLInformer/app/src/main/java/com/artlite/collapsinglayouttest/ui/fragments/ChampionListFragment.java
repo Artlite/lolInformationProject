@@ -1,5 +1,6 @@
 package com.artlite.collapsinglayouttest.ui.fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -9,6 +10,7 @@ import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredBaseCallback;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredRefreshCallback;
 import com.artlite.adapteredrecyclerview.core.ARView;
 import com.artlite.adapteredrecyclerview.events.AREvent;
+import com.artlite.adapteredrecyclerview.models.ARObject;
 import com.artlite.collapsinglayouttest.R;
 import com.artlite.collapsinglayouttest.core.managers.Managers;
 import com.artlite.collapsinglayouttest.model.Champion;
@@ -17,6 +19,7 @@ import com.artlite.collapsinglayouttest.mvp.impl.ChampionPresenter;
 import com.artlite.collapsinglayouttest.providers.ChampionProvider;
 import com.artlite.collapsinglayouttest.ui.activities.ChampionDetailActivity;
 import com.artlite.collapsinglayouttest.ui.fragments.abs.BaseFragment;
+import com.artlite.collapsinglayouttest.ui.views.recycler.BlankRecyclerItem;
 import com.futuremind.recyclerviewfastscroll.FastScroller;
 
 import java.util.List;
@@ -26,27 +29,45 @@ import java.util.List;
  */
 public class ChampionListFragment extends BaseFragment {
 
+    /**
+     * Instance of the {@link ARView}
+     */
     @ARFindViewBy(id = R.id.main_recycler_view)
     private ARView recyclerView;
 
-    @ARFindViewBy(id = R.id.fastscroll)
-    private FastScroller fastScroller;
+    /**
+     * Instance of the {@link BlankRecyclerItem.Object}
+     */
+    private BlankRecyclerItem.Object topBlank
+            = new BlankRecyclerItem.Object(ARObject.Priority.MAX);
 
+    /**
+     * Instance of the {@link BlankRecyclerItem.Object}
+     */
+    private BlankRecyclerItem.Object bottomBlank
+            = new BlankRecyclerItem.Object(ARObject.Priority.MIN);
+
+    /**
+     * Method which provide the getting of the current layout ID
+     *
+     * @return current layout ID
+     */
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_champion_list;
     }
 
+    /**
+     * Method which provide the action when fragment is created
+     *
+     * @param containerView current view
+     */
     @Override
     protected void onCreateFragment(View containerView) {
         recyclerView.init(championPresenter.getLayoutManager(getContext()), recyclerCallback,
                 refreshCallback);
         recyclerView.setIsNeedResfresh(false);
         championView.onCreateView();
-        fastScroller.setRecyclerView(this.recyclerView.getRecyclerView());
-        fastScroller.setBubbleColor(getResources().getColor(R.color.color_divider_black));
-        fastScroller.setHandleColor(getResources().getColor(R.color.color_divider_black));
-        fastScroller.setBubbleTextAppearance(R.style.TextAppearance_Art_Code_Black);
     }
 
     /**
@@ -104,6 +125,8 @@ public class ChampionListFragment extends BaseFragment {
         @Override
         public void setChampions(@NonNull List<Champion> champions) {
             recyclerView.set(champions);
+            recyclerView.add(topBlank);
+            recyclerView.add(bottomBlank);
         }
 
         /**
