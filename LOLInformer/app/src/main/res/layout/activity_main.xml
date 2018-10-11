@@ -65,6 +65,13 @@
 
     </com.artlite.collapsinglayouttest.ui.views.viewpager.ViewPagerWithoutScroll>
 
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="-50dp"
+        android:alpha="0.9"
+        android:background="@drawable/background_oval" />
 
 </android.support.design.widget.CoordinatorLayout>
 

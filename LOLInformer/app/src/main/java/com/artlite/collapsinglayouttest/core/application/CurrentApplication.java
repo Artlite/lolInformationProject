@@ -27,7 +27,7 @@ public final class CurrentApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        BSInstance.init(this, BSTypeface.SFC);
+        BSInstance.init(this, BSTypeface.EXO_2);
     }
 
     /**
