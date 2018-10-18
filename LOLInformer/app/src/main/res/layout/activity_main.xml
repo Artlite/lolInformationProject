@@ -68,6 +68,7 @@
     </FrameLayout>
 
     <com.artlite.collapsinglayouttest.ui.views.bar.ViewBottomBar
+        android:id="@+id/view_bottom_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_60"
         android:layout_gravity="bottom"

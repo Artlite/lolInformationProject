@@ -12,8 +12,6 @@ import com.artlite.bslibrary.annotations.Warning;
 import com.artlite.bslibrary.managers.BSTypefaceManager;
 import com.artlite.bslibrary.ui.fonted.BSButton;
 import com.artlite.bslibrary.ui.fonted.BSTextView;
-import com.artlite.collapsinglayouttest.core.managers.Managers;
-import com.artlite.collapsinglayouttest.core.managers.impl.TypeFaceManager;
 
 /**
  * Created by dlernatovich on 12/1/15.

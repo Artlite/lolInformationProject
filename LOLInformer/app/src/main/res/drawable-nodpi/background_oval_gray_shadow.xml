@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item>
+        <layer-list>
+
+            <!-- Drop Shadow Stack -->
+            <item>
+                <shape>
+                    <padding android:bottom="1dp" android:left="1dp" android:right="1dp" android:top="1dp" />
+                    <solid android:color="#003b3a3a" />
+                    <corners android:radius="@dimen/dimen_300" />
+                </shape>
+            </item>
+            <item>
+                <shape>
+                    <padding android:bottom="1dp" android:left="1dp" android:right="1dp" android:top="1dp" />
+                    <solid android:color="#103b3a3a" />
+                    <corners android:radius="@dimen/dimen_300" />
+                </shape>
+            </item>
+            <item>
+                <shape>
+                    <padding android:bottom="1dp" android:left="1dp" android:right="1dp" android:top="1dp" />
+                    <solid android:color="#203b3a3a" />
+                    <corners android:radius="@dimen/dimen_300" />
+                </shape>
+            </item>
+            <item>
+                <shape>
+                    <padding android:bottom="1dp" android:left="1dp" android:right="1dp" android:top="1dp" />
+                    <solid android:color="#303b3a3a" />
+                    <corners android:radius="@dimen/dimen_300" />
+                </shape>
+            </item>
+            <item>
+                <shape>
+                    <padding android:bottom="1dp" android:left="1dp" android:right="1dp" android:top="1dp" />
+                    <solid android:color="#503b3a3a" />
+                    <corners android:radius="@dimen/dimen_300" />
+                </shape>
+            </item>
+
+            <!-- Background -->
+            <item>
+                <shape>
+                    <solid android:color="@color/color_primary_dark" />
+                    <corners android:radius="@dimen/dimen_300" />
+                </shape>
+            </item>
+
+        </layer-list>
+    </item>
+
+</selector>

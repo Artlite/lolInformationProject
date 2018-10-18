@@ -12,7 +12,6 @@ import com.artlite.adapteredrecyclerview.core.ARView;
 import com.artlite.adapteredrecyclerview.events.AREvent;
 import com.artlite.adapteredrecyclerview.models.ARObject;
 import com.artlite.collapsinglayouttest.R;
-import com.artlite.collapsinglayouttest.core.managers.Managers;
 import com.artlite.collapsinglayouttest.model.Champion;
 import com.artlite.collapsinglayouttest.mvp.contracts.ChampionContract;
 import com.artlite.collapsinglayouttest.mvp.impl.ChampionPresenter;
@@ -20,7 +19,6 @@ import com.artlite.collapsinglayouttest.providers.ChampionProvider;
 import com.artlite.collapsinglayouttest.ui.activities.ChampionDetailActivity;
 import com.artlite.collapsinglayouttest.ui.fragments.abs.BaseFragment;
 import com.artlite.collapsinglayouttest.ui.views.recycler.BlankRecyclerItem;
-import com.futuremind.recyclerviewfastscroll.FastScroller;
 
 import java.util.List;
 
@@ -136,8 +134,7 @@ public class ChampionListFragment extends BaseFragment {
          */
         @Override
         public void onChampionClick(@NonNull Champion champion) {
-            Managers.getTransferManager().setChampion(champion);
-            startActivity(ChampionDetailActivity.class);
+            ChampionDetailActivity.startActivity(getActivity(), champion);
         }
 
         /**
@@ -153,6 +150,7 @@ public class ChampionListFragment extends BaseFragment {
     };
 
     //PRESENTERS
+
     /**
      * Instance of the {@link ChampionPresenter}
      */

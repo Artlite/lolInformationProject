@@ -1,26 +1,30 @@
 package com.artlite.collapsinglayouttest.ui.activities;
 
 import android.os.Bundle;
-import android.support.annotation.AnimRes;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 
-import com.artlite.adapteredrecyclerview.anotations.ARFindViewBy;
 import com.artlite.bslibrary.annotations.FindViewBy;
 import com.artlite.bslibrary.ui.activity.BSActivity;
 import com.artlite.collapsinglayouttest.R;
-import com.artlite.collapsinglayouttest.ui.activities.abs.BaseActivity;
 import com.artlite.collapsinglayouttest.ui.adapters.viewpager.MainPagerAdapter;
-import com.artlite.collapsinglayouttest.ui.views.fonted.FTabLayout;
+import com.artlite.collapsinglayouttest.ui.views.bar.ViewBottomBar;
 
 
-public class MainActivity extends BSActivity {
+public class MainActivity extends BSActivity implements ViewBottomBar.ViewBottomBarDelegate {
 
     /**
      * Instance of the {@link ViewPager}
      */
     @FindViewBy(id = R.id.pager)
-    private ViewPager mainViewPager;
+    private ViewPager viewPager;
+
+    /**
+     * Instance of the {@link ViewBottomBar}
+     */
+    @FindViewBy(id = R.id.view_bottom_bar)
+    private ViewBottomBar viewBottomBar;
 
     /**
      * Instance of the {@link MainPagerAdapter}
@@ -58,61 +62,20 @@ public class MainActivity extends BSActivity {
     @Override
     protected void onActivityPostCreation(@Nullable Bundle bundle) {
         mainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager());
-        mainViewPager.setAdapter(mainPagerAdapter);
+        viewPager.setAdapter(mainPagerAdapter);
+        viewBottomBar.delegate = this;
     }
 
     /**
-     * Method which provide the getting of the start enter animation
+     * Method which provide the action when the view did select
      *
-     * @return id for start enter animation
+     * @param view  instance of the {@link ViewBottomBar}
+     * @param index instance of the {@link Integer}
      */
     @Override
-    @AnimRes
-    protected int getStartEnterAnim() {
-        return android.R.anim.fade_in;
+    public void viewBottomDidSelect(@NonNull ViewBottomBar view, int index) {
+        if (index != -1) {
+            this.viewPager.setCurrentItem(index);
+        }
     }
-
-    /**
-     * Method which provide the getting of the start end animation
-     *
-     * @return id for start end animation
-     */
-    @Override
-    @AnimRes
-    protected int getStartEndAnim() {
-        return android.R.anim.fade_out;
-    }
-
-    /**
-     * Method which provide the getting of the finish start animation
-     *
-     * @return id for start end animation
-     */
-    @Override
-    @AnimRes
-    protected int getFinishStartAnim() {
-        return android.R.anim.fade_in;
-    }
-
-    /**
-     * Method which provide the getting of the finish start animation
-     *
-     * @return id for start end animation
-     */
-    @Override
-    @AnimRes
-    protected int getFinishEndAnim() {
-        return android.R.anim.fade_out;
-    }
-
-    /**
-     * Method which provide the defining if need to override of the transition animation
-     *
-     * @return defining results
-     */
-    @Override
-    protected boolean isOverrideTransitionAnimation() {
-        return true;
-    }
-
 }

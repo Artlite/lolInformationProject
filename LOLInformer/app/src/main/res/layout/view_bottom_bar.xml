@@ -8,6 +8,7 @@
     android:orientation="horizontal">
 
     <LinearLayout
+        android:id="@+id/view_index_1"
         android:layout_width="@dimen/dimen_0"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical|left"
@@ -18,8 +19,8 @@
 
         <ImageView
             style="@style/styleFillImageCenter"
-            android:layout_width="@dimen/dimen_30"
-            android:layout_height="@dimen/dimen_30"
+            android:layout_width="32dp"
+            android:layout_height="34dp"
             android:layout_gravity="center"
             android:src="@drawable/ic_bottom_list" />
 
@@ -34,6 +35,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/view_index_2"
         android:layout_width="@dimen/dimen_0"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical|right"

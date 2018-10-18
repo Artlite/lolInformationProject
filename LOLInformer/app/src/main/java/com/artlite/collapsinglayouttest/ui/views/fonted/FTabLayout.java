@@ -11,8 +11,6 @@ import android.widget.TextView;
 
 import com.artlite.bslibrary.managers.BSTypefaceManager;
 import com.artlite.collapsinglayouttest.R;
-import com.artlite.collapsinglayouttest.core.managers.Managers;
-import com.artlite.collapsinglayouttest.core.managers.impl.TypeFaceManager;
 
 /**
  * Created by dlernatovich on 12/2/15.

@@ -1,25 +1,34 @@
 package com.artlite.collapsinglayouttest.ui.activities;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.AnimRes;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.artlite.adapteredrecyclerview.anotations.ARFindViewBy;
 import com.artlite.bslibrary.annotations.FindViewBy;
 import com.artlite.bslibrary.ui.activity.BSActivity;
 import com.artlite.collapsinglayouttest.R;
-import com.artlite.collapsinglayouttest.core.managers.Managers;
 import com.artlite.collapsinglayouttest.model.Champion;
 import com.artlite.collapsinglayouttest.ui.activities.abs.BaseActivity;
 import com.artlite.collapsinglayouttest.ui.custom.RoundedImageView;
 import com.artlite.collapsinglayouttest.ui.views.fonted.FTextView;
 
+import jp.wasabeef.blurry.Blurry;
+
 /**
  * Created by dlernatovich on 7/23/15.
  */
 public class ChampionDetailActivity extends BSActivity {
+
+    /**
+     * Instance of the {@link String}
+     */
+    private static final String K_CHAMPION_KEY = "ChampionDetailActivity:Champion";
 
     /**
      * Instance of the {@link View}
@@ -38,12 +47,6 @@ public class ChampionDetailActivity extends BSActivity {
      */
     @FindViewBy(id = R.id.textview_history)
     private FTextView historyTextView;
-
-    /**
-     * Instance of the {@link View}
-     */
-    @FindViewBy(id = R.id.imageview_type)
-    private ImageView typeImageView;
 
     /**
      * Instance of the {@link View}
@@ -73,7 +76,6 @@ public class ChampionDetailActivity extends BSActivity {
      */
     @Override
     protected void onCreateActivity(@Nullable Bundle bundle) {
-
     }
 
     /**
@@ -85,7 +87,7 @@ public class ChampionDetailActivity extends BSActivity {
      */
     @Override
     protected void onActivityPostCreation(@Nullable Bundle bundle) {
-        champion = Managers.getTransferManager().getChampion();
+        champion = bundle.getParcelable(K_CHAMPION_KEY);
         setOnClickListeners(buttonBack);
         updateUI();
     }
@@ -99,7 +101,6 @@ public class ChampionDetailActivity extends BSActivity {
             championImageView.setBackgroundResource(champion.getIconID());
             nameTextView.setText(champion.getName());
             historyTextView.setText(champion.getHistory());
-            typeImageView.setImageResource(champion.getTypeImage());
         }
     }
 
@@ -121,56 +122,29 @@ public class ChampionDetailActivity extends BSActivity {
     }
 
     /**
-     * Method which provide the getting of the start enter animation
-     *
-     * @return id for start enter animation
+     * Method which provide the finishing activity
      */
     @Override
-    @AnimRes
-    protected int getStartEnterAnim() {
-        return android.R.anim.fade_in;
+    public void finish() {
+        super.finish();
+        overridePendingTransition(android.R.anim.fade_in,
+                android.R.anim.fade_out);
     }
 
     /**
-     * Method which provide the getting of the start end animation
+     * Method which provide the start activity of the {@link ChampionDetailActivity}
      *
-     * @return id for start end animation
+     * @param activity instance of the {@link Activity}
+     * @param champion instance of the {@link Champion}
      */
-    @Override
-    @AnimRes
-    protected int getStartEndAnim() {
-        return android.R.anim.fade_out;
-    }
-
-    /**
-     * Method which provide the getting of the finish start animation
-     *
-     * @return id for start end animation
-     */
-    @Override
-    @AnimRes
-    protected int getFinishStartAnim() {
-        return android.R.anim.fade_in;
-    }
-
-    /**
-     * Method which provide the getting of the finish start animation
-     *
-     * @return id for start end animation
-     */
-    @Override
-    @AnimRes
-    protected int getFinishEndAnim() {
-        return android.R.anim.fade_out;
-    }
-
-    /**
-     * Method which provide the defining if need to override of the transition animation
-     *
-     * @return defining results
-     */
-    @Override
-    protected boolean isOverrideTransitionAnimation() {
-        return true;
+    public static void startActivity(@Nullable Activity activity,
+                                     @Nullable Champion champion) {
+        if ((activity != null) && (champion != null)) {
+            final Intent intent = new Intent(activity, ChampionDetailActivity.class);
+            intent.putExtra(K_CHAMPION_KEY, champion);
+            activity.startActivity(intent);
+            activity.overridePendingTransition(android.R.anim.fade_in,
+                    android.R.anim.fade_out);
+        }
     }
 }
