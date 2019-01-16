@@ -261,10 +261,10 @@ public class ARView<T extends ARObject> extends FrameLayout {
      * @param callback       action callback
      * @param pagingCallback paging callback
      */
-    public final void init(@NonNull final RecyclerView.LayoutManager layoutManager,
-                           @Nullable final OnAdapteredBaseCallback callback,
-                           @Nullable final OnAdapteredRefreshCallback refreshCallback,
-                           @Nullable final OnAdapteredPagingCallback pagingCallback) {
+    public final <T extends OnAdapteredPagingCallback> void init(@NonNull final RecyclerView.LayoutManager layoutManager,
+                                                                 @Nullable final OnAdapteredBaseCallback callback,
+                                                                 @Nullable final OnAdapteredRefreshCallback refreshCallback,
+                                                                 @Nullable final T pagingCallback) {
         this.recyclerView.setLayoutManager(layoutManager);
         this.recyclerView.setHasFixedSize(true);
         //Set callback

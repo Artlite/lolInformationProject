@@ -1,12 +1,14 @@
 package com.artlite.collapsinglayouttest.ui.fragments;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.View;
+import android.widget.Toast;
 
 import com.artlite.adapteredrecyclerview.anotations.ARFindViewBy;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredBaseCallback;
+import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredPagingCallback;
+import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredPagingExtendedCallback;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredRefreshCallback;
 import com.artlite.adapteredrecyclerview.core.ARView;
 import com.artlite.adapteredrecyclerview.events.AREvent;
@@ -25,7 +27,9 @@ import java.util.List;
 /**
  * Created by dlernatovich on 7/22/15.
  */
-public class ChampionListFragment extends BaseFragment {
+public class ChampionListFragment
+        extends BaseFragment
+        implements OnAdapteredPagingCallback {
 
     /**
      * Instance of the {@link ARView}
@@ -63,7 +67,7 @@ public class ChampionListFragment extends BaseFragment {
     @Override
     protected void onCreateFragment(View containerView) {
         recyclerView.init(championPresenter.getLayoutManager(getContext()), recyclerCallback,
-                refreshCallback);
+                refreshCallback, this);
         recyclerView.setIsNeedResfresh(false);
         championView.onCreateView();
     }
@@ -156,4 +160,23 @@ public class ChampionListFragment extends BaseFragment {
      */
     private final ChampionPresenter championPresenter = new ChampionPresenter(championView);
 
+//    /**
+//     * Method which provide the notifying about item of list
+//     *
+//     * @param index {@link Integer} value of the visible index
+//     */
+//    @Override
+//    public void onItemVisible(int index) {
+//        Toast.makeText(getContext(), "Item :" + index, Toast.LENGTH_SHORT).show();
+//    }
+
+    /**
+     * Method which provide the notifying about end of list
+     *
+     * @param listSize list size
+     */
+    @Override
+    public void onNextPage(int listSize) {
+        Toast.makeText(getContext(), "List size :" + listSize, Toast.LENGTH_SHORT).show();
+    }
 }

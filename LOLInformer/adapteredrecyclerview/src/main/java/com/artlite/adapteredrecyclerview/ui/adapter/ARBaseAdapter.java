@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredBaseCallback;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredPagingCallback;
+import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredPagingExtendedCallback;
 import com.artlite.adapteredrecyclerview.models.ARCell;
 import com.artlite.adapteredrecyclerview.models.ARObject;
 import com.futuremind.recyclerviewfastscroll.SectionTitleProvider;
@@ -141,6 +142,14 @@ public class ARBaseAdapter<T extends ARObject>
                 pagingCallback.onNextPage(listItemSize);
                 oldSizeList = listItemSize;
             }
+        } else {
+            if (pagingCallback != null) {
+                if (pagingCallback instanceof OnAdapteredPagingExtendedCallback) {
+                    final OnAdapteredPagingExtendedCallback callback
+                            = (OnAdapteredPagingExtendedCallback) pagingCallback;
+                    callback.onItemVisible(position);
+                }
+            }
         }
     }
 
@@ -169,7 +178,8 @@ public class ARBaseAdapter<T extends ARObject>
      *
      * @param callback lazy load callback
      */
-    public void setPagingCallback(@NonNull final OnAdapteredPagingCallback callback) {
+    public <T extends OnAdapteredPagingCallback>
+    void setPagingCallback(@NonNull final T callback) {
         this.pagingCallback = callback;
     }
 

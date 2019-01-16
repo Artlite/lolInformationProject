@@ -420,7 +420,8 @@ public final class ARRecycleView<T extends ARObject> extends RecyclerView {
      *
      * @param callback lazy load callback
      */
-    public void setPagingCallback(@Nullable final OnAdapteredPagingCallback callback) {
+    public <T extends OnAdapteredPagingCallback>
+    void setPagingCallback(@Nullable final T callback) {
         if (innerAdapter != null) {
             innerAdapter.setPagingCallback(callback);
         }

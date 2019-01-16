@@ -3,7 +3,7 @@ apply plugin: 'com.android.library'
 ext {
     PUBLISH_GROUP_ID = 'com.artlite'
     PUBLISH_ARTIFACT_ID = 'adapteredrecyclerview'
-    PUBLISH_VERSION = '1.7.2'
+    PUBLISH_VERSION = '1.7.3'
 }
 
 android {
@@ -28,11 +28,10 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:+'
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:recyclerview-v7:25.3.1'
-    compile 'com.futuremind.recyclerfastscroll:fastscroll:0.2.5'
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api 'com.android.support:appcompat-v7:25.3.1'
+    api 'com.android.support:recyclerview-v7:25.3.1'
+    api 'com.futuremind.recyclerfastscroll:fastscroll:0.2.5'
 }
 
 apply from: 'https://raw.githubusercontent.com/blundell/release-android-library/master/android-release-aar.gradle'
