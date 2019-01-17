@@ -307,6 +307,22 @@ public class ARView<T extends ARObject> extends FrameLayout {
         });
     }
 
+    /**
+     * Method which provide the hide refresh for the SwipeRefreshLayout
+     */
+    public final void showRefreshIfEmpty() {
+        if (this.getListSize() <= 0) {
+            this.refreshLayout.post(new Runnable() {
+                @Override
+                public void run() {
+                    refreshLayout.setRefreshing(true);
+                }
+            });
+        } else {
+            this.hideRefresh();
+        }
+    }
+
     //MANAGEMENT METHODS
 
     /**
