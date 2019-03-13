@@ -4,9 +4,11 @@ import android.app.Application;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
+import android.util.Log;
 
 import com.artlite.bslibrary.constants.BSTypeface;
 import com.artlite.bslibrary.core.BSInstance;
+import com.artlite.bslibrary.helpers.log.BSLogHelper;
 import com.artlite.bslibrary.managers.BSContextManager;
 import com.artlite.collapsinglayouttest.utils.AppLogger;
 
