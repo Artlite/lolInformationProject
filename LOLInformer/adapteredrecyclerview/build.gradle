@@ -3,7 +3,7 @@ apply plugin: 'com.android.library'
 ext {
     PUBLISH_GROUP_ID = 'com.artlite'
     PUBLISH_ARTIFACT_ID = 'adapteredrecyclerview'
-    PUBLISH_VERSION = '1.7.4'
+    PUBLISH_VERSION = '1.7.5'
 }
 
 android {

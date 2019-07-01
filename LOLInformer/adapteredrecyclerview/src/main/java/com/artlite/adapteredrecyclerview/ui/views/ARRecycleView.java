@@ -16,6 +16,7 @@ import com.artlite.adapteredrecyclerview.ui.adapter.ARBaseAdapter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -216,9 +217,14 @@ public final class ARRecycleView<T extends ARObject> extends RecyclerView {
      */
     public void add(@Nullable final List<T> objects) {
         if (objects != null) {
-            innerObjects.addAll(objects);
-            sortByPriority(innerObjects);
-            notifyDataSetChanged();
+            Iterator<T> iterator = objects.listIterator();
+            while (iterator.hasNext()) {
+                this.add(iterator.next());
+            }
+            // Old functionality
+//            innerObjects.addAll(objects);
+//            sortByPriority(innerObjects);
+//            notifyDataSetChanged();
         }
     }
 
@@ -250,15 +256,20 @@ public final class ARRecycleView<T extends ARObject> extends RecyclerView {
      * @param objects objects
      * @return deleting value
      */
-    public void delete(@Nullable final T[] objects) {
+    public void delete(@Nullable final List<T> objects) {
         if (objects != null) {
-            for (T object : objects) {
-                if (innerObjects.contains(object)) {
-                    int objectIndex = innerObjects.indexOf(object);
-                    innerObjects.remove(object);
-                }
+            Iterator<T> iterator = objects.listIterator();
+            while (iterator.hasNext()) {
+                this.delete(iterator.next());
             }
-            notifyDataSetChanged();
+            // Old functionality
+//            for (T object : objects) {
+//                if (innerObjects.contains(object)) {
+//                    int objectIndex = innerObjects.indexOf(object);
+//                    innerObjects.remove(object);
+//                }
+//            }
+//            notifyDataSetChanged();
         }
     }
 

@@ -377,7 +377,7 @@ public class ARView<T extends ARObject> extends FrameLayout {
      * @param objects objects
      * @return deleting value
      */
-    public final void delete(@Nullable final T[] objects) {
+    public final void delete(@Nullable final List<T> objects) {
         this.recyclerView.delete(objects);
     }
 
