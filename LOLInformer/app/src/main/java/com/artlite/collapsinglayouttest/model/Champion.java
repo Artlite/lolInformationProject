@@ -1,6 +1,5 @@
 package com.artlite.collapsinglayouttest.model;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -108,6 +107,39 @@ public class Champion extends AbstractModel implements Parcelable {
             return historyValue.split("\n")[0];
         }
         return "";
+    }
+
+    /**
+     * Method which provide the equaling functionality
+     *
+     * @param object instance of the {@link Object}
+     * @return equaling result
+     */
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        Champion champion = (Champion) object;
+        if (iconID != champion.iconID) return false;
+        if (name != champion.name) return false;
+        if (title != champion.title) return false;
+        if (history != champion.history) return false;
+        return championType == champion.championType;
+    }
+
+    /**
+     * Method which provide the hash code for the object
+     *
+     * @return hash code value
+     */
+    @Override
+    public int hashCode() {
+        int result = iconID;
+        result = 31 * result + name;
+        result = 31 * result + title;
+        result = 31 * result + history;
+        result = 31 * result + championType.hashCode();
+        return result;
     }
 
     /**

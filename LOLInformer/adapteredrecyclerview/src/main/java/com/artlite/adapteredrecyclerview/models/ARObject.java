@@ -58,6 +58,11 @@ public abstract class ARObject implements Parcelable {
     protected boolean isSelected;
 
     /**
+     * {@link String} value of the object ID
+     */
+    protected String objectId;
+
+    /**
      * Default constructor for {@link ARObject}
      */
     public ARObject() {
@@ -184,4 +189,28 @@ public abstract class ARObject implements Parcelable {
         return "#";
     }
 
+    /**
+     * Method which provide the equaling of the objects
+     *
+     * @param o instance of the {@link Object}
+     * @return equaling result
+     */
+    @Override
+    public boolean equals(Object o) {
+        return false;
+    }
+
+    /**
+     * Method which provide the hash code for the object
+     *
+     * @return hash value
+     */
+    @Override
+    public int hashCode() {
+        int result = priority.hashCode();
+        result = 31 * result + index;
+        result = 31 * result + (isSelected ? 1 : 0);
+        result = 31 * result + (objectId != null ? objectId.hashCode() : 0);
+        return result;
+    }
 }

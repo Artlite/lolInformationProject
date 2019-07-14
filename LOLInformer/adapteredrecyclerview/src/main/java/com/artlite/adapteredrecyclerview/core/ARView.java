@@ -18,6 +18,7 @@ import android.widget.FrameLayout;
 
 import com.artlite.adapteredrecyclerview.R;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredBaseCallback;
+import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredDiffCallback;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredPagingCallback;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredRefreshCallback;
 import com.artlite.adapteredrecyclerview.constants.ARColorStateConstants;
@@ -433,7 +434,7 @@ public class ARView<T extends ARObject> extends FrameLayout {
      * @return current items list
      */
     @NonNull
-    public List<T> getListItems() {
+    public List<ARObject> getListItems() {
         return this.recyclerView.getListItems();
     }
 
@@ -461,7 +462,8 @@ public class ARView<T extends ARObject> extends FrameLayout {
      * @param comparator comparartor
      * @param isReverse  is need reverse
      */
-    public <K extends Comparator> void sort(@NonNull final K comparator, final boolean isReverse) {
+    public <K extends Comparator> void sort(@NonNull final K comparator,
+                                            final boolean isReverse) {
         if (recyclerView != null) {
             recyclerView.sort(comparator, isReverse);
         }
@@ -497,6 +499,15 @@ public class ARView<T extends ARObject> extends FrameLayout {
         if (callback != null) {
             this.recyclerView.setPagingCallback(callback);
         }
+    }
+
+    /**
+     * Method which provide to set the adaptered diff callback
+     *
+     * @param callback instance {@link OnAdapteredDiffCallback}
+     */
+    public void setDiffCallback(OnAdapteredDiffCallback callback) {
+        this.recyclerView.setDiffCallback(callback);
     }
 
     /**
@@ -574,7 +585,7 @@ public class ARView<T extends ARObject> extends FrameLayout {
      * @return instance of the selected {@link List} of the {@link ARObject}
      */
     @NonNull
-    public List<T> getSelectedItems() {
+    public List<ARObject> getSelectedItems() {
         if (recyclerView != null) {
             return recyclerView.getSelectedItems();
         }
@@ -587,7 +598,7 @@ public class ARView<T extends ARObject> extends FrameLayout {
      * @return instance of the deselected {@link List} of the {@link ARObject}
      */
     @NonNull
-    public List<T> getDeselectedItems() {
+    public List<ARObject> getDeselectedItems() {
         if (recyclerView != null) {
             return recyclerView.getDeselectedItems();
         }

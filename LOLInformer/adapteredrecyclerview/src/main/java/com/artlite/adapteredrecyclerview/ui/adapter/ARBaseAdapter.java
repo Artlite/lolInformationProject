@@ -2,6 +2,8 @@ package com.artlite.adapteredrecyclerview.ui.adapter;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.recyclerview.extensions.ListAdapter;
+import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,10 +22,9 @@ import java.util.List;
  * Created by Artli_000 on 24.07.2016.
  */
 public class ARBaseAdapter<T extends ARObject>
-        extends RecyclerView.Adapter<ARBaseAdapter.ViewHolder>
+        extends ListAdapter<ARObject, ARBaseAdapter.ViewHolder>
         implements SectionTitleProvider {
-
-    protected List<T> listItems;
+    // Callbacks
     protected OnAdapteredBaseCallback actionCallback;
     protected OnAdapteredPagingCallback pagingCallback;
     protected int oldSizeList;
@@ -35,7 +36,8 @@ public class ARBaseAdapter<T extends ARObject>
     /**
      * Default constructor
      */
-    public ARBaseAdapter() {
+    public ARBaseAdapter(@NonNull final DiffUtil.ItemCallback diffCallback) {
+        super(diffCallback);
         this.oldSizeList = 0;
     }
 
@@ -44,8 +46,10 @@ public class ARBaseAdapter<T extends ARObject>
      *
      * @param listItems list item
      */
-    public ARBaseAdapter(@NonNull final List<T> listItems) {
-        this.listItems = listItems;
+    public ARBaseAdapter(@NonNull final List<ARObject> listItems,
+                         @NonNull final DiffUtil.ItemCallback diffCallback) {
+        super(diffCallback);
+        this.update(listItems);
         this.oldSizeList = 0;
     }
 
@@ -69,13 +73,14 @@ public class ARBaseAdapter<T extends ARObject>
      * @see #getItemViewType(int)
      * @see #onBindViewHolder(RecyclerView.ViewHolder, int)
      */
+    @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@Nullable final ViewGroup parent, int viewType) {
         ViewHolder viewHolder = null;
         if (viewType < viewHolders.size()) {
             viewHolder = viewHolders.get(viewType);
         } else {
-            viewHolder = new ViewHolder(listItems.get(index).getRecyclerItem(parent.getContext()));
+            viewHolder = new ViewHolder(getItem(index).getRecyclerItem(parent.getContext()));
         }
         return viewHolder;
     }
@@ -95,8 +100,8 @@ public class ARBaseAdapter<T extends ARObject>
     @Override
     public int getItemViewType(int position) {
         index = position;
-        final Class aClass = listItems.get(position).getClass();
-        if (classes.contains(aClass) == false) {
+        final Class aClass = getItem(position).getClass();
+        if (!classes.contains(aClass)) {
             classes.add(aClass);
         }
         return classes.indexOf(aClass);
@@ -125,17 +130,19 @@ public class ARBaseAdapter<T extends ARObject>
     @Override
     public void onBindViewHolder(@Nullable final ViewHolder holder, int position) {
         //Get object
-        T recyclerItem = listItems.get(position);
+        T recyclerItem = (T) getItem(position);
         //Set index
         recyclerItem.setIndex(position);
-        //Set up the view
-        holder.recycleItem.setUp(recyclerItem);
-        //Set object inside the view as WeakReference
-        holder.recycleItem.setObject(recyclerItem);
-        //Set item listener
-        holder.recycleItem.setItemActionListener(actionCallback);
+        if ((holder != null) && (holder.recycleItem != null)) {
+            //Set up the view
+            holder.recycleItem.setUp(recyclerItem);
+            //Set object inside the view as WeakReference
+            holder.recycleItem.setObject(recyclerItem);
+            //Set item listener
+            holder.recycleItem.setItemActionListener(actionCallback);
+        }
         //Lazy load
-        int listItemSize = listItems.size();
+        int listItemSize = getItemCount();
         if ((position == listItemSize - 1)
                 && (listItemSize > oldSizeList)) {
             if (pagingCallback != null) {
@@ -151,16 +158,6 @@ public class ARBaseAdapter<T extends ARObject>
                 }
             }
         }
-    }
-
-    /**
-     * Method which provide the getting of the item counts
-     *
-     * @return
-     */
-    @Override
-    public int getItemCount() {
-        return listItems.size();
     }
 
     /**
@@ -197,8 +194,8 @@ public class ARBaseAdapter<T extends ARObject>
      *
      * @param listItems instance of the {@link List}
      */
-    public void setListItems(@Nullable final List<T> listItems) {
-        this.listItems = (listItems == null) ? new ArrayList<T>() : listItems;
+    public void setListItems(@Nullable final List<ARObject> listItems) {
+        this.submitList((listItems == null) ? new ArrayList<ARObject>() : listItems);
     }
 
     /**
@@ -213,13 +210,26 @@ public class ARBaseAdapter<T extends ARObject>
      */
     @Override
     public String getSectionTitle(int position) {
-        return this.listItems.get(position).getSectionTitle(position);
+        return this.getItem(position).getSectionTitle(position);
+    }
+
+    /**
+     * Method which provide the update list
+     *
+     * @param list instance of the {@link List}
+     */
+    public void update(List<ARObject> list) {
+        this.submitList(new ArrayList<>(list));
     }
 
     /**
      * View holder class
      */
     public static class ViewHolder extends RecyclerView.ViewHolder {
+
+        /**
+         * Instance of the {@link ARCell}
+         */
         public ARCell recycleItem;
 
         /**

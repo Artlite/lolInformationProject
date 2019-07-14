@@ -4,11 +4,13 @@ import android.content.Context;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.util.DiffUtil;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
 
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredBaseCallback;
+import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredDiffCallback;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredPagingCallback;
 import com.artlite.adapteredrecyclerview.models.ARObject;
 import com.artlite.adapteredrecyclerview.ui.adapter.ARBaseAdapter;
@@ -16,7 +18,6 @@ import com.artlite.adapteredrecyclerview.ui.adapter.ARBaseAdapter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -50,12 +51,22 @@ public final class ARRecycleView<T extends ARObject> extends RecyclerView {
     /**
      * Instance of the {@link ARBaseAdapter}
      */
-    protected ARBaseAdapter innerAdapter;
+    protected ARBaseAdapter<T> innerAdapter;
 
     /**
      * Instance of the {@link List} of the objects
      */
-    protected List<T> innerObjects;
+    protected List<ARObject> innerObjects;
+
+    /**
+     * Instance of the {@link DiffUtil.ItemCallback}
+     */
+    protected DiffUtil.ItemCallback<ARObject> diffCallback;
+
+    /**
+     * Instance of the {@link OnAdapteredDiffCallback}
+     */
+    protected OnAdapteredDiffCallback adapteredDiffCallback;
 
     //==============================================================================================
     //                                      CONSTRUCTORS
@@ -107,11 +118,11 @@ public final class ARRecycleView<T extends ARObject> extends RecyclerView {
      * @param context current context
      */
     protected void onCreate(@NonNull final Context context) {
-        if (isInEditMode() == true) {
+        if (isInEditMode()) {
             return;
         }
         innerObjects = new ArrayList<>();
-        innerAdapter = new ARBaseAdapter(innerObjects);
+        innerAdapter = new ARBaseAdapter<>(innerObjects, getDiffCallback());
         innerAdapter.setOldSizeList(0);
         setAdapter(innerAdapter);
         setHasFixedSize(true);
@@ -134,7 +145,8 @@ public final class ARRecycleView<T extends ARObject> extends RecyclerView {
      * @param comparator comparartor
      * @param isReverse  is need reverse
      */
-    public <K extends Comparator> void sort(@NonNull final K comparator, final boolean isReverse) {
+    public <K extends Comparator> void sort(@NonNull final K comparator,
+                                            final boolean isReverse) {
         runOnBackground(new OnActionPerformer() {
             @Override
             public void onActionPerform() {
@@ -153,7 +165,7 @@ public final class ARRecycleView<T extends ARObject> extends RecyclerView {
      *
      * @param objectList priority list
      */
-    protected void sortByPriority(@Nullable final List<T> objectList) {
+    protected void sortByPriority(@Nullable final List<ARObject> objectList) {
         if (objectList != null) {
             Collections.sort(objectList, new PriorityComparator());
         }
@@ -186,7 +198,6 @@ public final class ARRecycleView<T extends ARObject> extends RecyclerView {
             innerObjects.clear();
             innerAdapter.setOldSizeList(0);
             innerObjects.addAll(objects);
-            sortByPriority(innerObjects);
             notifyDataSetChanged();
         }
     }
@@ -202,11 +213,9 @@ public final class ARRecycleView<T extends ARObject> extends RecyclerView {
      */
     public void add(@Nullable final T object) {
         if (object != null) {
-            innerObjects.add(object);
-            sortByPriority(innerObjects);
-            if (getAdapter() != null) {
-                getAdapter().notifyItemInserted(innerObjects.size() - 1);
-            }
+            final List<T> list = new ArrayList<>();
+            list.add(object);
+            this.add(list);
         }
     }
 
@@ -217,14 +226,8 @@ public final class ARRecycleView<T extends ARObject> extends RecyclerView {
      */
     public void add(@Nullable final List<T> objects) {
         if (objects != null) {
-            Iterator<T> iterator = objects.listIterator();
-            while (iterator.hasNext()) {
-                this.add(iterator.next());
-            }
-            // Old functionality
-//            innerObjects.addAll(objects);
-//            sortByPriority(innerObjects);
-//            notifyDataSetChanged();
+            innerObjects.addAll(objects);
+            notifyDataSetChanged();
         }
     }
 
@@ -241,9 +244,9 @@ public final class ARRecycleView<T extends ARObject> extends RecyclerView {
     public boolean delete(@Nullable final T object) {
         if (object != null) {
             if (innerObjects.contains(object)) {
-                int objectIndex = innerObjects.indexOf(object);
-                innerObjects.remove(object);
-                getAdapter().notifyItemRemoved(objectIndex);
+                final List<T> list = new ArrayList<>();
+                list.add(object);
+                this.delete(list);
                 return true;
             }
         }
@@ -258,18 +261,8 @@ public final class ARRecycleView<T extends ARObject> extends RecyclerView {
      */
     public void delete(@Nullable final List<T> objects) {
         if (objects != null) {
-            Iterator<T> iterator = objects.listIterator();
-            while (iterator.hasNext()) {
-                this.delete(iterator.next());
-            }
-            // Old functionality
-//            for (T object : objects) {
-//                if (innerObjects.contains(object)) {
-//                    int objectIndex = innerObjects.indexOf(object);
-//                    innerObjects.remove(object);
-//                }
-//            }
-//            notifyDataSetChanged();
+            innerObjects.removeAll(objects);
+            notifyDataSetChanged();
         }
     }
 
@@ -357,7 +350,7 @@ public final class ARRecycleView<T extends ARObject> extends RecyclerView {
      * @return current items list
      */
     @NonNull
-    public List<T> getListItems() {
+    public List<ARObject> getListItems() {
         return innerObjects;
     }
 
@@ -367,9 +360,9 @@ public final class ARRecycleView<T extends ARObject> extends RecyclerView {
      * @return instance of the selected {@link List} of the {@link ARObject}
      */
     @NonNull
-    public List<T> getSelectedItems() {
-        final List<T> result = new ArrayList<>();
-        for (T object : innerObjects) {
+    public List<ARObject> getSelectedItems() {
+        final List<ARObject> result = new ArrayList<>();
+        for (ARObject object : innerObjects) {
             if (object.isSelected()) {
                 result.add(object);
             }
@@ -383,9 +376,9 @@ public final class ARRecycleView<T extends ARObject> extends RecyclerView {
      * @return instance of the deselected {@link List} of the {@link ARObject}
      */
     @NonNull
-    public List<T> getDeselectedItems() {
-        final List<T> result = new ArrayList<>();
-        for (T object : innerObjects) {
+    public List<ARObject> getDeselectedItems() {
+        final List<ARObject> result = new ArrayList<>();
+        for (ARObject object : innerObjects) {
             if (!object.isSelected()) {
                 result.add(object);
             }
@@ -404,8 +397,14 @@ public final class ARRecycleView<T extends ARObject> extends RecyclerView {
         runOnMainThread(0, new OnActionPerformer() {
             @Override
             public void onActionPerform() {
-                if (getAdapter() != null) {
-                    getAdapter().notifyDataSetChanged();
+                sortByPriority(innerObjects);
+                Adapter adapter = getAdapter();
+                if (adapter != null) {
+                    if (adapter instanceof ARBaseAdapter) {
+                        ((ARBaseAdapter) adapter).update(innerObjects);
+                    } else {
+                        getAdapter().notifyDataSetChanged();
+                    }
                 }
             }
         });
@@ -420,7 +419,7 @@ public final class ARRecycleView<T extends ARObject> extends RecyclerView {
      *
      * @param callback
      */
-    public void setActionCallback(@Nullable final OnAdapteredBaseCallback callback) {
+    public void setActionCallback(@Nullable final OnAdapteredBaseCallback<T> callback) {
         if (innerAdapter != null) {
             innerAdapter.setActionCallback(callback);
         }
@@ -436,6 +435,15 @@ public final class ARRecycleView<T extends ARObject> extends RecyclerView {
         if (innerAdapter != null) {
             innerAdapter.setPagingCallback(callback);
         }
+    }
+
+    /**
+     * Method which provide to set the adaptered diff callback
+     *
+     * @param callback instance {@link OnAdapteredDiffCallback}
+     */
+    public void setDiffCallback(OnAdapteredDiffCallback callback) {
+        this.adapteredDiffCallback = callback;
     }
 
     //==============================================================================================
@@ -542,4 +550,34 @@ public final class ARRecycleView<T extends ARObject> extends RecyclerView {
         }
     }
 
+    /**
+     * Method which provide the getting of the diff callback
+     *
+     * @return instance of the {@link DiffUtil.ItemCallback}
+     */
+    @NonNull
+    public DiffUtil.ItemCallback<ARObject> getDiffCallback() {
+        if (diffCallback == null) {
+            diffCallback = new DiffUtil.ItemCallback<ARObject>() {
+                @Override
+                public boolean areItemsTheSame(ARObject oldItem, ARObject newItem) {
+                    if (adapteredDiffCallback != null) {
+                        return adapteredDiffCallback
+                                .areItemsTheSame(oldItem, newItem);
+                    }
+                    return oldItem.equals(newItem);
+                }
+
+                @Override
+                public boolean areContentsTheSame(ARObject oldItem, ARObject newItem) {
+                    if (adapteredDiffCallback != null) {
+                        return adapteredDiffCallback
+                                .areContentsTheSame(oldItem, newItem);
+                    }
+                    return oldItem.equals(newItem);
+                }
+            };
+        }
+        return diffCallback;
+    }
 }

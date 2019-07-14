@@ -8,13 +8,14 @@ import android.widget.Toast;
 import com.artlite.adapteredrecyclerview.anotations.ARFindViewBy;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredBaseCallback;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredPagingCallback;
-import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredPagingExtendedCallback;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredRefreshCallback;
 import com.artlite.adapteredrecyclerview.core.ARView;
 import com.artlite.adapteredrecyclerview.events.AREvent;
 import com.artlite.adapteredrecyclerview.models.ARObject;
+import com.artlite.bslibrary.managers.BSThreadManager;
 import com.artlite.collapsinglayouttest.R;
 import com.artlite.collapsinglayouttest.model.Champion;
+import com.artlite.collapsinglayouttest.model.abs.AbstractModel;
 import com.artlite.collapsinglayouttest.mvp.contracts.ChampionContract;
 import com.artlite.collapsinglayouttest.mvp.impl.ChampionPresenter;
 import com.artlite.collapsinglayouttest.providers.ChampionProvider;
@@ -22,12 +23,13 @@ import com.artlite.collapsinglayouttest.ui.activities.ChampionDetailActivity;
 import com.artlite.collapsinglayouttest.ui.fragments.abs.BaseFragment;
 import com.artlite.collapsinglayouttest.ui.views.recycler.BlankRecyclerItem;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * Created by dlernatovich on 7/22/15.
  */
-public class ChampionListFragment
+public class ChampionListFragment<T extends AbstractModel>
         extends BaseFragment
         implements OnAdapteredPagingCallback {
 
@@ -69,7 +71,13 @@ public class ChampionListFragment
         recyclerView.init(championPresenter.getLayoutManager(getContext()), recyclerCallback,
                 refreshCallback, this);
         recyclerView.setIsNeedResfresh(false);
-        championView.onCreateView();
+        recyclerView.set(Arrays.asList(new ARObject[]{this.topBlank, this.bottomBlank}));
+        BSThreadManager.main(1, new BSThreadManager.OnThreadCallback() {
+            @Override
+            public void onExecute() {
+                championView.onCreateView();
+            }
+        });
     }
 
     /**
@@ -126,9 +134,7 @@ public class ChampionListFragment
          */
         @Override
         public void setChampions(@NonNull List<Champion> champions) {
-            recyclerView.set(champions);
-            recyclerView.add(topBlank);
-            recyclerView.add(bottomBlank);
+            recyclerView.add(champions);
         }
 
         /**
