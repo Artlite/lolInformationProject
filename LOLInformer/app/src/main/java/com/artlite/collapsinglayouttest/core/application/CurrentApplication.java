@@ -1,10 +1,9 @@
 package com.artlite.collapsinglayouttest.core.application;
 
 import android.app.Application;
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.annotation.StringRes;
-import android.util.Log;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
 
 import com.artlite.bslibrary.constants.BSTypeface;
 import com.artlite.bslibrary.core.BSInstance;

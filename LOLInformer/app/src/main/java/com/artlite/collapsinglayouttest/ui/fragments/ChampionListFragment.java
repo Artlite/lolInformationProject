@@ -1,9 +1,9 @@
 package com.artlite.collapsinglayouttest.ui.fragments;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.view.View;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import com.artlite.adapteredrecyclerview.anotations.ARFindViewBy;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredBaseCallback;
@@ -72,7 +72,7 @@ public class ChampionListFragment<T extends AbstractModel>
                 refreshCallback, this);
         recyclerView.setIsNeedResfresh(false);
         recyclerView.set(Arrays.asList(new ARObject[]{this.topBlank, this.bottomBlank}));
-        BSThreadManager.main(1, new BSThreadManager.OnThreadCallback() {
+        BSThreadManager.main(0, new BSThreadManager.OnThreadCallback() {
             @Override
             public void onExecute() {
                 championView.onCreateView();
@@ -166,16 +166,6 @@ public class ChampionListFragment<T extends AbstractModel>
      */
     private final ChampionPresenter championPresenter = new ChampionPresenter(championView);
 
-//    /**
-//     * Method which provide the notifying about item of list
-//     *
-//     * @param index {@link Integer} value of the visible index
-//     */
-//    @Override
-//    public void onItemVisible(int index) {
-//        Toast.makeText(getContext(), "Item :" + index, Toast.LENGTH_SHORT).show();
-//    }
-
     /**
      * Method which provide the notifying about end of list
      *
@@ -183,6 +173,5 @@ public class ChampionListFragment<T extends AbstractModel>
      */
     @Override
     public void onNextPage(int listSize) {
-        Toast.makeText(getContext(), "List size :" + listSize, Toast.LENGTH_SHORT).show();
     }
 }

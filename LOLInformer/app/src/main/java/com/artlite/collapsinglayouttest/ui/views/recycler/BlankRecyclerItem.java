@@ -2,7 +2,8 @@ package com.artlite.collapsinglayouttest.ui.views.recycler;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 import com.artlite.adapteredrecyclerview.models.ARCell;
 import com.artlite.adapteredrecyclerview.models.ARObject;

@@ -3,18 +3,19 @@ package com.artlite.adapteredrecyclerview.core;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
-import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
+import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.artlite.adapteredrecyclerview.R;
 import com.artlite.adapteredrecyclerview.callbacks.OnAdapteredBaseCallback;
@@ -161,7 +162,7 @@ public class ARView<T extends ARObject> extends FrameLayout {
         }
         this.inflateView(context, this.getLayoutID());
         this.recyclerView = (ARRecycleView) baseView.findViewById(R.id.adaptered_recycler_view);
-        this.refreshLayout = (SwipeRefreshLayout) baseView.findViewById(R.id.swipe_layout);
+        this.refreshLayout = baseView.findViewById(R.id.swipe_layout);
         this.refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

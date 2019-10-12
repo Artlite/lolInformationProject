@@ -1,21 +1,20 @@
 package com.artlite.collapsinglayouttest.ui.views.fonted;
 
 import android.content.Context;
-import android.graphics.Typeface;
-import android.support.annotation.NonNull;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import com.artlite.bslibrary.managers.BSTypefaceManager;
-import com.artlite.collapsinglayouttest.R;
+import com.google.android.material.tabs.TabLayout;
 
 /**
  * Created by dlernatovich on 12/2/15.
  */
-public class FTabLayout extends android.support.design.widget.TabLayout {
+public class FTabLayout extends TabLayout {
 
     /**
      * Method which provide to create the {@link FTabLayout} with parameters

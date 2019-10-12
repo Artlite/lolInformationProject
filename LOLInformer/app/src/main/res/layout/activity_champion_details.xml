@@ -18,7 +18,7 @@
         android:layout_marginBottom="@dimen/dimen_16"
         android:background="@drawable/background_square_gray_shadow">
 
-        <android.support.v4.widget.NestedScrollView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/dimen_10"
@@ -121,7 +121,7 @@
 
             </LinearLayout>
 
-        </android.support.v4.widget.NestedScrollView>
+        </androidx.core.widget.NestedScrollView>
     </FrameLayout>
 
 

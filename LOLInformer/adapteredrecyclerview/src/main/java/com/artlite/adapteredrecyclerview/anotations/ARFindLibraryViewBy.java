@@ -1,6 +1,7 @@
 package com.artlite.adapteredrecyclerview.anotations;
 
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

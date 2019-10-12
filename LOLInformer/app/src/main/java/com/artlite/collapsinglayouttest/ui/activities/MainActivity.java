@@ -1,12 +1,14 @@
 package com.artlite.collapsinglayouttest.ui.activities;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.viewpager.widget.ViewPager;
 
 import com.artlite.bslibrary.annotations.FindViewBy;
 import com.artlite.bslibrary.ui.activity.BSActivity;
+import com.artlite.bslibrary.ui.custom.BSViewPagerNonScroll;
 import com.artlite.collapsinglayouttest.R;
 import com.artlite.collapsinglayouttest.ui.adapters.viewpager.MainPagerAdapter;
 import com.artlite.collapsinglayouttest.ui.views.bar.ViewBottomBar;
@@ -18,7 +20,7 @@ public class MainActivity extends BSActivity implements ViewBottomBar.ViewBottom
      * Instance of the {@link ViewPager}
      */
     @FindViewBy(id = R.id.pager)
-    private ViewPager viewPager;
+    private BSViewPagerNonScroll viewPager;
 
     /**
      * Instance of the {@link ViewBottomBar}

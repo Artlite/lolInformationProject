@@ -2,10 +2,10 @@ package com.artlite.adapteredrecyclerview.helpers;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
+import androidx.annotation.NonNull;
 
 /**
  * Created by dlernatovich on 10/24/2016.

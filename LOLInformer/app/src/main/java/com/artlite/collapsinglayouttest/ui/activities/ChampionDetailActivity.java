@@ -3,22 +3,16 @@ package com.artlite.collapsinglayouttest.ui.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.AnimRes;
-import android.support.annotation.Nullable;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
 
-import com.artlite.adapteredrecyclerview.anotations.ARFindViewBy;
+import androidx.annotation.Nullable;
+
 import com.artlite.bslibrary.annotations.FindViewBy;
 import com.artlite.bslibrary.ui.activity.BSActivity;
 import com.artlite.collapsinglayouttest.R;
 import com.artlite.collapsinglayouttest.model.Champion;
-import com.artlite.collapsinglayouttest.ui.activities.abs.BaseActivity;
 import com.artlite.collapsinglayouttest.ui.custom.RoundedImageView;
 import com.artlite.collapsinglayouttest.ui.views.fonted.FTextView;
-
-import jp.wasabeef.blurry.Blurry;
 
 /**
  * Created by dlernatovich on 7/23/15.

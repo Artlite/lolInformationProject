@@ -1,7 +1,8 @@
 package com.artlite.collapsinglayouttest.factories.abs;
 
-import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 
 import com.artlite.collapsinglayouttest.core.application.CurrentApplication;
 

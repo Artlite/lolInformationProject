@@ -1,9 +1,10 @@
 package com.artlite.collapsinglayouttest.model.abs;
 
 import android.os.Parcel;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 
 import com.artlite.adapteredrecyclerview.models.ARObject;
 import com.artlite.collapsinglayouttest.core.application.CurrentApplication;

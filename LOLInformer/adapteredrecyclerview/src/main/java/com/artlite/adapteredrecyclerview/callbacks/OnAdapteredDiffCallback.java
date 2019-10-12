@@ -1,6 +1,8 @@
 package com.artlite.adapteredrecyclerview.callbacks;
 
-import android.support.v7.util.DiffUtil;
+
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.artlite.adapteredrecyclerview.models.ARObject;
 
@@ -30,7 +32,7 @@ public interface OnAdapteredDiffCallback {
      * change its behavior depending on your UI.
      * <p>
      * For example, if you are using DiffUtil with a
-     * {@link android.support.v7.widget.RecyclerView.Adapter RecyclerView.Adapter}, you should
+     * {@link RecyclerView.Adapter RecyclerView.Adapter}, you should
      * return whether the items' visual representations are the same.
      * <p>
      * This method is called only if {@link #areItemsTheSame(T, T)} returns {@code true} for

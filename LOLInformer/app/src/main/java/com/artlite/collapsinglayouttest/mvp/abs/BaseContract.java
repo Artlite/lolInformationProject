@@ -1,7 +1,8 @@
 package com.artlite.collapsinglayouttest.mvp.abs;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 /**
  * Created by dlernatovich on 9/30/16.

@@ -3,16 +3,16 @@ apply plugin: 'com.android.library'
 ext {
     PUBLISH_GROUP_ID = 'com.artlite'
     PUBLISH_ARTIFACT_ID = 'adapteredrecyclerview'
-    PUBLISH_VERSION = '5.0.0'
+    PUBLISH_VERSION = '0.9.0x'
 }
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     buildToolsVersion '27.0.3'
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
@@ -29,8 +29,9 @@ android {
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
-    api 'com.android.support:appcompat-v7:27.1.0'
-    api 'com.android.support:recyclerview-v7:27.1.0'
+    //noinspection GradleDependency
+    api 'androidx.appcompat:appcompat:1.0.0'
+    api 'androidx.recyclerview:recyclerview:1.0.0'
     api 'com.futuremind.recyclerfastscroll:fastscroll:0.2.5'
 }
 

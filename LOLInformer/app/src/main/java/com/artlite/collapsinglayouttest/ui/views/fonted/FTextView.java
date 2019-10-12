@@ -1,15 +1,8 @@
 package com.artlite.collapsinglayouttest.ui.views.fonted;
 
 import android.content.Context;
-import android.graphics.Typeface;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.AppCompatTextView;
-import android.text.Html;
 import android.util.AttributeSet;
-import android.widget.TextView;
 
-import com.artlite.bslibrary.annotations.Warning;
-import com.artlite.bslibrary.managers.BSTypefaceManager;
 import com.artlite.bslibrary.ui.fonted.BSButton;
 import com.artlite.bslibrary.ui.fonted.BSTextView;
 

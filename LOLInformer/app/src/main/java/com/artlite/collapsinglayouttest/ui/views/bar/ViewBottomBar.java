@@ -1,9 +1,10 @@
 package com.artlite.collapsinglayouttest.ui.views.bar;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
+
+import androidx.annotation.NonNull;
 
 import com.artlite.bslibrary.ui.view.BSView;
 import com.artlite.collapsinglayouttest.R;

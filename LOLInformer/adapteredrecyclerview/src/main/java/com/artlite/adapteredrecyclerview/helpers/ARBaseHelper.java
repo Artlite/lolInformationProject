@@ -1,7 +1,8 @@
 package com.artlite.adapteredrecyclerview.helpers;
 
-import android.support.annotation.Nullable;
 import android.util.Log;
+
+import androidx.annotation.Nullable;
 
 /**
  * Created by dlernatovich on 12/14/2016.

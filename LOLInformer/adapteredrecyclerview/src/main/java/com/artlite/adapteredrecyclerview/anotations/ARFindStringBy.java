@@ -1,6 +1,7 @@
 package com.artlite.adapteredrecyclerview.anotations;
 
-import android.support.annotation.StringRes;
+
+import androidx.annotation.StringRes;
 
 import com.artlite.adapteredrecyclerview.ui.views.ARBaseCell;
 

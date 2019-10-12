@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     buildToolsVersion '27.0.3'
 
     defaultConfig {
         applicationId "com.artlite.lolinformer"
         minSdkVersion 16
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
@@ -31,11 +31,11 @@ repositories {
 
 dependencies {
     api fileTree(include: ['*.jar'], dir: 'libs')
-    api 'com.android.support:support-v4:27.1.0'
-    api 'com.android.support:cardview-v7:27.1.0'
-    api 'com.android.support:design:27.1.0'
+    api 'androidx.cardview:cardview:1.0.0'
+    api 'com.google.android.material:material:1.0.0'
+    api 'androidx.coordinatorlayout:coordinatorlayout:1.0.0-alpha1'
     // Artlite libraries
-    api 'com.artlite:baseproject:4.4.5'
+    api 'com.artlite:baseproject:0.9.0x'
     api 'jp.wasabeef:blurry:2.1.1'
     api project(':adapteredrecyclerview')
 }

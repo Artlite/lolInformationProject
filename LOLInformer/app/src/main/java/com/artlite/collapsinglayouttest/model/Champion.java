@@ -3,11 +3,12 @@ package com.artlite.collapsinglayouttest.model;
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
 import android.util.Log;
+
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 
 import com.artlite.adapteredrecyclerview.helpers.ARInjector;
 import com.artlite.adapteredrecyclerview.models.ARCell;

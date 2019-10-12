@@ -1,6 +1,7 @@
 package com.artlite.adapteredrecyclerview.callbacks;
 
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 import com.artlite.adapteredrecyclerview.events.AREvent;
 import com.artlite.adapteredrecyclerview.models.ARObject;

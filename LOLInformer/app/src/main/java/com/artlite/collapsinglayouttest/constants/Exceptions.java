@@ -1,6 +1,7 @@
 package com.artlite.collapsinglayouttest.constants;
 
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 
 /**
  * Created by Artli on 13.11.2016.
